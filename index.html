@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seer Warns &mdash; The Map of Harmon</title>
+  <meta name="description" content="An interactive map of Harmon, the town at the center of the twenty-book Seer Warns literary series by B. Carter. Click a landmark to read the scenes set there.">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/leaflet.css">
+  <link rel="canonical" href="https://seerwarns.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Seer Warns">
+  <meta property="og:url" content="https://seerwarns.com/">
+  <meta property="og:title" content="Seer Warns &mdash; The Map of Harmon">
+  <meta property="og:description" content="An interactive map of one small town. Twenty literary novels happen here.">
+  <meta property="og:image" content="https://seerwarns.com/images/cover-the-good-father-front.jpg">
+
+  <style>
+    /* =====================================================================
+       Seer Warns — full-bleed map view.
+
+       The map is the page. Everything else is an overlay summoned by
+       the Seer's hand in the lower-left.
+
+       Color discipline: slate-navy is the single chrome accent.
+       Ink-red (var(--warn)) is reserved strictly for Seer-tagged content.
+       Gold (var(--gold)) is only on map-marker categories.
+       ===================================================================== */
+
+    /* ── Reset ───────────────────────────────────────────────────────── */
+    html { height: 100%; overflow: hidden; margin: 0; background: #1e2a38; }
+    body {
+      height: 100%;
+      overflow: hidden;
+      margin: 0;
+      background-color: #1e2a38 !important;
+      background-image: none !important;
+      color: var(--ink);
+      font-family: "EB Garamond", "Iowan Old Style", Georgia, serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    * { box-sizing: border-box; }
+
+    /* ── The map fills the screen below the brand bar ─────────────── */
+    #map {
+      position: fixed;
+      top: 72px;        /* leave room for the SEER WARNS brand at top */
+      left: 0; right: 0; bottom: 0;
+      background: #1e2a38;
+      outline: none;
+    }
+    @media (max-width: 600px) {
+      #map { top: 56px; }
+    }
+    /* Force every Leaflet inner container to match the backdrop so no
+       cream / default white can ever bleed through */
+    .leaflet-container { background: #1e2a38 !important; }
+    /* Soft vignette at the screen edges so the painted area feels
+       like a page held up to the eye, not a bare rectangle. */
+    #map-vignette {
+      position: fixed; inset: 0;
+      pointer-events: none;
+      z-index: 400;
+      box-shadow:
+        inset 0 0 120px rgba(0,0,0,0.30),
+        inset 0 0 24px rgba(0,0,0,0.15);
+    }
+
+    /* ── Top brand bar with hamburger menu trigger ────────────────── */
+
+    .topbrand {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 72px;
+      z-index: 1080;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #1e2a38;
+      pointer-events: none;
+    }
+    @media (max-width: 600px) {
+      .topbrand { height: 56px; }
+    }
+    .topbrand .brand {
+      font-family: "Cinzel", serif;
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: rgba(241, 232, 211, 0.96);
+      text-decoration: none;
+      pointer-events: auto;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.60))
+              drop-shadow(0 0 24px rgba(0,0,0,0.35));
+      white-space: nowrap;
+      transition: letter-spacing 240ms cubic-bezier(0.4, 0, 0.2, 1),
+                  color 240ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .topbrand .brand:hover { color: #ffffff; letter-spacing: 0.38em; }
+    .topbrand .brand .dot {
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: rgba(241, 232, 211, 0.65);
+      vertical-align: 0.32em;
+      margin: 0 0.5em;
+    }
+
+    /* Hamburger button — top-right */
+    .menu-btn {
+      position: fixed;
+      top: 18px; right: 22px;
+      z-index: 1100;
+      width: 48px; height: 48px;
+      background: transparent;
+      border: 1px solid rgba(241, 232, 211, 0.32);
+      border-radius: 2px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 200ms cubic-bezier(0.4, 0, 0.2, 1),
+                  border-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+    .menu-btn:hover {
+      background: rgba(241, 232, 211, 0.08);
+      border-color: rgba(241, 232, 211, 0.60);
+    }
+    .menu-btn.open {
+      background: rgba(241, 232, 211, 0.95);
+      border-color: rgba(241, 232, 211, 0.95);
+    }
+    .menu-btn .bars {
+      width: 22px; height: 16px;
+      position: relative;
+    }
+    .menu-btn .bars span {
+      position: absolute;
+      left: 0; right: 0;
+      height: 1.5px;
+      background: rgba(241, 232, 211, 0.95);
+      transition: transform 240ms cubic-bezier(0.4, 0, 0.2, 1),
+                  opacity 200ms cubic-bezier(0.4, 0, 0.2, 1),
+                  top 240ms cubic-bezier(0.4, 0, 0.2, 1),
+                  background 240ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .menu-btn .bars span:nth-child(1) { top: 0; }
+    .menu-btn .bars span:nth-child(2) { top: 7px; }
+    .menu-btn .bars span:nth-child(3) { top: 14px; }
+    .menu-btn.open .bars span { background: #14100a; }
+    .menu-btn.open .bars span:nth-child(1) { top: 7px; transform: rotate(45deg); }
+    .menu-btn.open .bars span:nth-child(2) { opacity: 0; }
+    .menu-btn.open .bars span:nth-child(3) { top: 7px; transform: rotate(-45deg); }
+
+    @media (max-width: 600px) {
+      .topbrand .brand { font-size: 1.2rem; letter-spacing: 0.26em; }
+      .menu-btn { top: 14px; right: 16px; width: 42px; height: 42px; }
+    }
+
+    /* ── The site menu (unfurls from the brand spine) ───────────────── */
+
+    .seer-menu {
+      position: fixed;
+      top: 78px; right: 22px;
+      transform: translateY(-8px);
+      z-index: 1090;
+      min-width: 280px;
+      padding: 22px 26px 20px;
+      background: #fbf6e8;
+      border: 1px solid rgba(24, 48, 74, 0.28);
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.5) inset,
+        0 24px 60px -12px rgba(0,0,0,0.55),
+        0 6px 16px -4px rgba(0,0,0,0.30);
+      opacity: 0;
+      pointer-events: none;
+      transition:
+        transform 280ms cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 220ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .seer-menu.open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .seer-menu .eyebrow {
+      font-family: "Cinzel", serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin: 0 0 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(24, 48, 74, 0.18);
+    }
+    .seer-menu ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .seer-menu li { display: block; }
+    .seer-menu .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 9px 0;
+      color: var(--ink);
+      text-decoration: none;
+      border: none;
+      background: transparent;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      font-family: "EB Garamond", serif;
+      font-size: 1.05rem;
+      transition: color 160ms var(--ease, cubic-bezier(0.4, 0, 0.2, 1));
+    }
+    .seer-menu .menu-item:hover { color: var(--slate); }
+    .seer-menu .menu-item .arrow {
+      font-family: "EB Garamond", serif;
+      color: var(--ink-mute);
+      font-size: 0.95rem;
+      transition: color 160ms var(--ease, cubic-bezier(0.4, 0, 0.2, 1)),
+                  transform 160ms var(--ease, cubic-bezier(0.4, 0, 0.2, 1));
+    }
+    .seer-menu .menu-item:hover .arrow {
+      color: var(--slate);
+      transform: translateX(2px);
+    }
+    .seer-menu .menu-item + .menu-item {
+      border-top: 1px solid rgba(24, 48, 74, 0.10);
+    }
+    .seer-menu .footer-note {
+      margin: 14px 0 0;
+      padding-top: 12px;
+      border-top: 1px solid rgba(24, 48, 74, 0.18);
+      font-family: "EB Garamond", serif;
+      font-style: italic;
+      font-size: 0.86rem;
+      color: var(--ink-mute);
+      line-height: 1.4;
+    }
+
+    @media (max-width: 600px) {
+      .seer-menu {
+        bottom: 24px; left: 128px;
+        min-width: 240px;
+        padding: 18px 22px 16px;
+      }
+    }
+
+    /* ── Books column (slides in from the left) ──────────────────────── */
+
+    .books-column {
+      position: fixed;
+      top: 0; bottom: 0; left: 0;
+      z-index: 1200;
+      width: 420px; max-width: 92vw;
+      background: #fbf6e8;
+      border-right: 1px solid rgba(24, 48, 74, 0.25);
+      box-shadow: 16px 0 48px -12px rgba(0,0,0,0.45);
+      transform: translateX(-100%);
+      transition: transform 360ms cubic-bezier(0.4, 0, 0.2, 1);
+      display: none;
+      flex-direction: column;
+    }
+    .books-column.open {
+      display: flex;
+      transform: translateX(0);
+    }
+    .books-column header {
+      padding: 28px 32px 22px;
+      border-bottom: 1px solid rgba(24, 48, 74, 0.18);
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 1rem;
+    }
+    .books-column header .eyebrow {
+      font-family: "Cinzel", serif;
+      font-size: 0.62rem; letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin: 0 0 6px;
+    }
+    .books-column header h2 {
+      font-family: "EB Garamond", serif;
+      font-size: 1.7rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin: 0;
+      line-height: 1.1;
+    }
+    .books-column header p {
+      font-family: "EB Garamond", serif;
+      font-style: italic;
+      color: var(--ink-mute);
+      font-size: 0.92rem;
+      margin: 6px 0 0;
+    }
+    .books-column .close {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-family: "EB Garamond", serif;
+      font-size: 1.4rem;
+      line-height: 1;
+      color: var(--ink-mute);
+      padding: 4px 6px;
+      transition: color 160ms var(--ease, cubic-bezier(0.4, 0, 0.2, 1));
+    }
+    .books-column .close:hover { color: var(--slate); }
+    .books-column .scroll {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0 32px 32px;
+    }
+    .books-column .book-card {
+      display: grid;
+      grid-template-columns: 96px minmax(0, 1fr);
+      gap: 18px;
+      padding: 22px 0;
+      border-bottom: 1px solid rgba(24, 48, 74, 0.10);
+      text-decoration: none;
+      color: inherit;
+      transition: opacity 200ms var(--ease, cubic-bezier(0.4, 0, 0.2, 1));
+    }
+    .books-column .book-card:last-child { border-bottom: 0; }
+    .books-column .book-card:hover { opacity: 1; }
+    .books-column .book-card:hover img {
+      transform: translateY(-2px);
+      box-shadow:
+        0 2px 4px rgba(0,0,0,0.20),
+        0 8px 20px -4px rgba(0,0,0,0.30);
+    }
+    .books-column .book-card img {
+      width: 96px; height: auto;
+      display: block;
+      box-shadow:
+        0 1px 2px rgba(0,0,0,0.18),
+        0 4px 10px -3px rgba(0,0,0,0.22);
+      transition: transform 240ms var(--ease, cubic-bezier(0.4, 0, 0.2, 1)),
+                  box-shadow 240ms var(--ease, cubic-bezier(0.4, 0, 0.2, 1));
+    }
+    .books-column .book-card .status {
+      font-family: "Cinzel", serif;
+      font-size: 0.6rem; letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin: 0 0 6px;
+    }
+    .books-column .book-card h3 {
+      font-family: "EB Garamond", serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: -0.005em;
+      color: var(--ink);
+      margin: 0 0 6px;
+      line-height: 1.2;
+    }
+    .books-column .book-card .who {
+      font-family: "EB Garamond", serif;
+      font-style: italic;
+      font-size: 0.92rem;
+      color: var(--ink-mute);
+      margin: 0;
+    }
+
+    /* ── Filter tray (rises from the bottom) ─────────────────────────── */
+
+    .filter-tray {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 1150;
+      background: #fbf6e8;
+      border-top: 1px solid rgba(24, 48, 74, 0.25);
+      box-shadow: 0 -16px 48px -12px rgba(0,0,0,0.45);
+      padding: 24px 28px 22px;
+      transform: translateY(110%);
+      transition: transform 360ms cubic-bezier(0.4, 0, 0.2, 1);
+      display: none;
+    }
+    .filter-tray.open {
+      display: block;
+      transform: translateY(0);
+    }
+    .filter-tray header {
+      display: flex; justify-content: space-between; align-items: baseline;
+      max-width: 1100px; margin: 0 auto 16px;
+    }
+    .filter-tray .eyebrow {
+      font-family: "Cinzel", serif;
+      font-size: 0.62rem; letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--slate);
+    }
+    .filter-tray .close {
+      background: transparent; border: none; cursor: pointer;
+      font-family: "EB Garamond", serif; font-size: 1.4rem;
+      line-height: 1; color: var(--ink-mute);
+      transition: color 160ms var(--ease);
+    }
+    .filter-tray .close:hover { color: var(--slate); }
+    .filter-tray .chips {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex; flex-wrap: wrap; gap: 12px;
+    }
+    .filter-tray .chip {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 6px 14px;
+      background: transparent;
+      border: 1px solid rgba(24, 48, 74, 0.22);
+      border-radius: 999px;
+      cursor: pointer;
+      font-family: "EB Garamond", serif;
+      font-size: 0.92rem;
+      color: var(--ink);
+      transition: background 160ms var(--ease), border-color 160ms var(--ease), opacity 160ms var(--ease);
+    }
+    .filter-tray .chip:hover {
+      border-color: var(--slate);
+    }
+    .filter-tray .chip.off { opacity: 0.4; }
+    .filter-tray .chip.off .chip-label { text-decoration: line-through; }
+    .filter-tray .chip-dot {
+      display: inline-block;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--dot, #888);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.18);
+    }
+    .filter-tray .chip-count {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      color: var(--ink-mute);
+    }
+
+    /* ── Splash overlay (first visit) ────────────────────────────────── */
+
+    .splash {
+      position: fixed; inset: 0; z-index: 2000;
+      background: rgba(14, 24, 38, 0.78);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 480ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .splash.hidden { opacity: 0; pointer-events: none; }
+    .splash .card {
+      background: #fbf6e8;
+      border: 1px solid rgba(24, 48, 74, 0.25);
+      padding: 3.5rem 3.5rem 2.5rem;
+      max-width: 520px; width: 88%;
+      color: var(--ink);
+      box-shadow: 0 40px 100px -20px rgba(0,0,0,0.55);
+      text-align: left;
+    }
+    .splash .eyebrow {
+      font-family: "Cinzel", serif;
+      font-size: 0.68rem; letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin: 0 0 1.25rem;
+    }
+    .splash h2 {
+      font-family: "EB Garamond", serif;
+      font-size: 2.4rem; font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin: 0 0 0.5rem;
+      line-height: 1.05;
+    }
+    .splash .quote {
+      font-family: "EB Garamond", serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--warn);
+      margin: 0 0 1.75rem;
+    }
+    .splash p {
+      font-family: "EB Garamond", serif;
+      font-size: 1.02rem;
+      line-height: 1.65;
+      color: var(--ink-soft);
+      margin: 0 0 1rem;
+    }
+    .splash p strong { color: var(--ink); font-weight: 600; }
+    .splash .actions {
+      margin-top: 1.75rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(24, 48, 74, 0.18);
+    }
+    .splash button {
+      font-family: "EB Garamond", serif;
+      font-size: 1rem;
+      color: var(--slate);
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--slate);
+      padding: 0.2rem 0;
+      cursor: pointer;
+      transition: color 160ms var(--ease, cubic-bezier(0.4, 0, 0.2, 1)),
+                  border-color 160ms var(--ease, cubic-bezier(0.4, 0, 0.2, 1));
+    }
+    .splash button:hover { color: var(--slate-deep); border-bottom-color: var(--slate-deep); }
+
+    /* ── Leaflet popups (editorial) ──────────────────────────────────── */
+
+    .leaflet-popup-content-wrapper {
+      background: #fbf6e8 !important;
+      color: var(--ink) !important;
+      border: 1px solid rgba(24, 48, 74, 0.25);
+      border-radius: 2px;
+      font-family: "EB Garamond", serif !important;
+      box-shadow: 0 16px 40px -8px rgba(0,0,0,0.40) !important;
+    }
+    .leaflet-popup-tip {
+      background: #fbf6e8 !important;
+      border: 1px solid rgba(24, 48, 74, 0.25);
+    }
+    .leaflet-popup-content {
+      margin: 20px 22px !important;
+      font-size: 1rem !important;
+      line-height: 1.6 !important;
+      color: var(--ink) !important;
+      min-width: 260px; max-width: 320px;
+    }
+    .leaflet-popup-close-button {
+      color: var(--ink-mute) !important;
+      padding: 8px 10px 0 0 !important;
+      font-size: 1.3rem !important;
+      transition: color 160ms var(--ease, cubic-bezier(0.4, 0, 0.2, 1));
+    }
+    .leaflet-popup-close-button:hover { color: var(--slate) !important; }
+
+    .popup-cat {
+      font-family: "Cinzel", serif;
+      font-size: 0.62rem; letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 8px;
+    }
+    .popup-cat.seer { color: var(--warn); }
+    .popup-title {
+      font-family: "EB Garamond", serif;
+      font-size: 1.45rem; font-weight: 600;
+      letter-spacing: -0.005em;
+      text-transform: none;
+      color: var(--ink);
+      margin: 0 0 6px;
+      line-height: 1.15;
+    }
+    .popup-address {
+      font-family: "EB Garamond", serif;
+      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--ink-mute);
+      margin-bottom: 14px;
+    }
+    .popup-blurb {
+      font-size: 0.98rem; line-height: 1.65;
+      color: var(--ink-soft); margin-bottom: 14px;
+    }
+    .popup-blurb em { color: var(--ink-mute); }
+    .popup-books {
+      border-top: 1px solid rgba(24, 48, 74, 0.18);
+      padding-top: 12px;
+      font-family: "EB Garamond", serif;
+      font-style: italic;
+      font-size: 0.88rem;
+      color: var(--ink-mute);
+    }
+    .popup-books a { color: var(--slate); border-bottom: 1px solid transparent; }
+    .popup-books a:hover { border-bottom-color: var(--slate); }
+    .popup-more {
+      display: inline-block;
+      margin-top: 14px;
+      font-family: "EB Garamond", serif;
+      font-size: 0.92rem;
+      color: var(--slate);
+      border-bottom: 1px solid var(--slate);
+      padding-bottom: 1px;
+      text-decoration: none;
+    }
+    .popup-more:hover { color: var(--slate-deep); border-bottom-color: var(--slate-deep); }
+
+    /* ── Markers ──────────────────────────────────────────────────────── */
+
+    /* Leaflet's marker wrapper. Force content-box so our global border-box
+       reset doesn't shrink the marker's content area away from its anchor. */
+    .leaflet-marker-icon {
+      box-sizing: content-box !important;
+    }
+
+    .seer-marker {
+      box-sizing: border-box;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 1.5px solid #fff;
+      font-size: 12px;
+      color: #fff;
+      cursor: pointer;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.30))
+              drop-shadow(0 3px 6px rgba(0,0,0,0.20));
+      transition: transform 200ms var(--ease, cubic-bezier(0.4, 0, 0.2, 1));
+      transform-origin: 50% 50%;
+    }
+    .seer-marker:hover {
+      transform: scale(1.20);
+    }
+    .seer-marker.cat-seer::after {
+      content: "";
+      position: absolute;
+      top: -4px; left: -4px;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px rgba(122, 42, 26, 0.20);
+      pointer-events: none;
+      animation: pulse-seer 2.6s ease-in-out infinite;
+    }
+    @keyframes pulse-seer {
+      0%, 100% { box-shadow: 0 0 0 4px rgba(122,42,26,0.20); }
+      50%      { box-shadow: 0 0 0 9px rgba(122,42,26,0.08); }
+    }
+
+    /* ── Leaflet controls — refined ───────────────────────────────────── */
+
+    .leaflet-control-zoom {
+      border: 1px solid rgba(24, 48, 74, 0.25) !important;
+      border-radius: 2px !important;
+      box-shadow: 0 8px 20px -6px rgba(0,0,0,0.40) !important;
+      overflow: hidden;
+    }
+    .leaflet-control-zoom a {
+      background: #fbf6e8 !important;
+      color: var(--ink) !important;
+      font-family: "EB Garamond", serif !important;
+      font-weight: 400;
+      font-size: 1.15rem !important;
+      border-bottom: 1px solid rgba(24, 48, 74, 0.12) !important;
+      transition: background 160ms, color 160ms;
+    }
+    .leaflet-control-zoom a:hover {
+      background: #fff !important;
+      color: var(--slate) !important;
+    }
+    /* Zoom control sits in the bottom-right of the map area */
+    .leaflet-bottom.leaflet-right { bottom: 20px !important; right: 20px !important; }
+    .leaflet-control-zoom { margin: 0 !important; }
+
+    /* ── Toast / hint when filter or column is open ───────────────────── */
+    .scrim {
+      position: fixed; inset: 0;
+      z-index: 1180;
+      background: rgba(14, 24, 38, 0.30);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 320ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .scrim.show { opacity: 1; pointer-events: auto; }
+  </style>
+</head>
+<body>
+
+  <div id="map" tabindex="0"></div>
+  <div id="map-vignette"></div>
+
+  <!-- ────── Top brand ────────────────────────────────────────────── -->
+  <div class="topbrand">
+    <a href="/" class="brand">Seer<span class="dot"></span>Warns</a>
+  </div>
+
+  <!-- ────── Hamburger menu trigger ──────────────────────────────── -->
+  <button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false">
+    <span class="bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+
+  <!-- The scrim sits behind the column / tray when one is open -->
+  <div class="scrim" id="scrim"></div>
+
+  <!-- ────── The Seer's Menu ────────────────────────────────────────── -->
+  <nav class="seer-menu" id="seer-menu" aria-label="Site navigation">
+    <p class="eyebrow">A note in the margin</p>
+    <ul>
+      <li><button class="menu-item" data-action="books"><span>Books</span><span class="arrow">&rarr;</span></button></li>
+      <li><a class="menu-item" href="/the-seer/"><span>The Seer</span><span class="arrow">&rarr;</span></a></li>
+      <li><button class="menu-item" data-action="filter"><span>Filter the map</span><span class="arrow">&rarr;</span></button></li>
+      <li><a class="menu-item" href="/about/"><span>About</span><span class="arrow">&rarr;</span></a></li>
+    </ul>
+    <p class="footer-note">Twenty literary novels set in one small American town.<br>By B. Carter. Published by Institute for Seer Press.</p>
+  </nav>
+
+  <!-- ────── The Books Column ──────────────────────────────────────── -->
+  <aside class="books-column" id="books-column" aria-label="The books">
+    <header>
+      <div>
+        <p class="eyebrow">Twenty novels &middot; One town</p>
+        <h2>The books.</h2>
+        <p>Read in any order. Every story happens on this map.</p>
+      </div>
+      <button class="close" id="books-close" aria-label="Close">&times;</button>
+    </header>
+    <div class="scroll">
+      <a class="book-card" href="/books/the-good-father/">
+        <img src="/images/cover-the-good-father-front.jpg" alt="The Good Father cover">
+        <div>
+          <p class="status">Book 01 &middot; Published</p>
+          <h3>The Good Father</h3>
+          <p class="who">David Marsh &middot; history teacher</p>
+        </div>
+      </a>
+      <a class="book-card" href="/books/the-good-brother/">
+        <img src="/images/cover-the-good-brother-front.jpg" alt="The Good Brother cover">
+        <div>
+          <p class="status">Book 05 &middot; In writing</p>
+          <h3>The Good Brother</h3>
+          <p class="who">Dennis Reilly &middot; county assessor</p>
+        </div>
+      </a>
+      <a class="book-card" href="/books/the-honest-woman/">
+        <img src="/images/cover-the-honest-woman-front.jpg" alt="The Honest Woman cover">
+        <div>
+          <p class="status">Book 02 &middot; In review</p>
+          <h3>The Honest Woman</h3>
+          <p class="who">Ruth Calloway &middot; town clerk</p>
+        </div>
+      </a>
+      <a class="book-card" href="/books/the-quiet-man/">
+        <img src="/images/cover-the-quiet-man-front.jpg" alt="The Quiet Man cover">
+        <div>
+          <p class="status">Book 09 &middot; In review</p>
+          <h3>The Quiet Man</h3>
+          <p class="who">Boyd Haskell &middot; hardware store owner</p>
+        </div>
+      </a>
+      <a class="book-card" href="/books/the-good-doctor/">
+        <img src="/images/cover-the-good-doctor-front.jpg" alt="The Good Doctor cover">
+        <div>
+          <p class="status">Book 08 &middot; On deck</p>
+          <h3>The Good Doctor</h3>
+          <p class="who">Cat Brennan &middot; trauma surgeon</p>
+        </div>
+      </a>
+    </div>
+  </aside>
+
+  <!-- ────── Filter Tray ───────────────────────────────────────────── -->
+  <div class="filter-tray" id="filter-tray" aria-label="Map category filter">
+    <header>
+      <span class="eyebrow">Show on the map</span>
+      <button class="close" id="filter-close" aria-label="Close">&times;</button>
+    </header>
+    <div class="chips" id="filter-chips">
+      <!-- filled by JS -->
+    </div>
+  </div>
+
+  <!-- ────── Splash overlay ────────────────────────────────────────── -->
+  <div class="splash" id="splash">
+    <div class="card">
+      <p class="eyebrow">A twenty-book literary series</p>
+      <h2>Welcome to Harmon.</h2>
+      <p class="quote">&ldquo;You were warned.&rdquo;</p>
+      <p>Twenty literary novels set in one small American town. Every story happens on this map. Click a landmark to read its scenes; the marked <strong>red points</strong> are the places where a stranger sat down across from someone and told them how their life falls apart.</p>
+      <p>Use the menu in the top-right corner to browse the books, the Seer, and more.</p>
+      <div class="actions">
+        <button id="splash-dismiss" type="button">Enter Harmon &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/lib/leaflet.js"></script>
+  <script src="/landmarks.js"></script>
+  <script>
+    /* ── Leaflet setup ────────────────────────────────────────────────── */
+    const map = L.map('map', {
+      crs: L.CRS.Simple,
+      minZoom: 0, maxZoom: MAX_ZOOM,
+      zoomSnap: 0.25,
+      zoomControl: false,
+      attributionControl: false,
+      doubleClickZoom: true,
+    });
+    L.control.zoom({ position: 'bottomright' }).addTo(map);
+
+    function pxToLatLng(px, py) {
+      return map.unproject([px, py], MAX_ZOOM);
+    }
+
+    const southWest = pxToLatLng(0, MAP_H);
+    const northEast = pxToLatLng(MAP_W, 0);
+    const bounds = L.latLngBounds(southWest, northEast);
+
+    L.tileLayer('/images/map-tiles/{z}/{x}_{y}.jpg?v=3', {
+      minZoom: 0, maxZoom: MAX_ZOOM,
+      bounds: bounds,
+      noWrap: true,
+      tileSize: 256,
+    }).addTo(map);
+
+    // Default view: show the upper half of the painted map prominently
+    // (HARMON title visible, town center clearly readable, fills viewport).
+    // Recomputes on resize so the framing stays consistent.
+    function setDefaultView() {
+      const containerSize = map.getSize();
+      // Painted map dims (z=3 tile space)
+      const mapPxW = MAP_W;
+      const mapPxH = MAP_H;
+      // Aim: paint ~1.4× the viewport height worth of map content vertically,
+      // so the map fills width edge-to-edge and roughly the painted top half
+      // is on screen at default. Pick the larger of width-fit and a target height.
+      const scaleX = containerSize.x / mapPxW;
+      const scaleY = containerSize.y / (mapPxH * 0.62);  // show ~62% of map height
+      const scale = Math.max(scaleX, scaleY);
+      const zoom = MAX_ZOOM + Math.log2(scale);
+      // Center on upper-middle of painted area (50% horizontally, ~40% vertically)
+      const cx = mapPxW * 0.50;
+      const cy = mapPxH * 0.40;
+      const center = map.unproject([cx, cy], MAX_ZOOM);
+      map.setView(center, Math.min(zoom, MAX_ZOOM), { animate: false });
+    }
+    setDefaultView();
+    window.addEventListener('resize', setDefaultView);
+
+    /* ── Markers ──────────────────────────────────────────────────────── */
+    const markersByCategory = {};
+    const allMarkers = [];
+
+    function createMarker(landmark) {
+      const cat = CATEGORIES[landmark.category];
+      const isSeer = landmark.category === 'seer' || landmark.seerScene;
+      const glyph = landmark.glyph || cat.glyph;
+      const html = `<div class="seer-marker ${isSeer ? 'cat-seer' : ''}" style="background:${cat.color}">${glyph}</div>`;
+      const icon = L.divIcon({
+        html, className: '',
+        iconSize: [24, 24],
+        iconAnchor: [12, 12],
+        popupAnchor: [0, -14],
+      });
+      const m = L.marker(pxToLatLng(landmark.px, landmark.py), {
+        icon, title: landmark.name, riseOnHover: true, alt: landmark.name,
+      });
+      m.bindPopup(popupHtml(landmark), { closeButton: true, maxWidth: 340 });
+      m.landmark = landmark;
+      return m;
+    }
+
+    function popupHtml(L) {
+      const cat = CATEGORIES[L.category];
+      const isSeer = L.category === 'seer' || L.seerScene;
+      const bookLinks = (L.books || []).map(slug => {
+        const title = slug.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' ');
+        return `<a href="/books/${slug}/">${title}</a>`;
+      }).join(' &middot; ');
+      const more = L.slug ? `<a class="popup-more" href="/establishments/${L.slug}/">Open full page &rarr;</a>` : '';
+      const catLabel = cat.label + (L.seerScene && L.category !== 'seer' ? ' &middot; Seer scene' : '');
+      return `
+        <div class="popup-cat${isSeer ? ' seer' : ''}">${catLabel}</div>
+        <h3 class="popup-title">${L.name}</h3>
+        <div class="popup-address">${L.address}</div>
+        <p class="popup-blurb">${L.blurb}</p>
+        <div class="popup-books">In: ${bookLinks || '<em>standalone landmark</em>'}</div>
+        ${more}
+      `;
+    }
+
+    for (const lm of LANDMARKS) {
+      const m = createMarker(lm);
+      m.addTo(map);
+      allMarkers.push(m);
+      (markersByCategory[lm.category] = markersByCategory[lm.category] || []).push(m);
+    }
+
+    /* ── Filter chips (populated when filter tray opens) ─────────────── */
+    const chipsContainer = document.getElementById('filter-chips');
+    for (const [key, cat] of Object.entries(CATEGORIES)) {
+      const count = (markersByCategory[key] || []).length;
+      if (count === 0) continue;
+      const chip = document.createElement('button');
+      chip.className = 'chip';
+      chip.dataset.cat = key;
+      chip.innerHTML = `
+        <span class="chip-dot" style="background:${cat.color}"></span>
+        <span class="chip-label">${cat.label}</span>
+        <span class="chip-count">${count}</span>
+      `;
+      chip.addEventListener('click', () => {
+        chip.classList.toggle('off');
+        const off = chip.classList.contains('off');
+        for (const m of markersByCategory[key]) {
+          if (off) map.removeLayer(m); else m.addTo(map);
+        }
+      });
+      chipsContainer.appendChild(chip);
+    }
+
+    /* ── Spine button + Menu choreography ─────────────────────────── */
+    const menuBtn    = document.getElementById('menu-btn');
+    const menu        = document.getElementById('seer-menu');
+    const booksCol    = document.getElementById('books-column');
+    const filterTray  = document.getElementById('filter-tray');
+    const scrim       = document.getElementById('scrim');
+
+    function closeAll() {
+      menu.classList.remove('open');
+      menuBtn.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      booksCol.classList.remove('open');
+      filterTray.classList.remove('open');
+      scrim.classList.remove('show');
+    }
+
+    menuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const wasOpen = menu.classList.contains('open');
+      booksCol.classList.remove('open');
+      filterTray.classList.remove('open');
+      scrim.classList.remove('show');
+      if (wasOpen) {
+        menu.classList.remove('open');
+        menuBtn.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      } else {
+        menu.classList.add('open');
+        menuBtn.classList.add('open');
+        menuBtn.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    // Menu actions
+    document.querySelectorAll('.seer-menu .menu-item[data-action]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const action = btn.dataset.action;
+        if (action === 'books') {
+          menu.classList.remove('open');
+          menuBtn.classList.remove('open');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          booksCol.classList.add('open');
+          scrim.classList.add('show');
+        } else if (action === 'filter') {
+          menu.classList.remove('open');
+          menuBtn.classList.remove('open');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          filterTray.classList.add('open');
+        }
+      });
+    });
+
+    // Close on scrim
+    scrim.addEventListener('click', closeAll);
+
+    // Close column / tray buttons
+    document.getElementById('books-close').addEventListener('click', closeAll);
+    document.getElementById('filter-close').addEventListener('click', () => filterTray.classList.remove('open'));
+
+    // Escape closes everything
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeAll();
+    });
+
+    // Clicking on the map closes the menu (but not columns)
+    map.on('click', () => {
+      if (menu.classList.contains('open')) {
+        menu.classList.remove('open');
+        menuBtn.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    /* ── Splash ───────────────────────────────────────────────────────── */
+    const splash = document.getElementById('splash');
+    document.getElementById('splash-dismiss').addEventListener('click', () => {
+      splash.classList.add('hidden');
+      try { localStorage.setItem('seerwarns-splash-seen', '1'); } catch (e) {}
+      setTimeout(() => splash.style.display = 'none', 600);
+    });
+    try {
+      if (localStorage.getItem('seerwarns-splash-seen')) {
+        splash.classList.add('hidden');
+        splash.style.display = 'none';
+      }
+    } catch (e) {}
+
+    /* ── Debug coordinate readout (?debug) ─────────────────────────── */
+    if (location.search.includes('debug')) {
+      const dbg = document.createElement('div');
+      dbg.style.cssText = 'position:fixed;right:16px;bottom:16px;z-index:1300;background:#fbf6e8;border:1px solid rgba(24,48,74,0.25);padding:10px 14px;font-family:JetBrains Mono,monospace;font-size:0.85rem;color:#14100a;box-shadow:0 6px 16px -4px rgba(0,0,0,0.30);';
+      dbg.innerHTML = 'Click the map<br>for coordinates.';
+      document.body.appendChild(dbg);
+      map.on('click', (e) => {
+        const p = map.project(e.latlng, MAX_ZOOM);
+        dbg.innerHTML = `<strong>px:</strong> ${Math.round(p.x)}<br><strong>py:</strong> ${Math.round(p.y)}<br><em style="color:#4a4234">(${(p.x/MAP_W*100).toFixed(1)}%, ${(p.y/MAP_H*100).toFixed(1)}%)</em>`;
+      });
+    }
+
+    /* ── Hash routing ──────────────────────────────────────────────────── */
+    function openFromHash() {
+      const id = location.hash.replace('#', '');
+      if (!id) return;
+      const m = allMarkers.find(x => x.landmark.id === id);
+      if (m) {
+        map.flyTo(m.getLatLng(), Math.min(MAX_ZOOM, 2.5), { duration: 0.8 });
+        setTimeout(() => m.openPopup(), 850);
+      }
+    }
+    window.addEventListener('hashchange', openFromHash);
+    setTimeout(openFromHash, 200);
+  </script>
+
+</body>
+</html>

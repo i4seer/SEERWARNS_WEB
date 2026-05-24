@@ -1,0 +1,683 @@
+/* =====================================================================
+   SEER WARNS — Shared editorial stylesheet.
+
+   Layout philosophy:
+   - One accent color (slate-navy) for chrome and links.
+   - Ink-red reserved strictly for the Seer warning content.
+   - EB Garamond does almost all the work; Cinzel only for tiny eyebrow
+     caps and the brand mark. JetBrains Mono only for ledger-style metadata.
+   - Hairline rules and white space, not boxes and tile grids.
+   ===================================================================== */
+
+/* ── Fonts ─────────────────────────────────────────────────────────── */
+
+@font-face {
+  font-family: "Cinzel";
+  src: url("/fonts/Cinzel-Regular.ttf") format("truetype-variations");
+  font-weight: 400 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "EB Garamond";
+  src: url("/fonts/EBGaramond-Regular.ttf") format("truetype");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "EB Garamond";
+  src: url("/fonts/EBGaramond-Italic.ttf") format("truetype");
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "EB Garamond";
+  src: url("/fonts/EBGaramond-SemiBold.ttf") format("truetype");
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "EB Garamond";
+  src: url("/fonts/EBGaramond-Bold.ttf") format("truetype");
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "EB Garamond";
+  src: url("/fonts/EBGaramond-BoldItalic.ttf") format("truetype");
+  font-weight: 700; font-style: italic; font-display: swap;
+}
+
+/* ── Tokens ────────────────────────────────────────────────────────── */
+
+:root {
+  /* Surfaces */
+  --parchment:      #fbf6e8;   /* page surface */
+  --parchment-warm: #f4ecd6;   /* warm tinted band */
+  --parchment-deep: #e8dcc0;   /* card surface */
+  --paper-gold:     #cdd7e0;   /* legacy alias, used as cool border tint */
+
+  /* Ink — dark, slightly warm */
+  --ink:            #14100a;
+  --ink-soft:       #2a2418;
+  --ink-mute:       #4a4234;
+
+  /* Slate-navy — single chrome accent */
+  --slate:          #2a4868;
+  --slate-deep:     #18304a;
+  --slate-soft:     #b0c4d4;
+  --slate-paper:    #e8eef3;
+
+  /* Aliases (lake → slate) */
+  --lake:           #2a4868;
+  --lake-deep:      #18304a;
+  --lake-soft:      #b0c4d4;
+  --lake-paper:    #e8eef3;
+
+  /* Map backdrop + frame */
+  --backdrop:       #4a6885;
+  --mat:            #f1e8d3;
+  --mat-rule:       #b89058;
+
+  /* Warn — ink-red, reserved for Seer/warning content only */
+  --warn:           #7a2a1a;
+  --warn-deep:      #501a0e;
+  --rust:           #7a2a1a;   /* alias */
+  --rust-deep:      #501a0e;   /* alias */
+  --rust-soft:      #9a4a3a;   /* alias */
+
+  /* Map marker categories use gold; not used in chrome */
+  --gold:           #c08030;
+  --gold-soft:      #d4a050;
+
+  /* Forest — only used by map markers */
+  --forest:         #4a6028;
+  --forest-deep:    #2f4018;
+
+  /* Rules */
+  --rule:           rgba(24, 48, 74, 0.10);
+  --rule-strong:    rgba(24, 48, 74, 0.22);
+
+  /* Motion */
+  --ease:           cubic-bezier(0.4, 0, 0.2, 1);
+  --t-fast:         160ms;
+  --t-med:          240ms;
+  --t-slow:         400ms;
+}
+
+/* ── Reset / base ──────────────────────────────────────────────────── */
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: "EB Garamond", "Iowan Old Style", Georgia, serif;
+  font-size: 19px;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--parchment);
+  font-feature-settings: "kern", "liga", "onum";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--slate);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  transition: color var(--t-fast) var(--ease),
+              border-color var(--t-fast) var(--ease);
+}
+a:hover {
+  color: var(--slate-deep);
+  border-bottom-color: var(--slate-deep);
+}
+
+p { margin: 0 0 1.25em; }
+em { font-style: italic; }
+strong { font-weight: 600; color: var(--ink); }
+code, .mono {
+  font-family: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.85em;
+  color: var(--ink-soft);
+}
+
+/* ── Headings ──────────────────────────────────────────────────────── */
+
+h1, h2, h3, h4, h5 {
+  font-family: "EB Garamond", "Iowan Old Style", Georgia, serif;
+  color: var(--ink);
+  margin-top: 0;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.005em;
+}
+h1 { font-size: 3rem;   font-weight: 600; margin-bottom: 0.65em; line-height: 1.05; text-transform: none; letter-spacing: -0.01em; }
+h2 { font-size: 2.1rem; font-weight: 600; margin: 0 0 0.65em;   text-transform: none; }
+h3 { font-size: 1.5rem; font-weight: 600; margin: 0 0 0.5em; }
+h4 {
+  font-family: "Cinzel", serif;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin: 0 0 1rem;
+}
+
+/* ── Top header — slim editorial bar ───────────────────────────────── */
+
+.site-header {
+  background: var(--parchment);
+  border-bottom: 1px solid var(--rule-strong);
+  padding: 1.25rem 0;
+}
+.site-header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 2rem;
+}
+.site-title {
+  font-family: "Cinzel", serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-bottom: 0;
+}
+.site-title:hover { color: var(--ink); border-bottom: 0; }
+.site-title em {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  color: var(--slate);
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+  font-size: 1.05em;
+}
+.site-tagline {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+  text-align: center;
+  white-space: nowrap;
+}
+.site-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1.75rem;
+  justify-self: end;
+}
+.site-nav a {
+  font-family: "EB Garamond", serif;
+  font-size: 0.98rem;
+  color: var(--ink);
+  border-bottom: 1px solid transparent;
+  padding: 0.2rem 0;
+}
+.site-nav a:hover, .site-nav a.active {
+  color: var(--slate);
+  border-bottom-color: var(--slate);
+}
+
+@media (max-width: 760px) {
+  .site-header-inner { grid-template-columns: auto auto; }
+  .site-tagline { display: none; }
+}
+
+/* ── Layout containers ─────────────────────────────────────────────── */
+
+.wrap        { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+.wrap-narrow { max-width: 680px;  margin: 0 auto; padding: 0 2rem; }
+
+.section { padding: 4.5rem 0; border-bottom: 1px solid var(--rule); }
+.section.alt { background: var(--parchment-warm); }
+
+.section-head { margin-bottom: 2.5rem; }
+.section-head .eyebrow {
+  font-family: "Cinzel", serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin: 0 0 0.85rem;
+}
+.section-head .lede {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  max-width: 640px;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ── Two-column reading layout ─────────────────────────────────────── */
+
+.two-col {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 4rem;
+}
+@media (max-width: 900px) {
+  .two-col { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+
+/* ── Aside cards (sidebar evidence tags) ──────────────────────────── */
+
+.aside-card {
+  border-top: 1px solid var(--rule-strong);
+  padding: 1.5rem 0;
+}
+.aside-card + .aside-card { margin-top: 0; }
+.aside-card h4 {
+  color: var(--slate);
+  margin-bottom: 1rem;
+}
+.aside-card ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.aside-card li {
+  padding: 0.6rem 0;
+  font-size: 0.96rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--rule);
+}
+.aside-card li:last-child { border-bottom: 0; }
+.aside-card li .k {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--ink-mute);
+}
+.aside-card li .v, .aside-card li > span:last-child {
+  font-family: "EB Garamond", serif;
+  font-size: 0.95rem;
+  color: var(--ink);
+  text-align: right;
+}
+.aside-card li a { color: var(--slate); }
+
+/* ── Pull-quote: the Seer warning ──────────────────────────────────── */
+
+.warning-quote {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  font-size: 1.4rem;
+  line-height: 1.55;
+  color: var(--warn);
+  border-left: 2px solid var(--warn);
+  padding: 0.35em 0 0.35em 1.5rem;
+  margin: 1.75rem 0;
+  max-width: 580px;
+}
+.warning-quote.large {
+  font-size: 1.7rem;
+  line-height: 1.5;
+}
+.warning-quote .attrib {
+  display: block;
+  font-family: "Cinzel", serif;
+  font-style: normal;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--warn-deep);
+  margin-top: 1.25rem;
+}
+
+/* ── Book hero (per-book page) ─────────────────────────────────────── */
+
+.book-hero {
+  display: grid;
+  grid-template-columns: 360px minmax(0, 1fr);
+  gap: 4rem;
+  padding: 5rem 0 4rem;
+  align-items: start;
+  border-bottom: 1px solid var(--rule-strong);
+}
+@media (max-width: 900px) {
+  .book-hero { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 0; }
+  .book-hero .cover { max-width: 280px; }
+}
+.book-hero .cover {
+  position: relative;
+}
+.book-hero .cover img {
+  width: 100%; height: auto;
+  display: block;
+  box-shadow:
+    0 1px 2px rgba(0,0,0,0.18),
+    0 16px 40px -12px rgba(0,0,0,0.35);
+}
+.book-hero .crumbs {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--ink-mute);
+  margin-bottom: 1.5rem;
+}
+.book-hero .crumbs a { color: var(--ink-mute); border-bottom: 0; }
+.book-hero .crumbs a:hover { color: var(--slate); }
+.book-hero .eyebrow {
+  font-family: "Cinzel", serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin: 0 0 1rem;
+}
+.book-hero h1 {
+  font-size: 3.6rem;
+  margin: 0 0 1.5rem;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: -0.015em;
+}
+.book-hero h1 .punct {
+  color: var(--ink-mute);
+  font-weight: 400;
+}
+.book-hero .pitch {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin-bottom: 2.25rem;
+  max-width: 600px;
+}
+.book-hero .pitch strong {
+  color: var(--ink);
+}
+.book-hero .facts {
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 1.5rem 0 0;
+  border-top: 1px solid var(--rule-strong);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem 2.5rem;
+}
+@media (max-width: 720px) {
+  .book-hero .facts { grid-template-columns: repeat(2, 1fr); }
+}
+.book-hero .facts li {
+  display: flex; flex-direction: column;
+  gap: 0.25rem;
+}
+.book-hero .facts .k {
+  font-family: "Cinzel", serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+.book-hero .facts .v {
+  font-family: "EB Garamond", serif;
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+/* ── Prose-section spacing inside book pages ──────────────────────── */
+
+.book-prose h2 {
+  font-size: 1.85rem;
+  margin: 3rem 0 1rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+}
+.book-prose h2:first-of-type {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+.book-prose p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--ink);
+  margin: 0 0 1.25rem;
+  max-width: 640px;
+}
+.book-prose strong { color: var(--ink); font-weight: 600; }
+.book-prose blockquote {
+  margin: 1.75rem 0;
+  padding: 0.35em 0 0.35em 1.5rem;
+  border-left: 2px solid var(--slate);
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  max-width: 600px;
+}
+.book-prose blockquote.warning {
+  border-left-color: var(--warn);
+  color: var(--warn);
+  font-size: 1.2rem;
+}
+
+/* ── Establishment hero (Lamplighter etc.) ─────────────────────────── */
+
+.estab-hero {
+  background: var(--parchment);
+  border-bottom: 1px solid var(--rule-strong);
+  padding: 5rem 0 4rem;
+}
+.estab-hero .crumbs {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--ink-mute);
+  margin-bottom: 1.5rem;
+}
+.estab-hero .crumbs a { color: var(--ink-mute); border-bottom: 0; }
+.estab-hero .crumbs a:hover { color: var(--slate); }
+.estab-hero .eyebrow {
+  font-family: "Cinzel", serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin: 0 0 1rem;
+}
+.estab-hero h1 {
+  font-size: 4rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  margin: 0 0 1.5rem;
+  text-transform: none;
+  color: var(--ink);
+}
+.estab-hero h1 em {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  color: var(--slate);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.estab-hero .epigraph {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: var(--warn);
+  border-left: 2px solid var(--warn);
+  padding: 0.35em 0 0.35em 1.5rem;
+  max-width: 620px;
+  margin: 2rem 0 0;
+}
+.estab-hero .attrib {
+  font-family: "Cinzel", serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--warn-deep);
+  margin-top: 1.25rem;
+}
+
+/* ── Encounter list ─────────────────────────────────────────────────── */
+
+.encounter-list { margin: 2.5rem 0 0; }
+.encounter {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr);
+  gap: 2rem;
+  padding: 2.25rem 0;
+  border-bottom: 1px solid var(--rule-strong);
+}
+.encounter:last-child { border-bottom: 0; }
+.encounter .num {
+  font-family: "Cinzel", serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--slate);
+  padding-top: 0.5rem;
+}
+.encounter h3 {
+  font-family: "EB Garamond", serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  text-transform: none;
+  margin: 0 0 0.5rem;
+}
+.encounter h3 a {
+  color: var(--ink);
+  border-bottom: 0;
+}
+.encounter h3 a:hover {
+  color: var(--slate);
+  border-bottom: 0;
+}
+.encounter .who {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--ink-mute);
+  margin: 0 0 1rem;
+}
+.encounter .warning {
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--warn);
+  border-left: 2px solid var(--warn);
+  padding: 0.25em 0 0.25em 1.25rem;
+  margin: 1rem 0;
+  max-width: 640px;
+}
+.encounter .left-behind {
+  font-family: "EB Garamond", serif;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  margin-top: 1rem;
+}
+.encounter .left-behind strong {
+  font-family: "Cinzel", serif;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-right: 0.5em;
+}
+@media (max-width: 760px) {
+  .encounter { grid-template-columns: 1fr; gap: 0.75rem; }
+}
+
+/* ── Reader's note (closing paragraph block) ──────────────────────── */
+
+.readers-note {
+  background: var(--parchment-warm);
+  border-top: 1px solid var(--rule-strong);
+  border-bottom: 1px solid var(--rule-strong);
+  padding: 4.5rem 0;
+}
+.readers-note h2 {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.85rem;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+.readers-note p {
+  font-size: 1.08rem;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  max-width: 640px;
+  margin: 0 0 1.25rem;
+}
+
+/* ── Footer ────────────────────────────────────────────────────────── */
+
+.site-footer {
+  background: var(--parchment);
+  border-top: 1px solid var(--rule-strong);
+  padding: 4rem 0 2rem;
+  font-size: 0.95rem;
+}
+.site-footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+}
+.site-footer h5 {
+  font-family: "Cinzel", serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin: 0 0 1rem;
+}
+.site-footer p {
+  font-family: "EB Garamond", serif;
+  color: var(--ink-soft);
+  margin-bottom: 0.5rem;
+}
+.site-footer ul { list-style: none; margin: 0; padding: 0; }
+.site-footer li { margin-bottom: 0.5rem; }
+.site-footer a {
+  color: var(--ink);
+  border-bottom: 0;
+}
+.site-footer a:hover {
+  color: var(--slate);
+  border-bottom: 1px solid var(--slate);
+}
+.site-footer .imprint {
+  font-style: italic;
+  color: var(--ink-mute);
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+}
+.site-footer-meta {
+  border-top: 1px solid var(--rule);
+  margin: 2.5rem auto 0;
+  padding: 1.25rem 2rem 0;
+  text-align: center;
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--ink-mute);
+  max-width: 1100px;
+}
+
+@media (max-width: 900px) {
+  .site-footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+@media (max-width: 600px) {
+  .site-footer-inner { grid-template-columns: 1fr; }
+  .book-hero h1 { font-size: 2.4rem; }
+  .estab-hero h1 { font-size: 2.6rem; }
+}

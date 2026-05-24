@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3:*)",
+      "Bash(ls -d C:/SEERWARNS/*/)",
+      "Bash(grep -n \"^---$\" /c/SEERWARNS/**)",
+      "Bash(python fix_trust.py)",
+      "Bash(python -c \"import json,sys; data=json.load\\(sys.stdin\\); print\\(data[0][''''text'''']\\)\")",
+      "Bash(ls -la /c/SEERWARNS/**)",
+      "Bash(python -c \"from PyPDF2 import PdfReader; r=PdfReader\\(''/c/SEERWARNS/book01/the-good-father-interior.pdf''\\); print\\(len\\(r.pages\\)\\)\")",
+      "Read(//c/SEERWARNS/**)",
+      "Read(//c/SEERSERIES/**)",
+      "Bash(ls -d /c/SEERWARNS/book*/)",
+      "Bash(python3 -c \":*)",
+      "Bash(sort -t: -k3 -n)",
+      "Bash(/c/SEERWARNS/book*/manuscript.md:*)",
+      "Bash(python -c \":*)",
+      "Bash(awk '/```html/,/```/' \"c:\\\\SEERWARNS\\\\description.md\")",
+      "Bash(grep -rn \"2:3 portrait\\\\|portrait.*2:3\\\\|3:2 landscape\\\\|Aspect ratio\" c:/SEERWARNS/book*/images.md)",
+      "Bash(pdftotext *)",
+      "Bash(gh search *)",
+      "Bash(Get-ChildItem *)",
+      "Bash(python *)",
+      "Bash(python3 *)",
+      "Bash(py *)",
+      "Bash(node *)",
+      "Bash(pwsh *)",
+      "Bash(ssh *)",
+      "Bash(PYTHONIOENCODING=utf-8 *)",
+      "Bash(PYTHONIOENCODING=* *)",
+      "Bash(command *)",
+      "Bash(cd *)",
+      "PowerShell(Get-Content *)",
+      "PowerShell(Measure-Object *)",
+      "PowerShell(*)"
+    ],
+    "additionalDirectories": [
+      "c:\\SEERSERIES"
+    ]
+  }
+}
