@@ -1,12 +1,13 @@
 /* =====================================================================
-   SEER WARNS — Shared editorial stylesheet.
+   SEER WARNS — Shared editorial stylesheet for reading pages.
 
-   Layout philosophy:
-   - One accent color (slate-navy) for chrome and links.
-   - Ink-red reserved strictly for the Seer warning content.
-   - EB Garamond does almost all the work; Cinzel only for tiny eyebrow
-     caps and the brand mark. JetBrains Mono only for ledger-style metadata.
-   - Hairline rules and white space, not boxes and tile grids.
+   The map page (index.html) has its own dark, full-bleed chrome.
+   Every other page is light, paper-bright, generous serif prose.
+
+   Color discipline:
+     - Slate-navy is the single chrome accent (links, nav hover, eyebrows).
+     - Ink-red (--warn) is reserved strictly for Seer / warning content.
+     - Gold (--gold) is only on map-marker categories (not on reading pages).
    ===================================================================== */
 
 /* ── Fonts ─────────────────────────────────────────────────────────── */
@@ -47,57 +48,41 @@
 
 :root {
   /* Surfaces */
-  --parchment:      #fbf6e8;   /* page surface */
-  --parchment-warm: #f4ecd6;   /* warm tinted band */
-  --parchment-deep: #e8dcc0;   /* card surface */
-  --paper-gold:     #cdd7e0;   /* legacy alias, used as cool border tint */
+  --parchment:      #fbf6e8;
+  --parchment-warm: #f4ecd6;
+  --parchment-deep: #e8dcc0;
 
   /* Ink — dark, slightly warm */
   --ink:            #14100a;
   --ink-soft:       #2a2418;
-  --ink-mute:       #4a4234;
+  --ink-mute:       #5a5042;
 
   /* Slate-navy — single chrome accent */
   --slate:          #2a4868;
   --slate-deep:     #18304a;
   --slate-soft:     #b0c4d4;
-  --slate-paper:    #e8eef3;
+  --slate-paper:    #e2ebf0;
 
-  /* Aliases (lake → slate) */
+  /* Backwards-compat aliases */
   --lake:           #2a4868;
   --lake-deep:      #18304a;
-  --lake-soft:      #b0c4d4;
-  --lake-paper:    #e8eef3;
 
-  /* Map backdrop + frame */
-  --backdrop:       #4a6885;
-  --mat:            #f1e8d3;
-  --mat-rule:       #b89058;
-
-  /* Warn — ink-red, reserved for Seer/warning content only */
+  /* Warn — ink-red, reserved for Seer / warning content only */
   --warn:           #7a2a1a;
   --warn-deep:      #501a0e;
-  --rust:           #7a2a1a;   /* alias */
-  --rust-deep:      #501a0e;   /* alias */
-  --rust-soft:      #9a4a3a;   /* alias */
 
-  /* Map marker categories use gold; not used in chrome */
+  /* Map-only colors */
   --gold:           #c08030;
-  --gold-soft:      #d4a050;
-
-  /* Forest — only used by map markers */
   --forest:         #4a6028;
-  --forest-deep:    #2f4018;
 
   /* Rules */
   --rule:           rgba(24, 48, 74, 0.10);
-  --rule-strong:    rgba(24, 48, 74, 0.22);
+  --rule-strong:    rgba(24, 48, 74, 0.25);
 
   /* Motion */
   --ease:           cubic-bezier(0.4, 0, 0.2, 1);
   --t-fast:         160ms;
   --t-med:          240ms;
-  --t-slow:         400ms;
 }
 
 /* ── Reset / base ──────────────────────────────────────────────────── */
@@ -109,7 +94,7 @@ body {
   margin: 0;
   font-family: "EB Garamond", "Iowan Old Style", Georgia, serif;
   font-size: 19px;
-  line-height: 1.65;
+  line-height: 1.7;
   color: var(--ink);
   background: var(--parchment);
   font-feature-settings: "kern", "liga", "onum";
@@ -125,23 +110,19 @@ a {
   transition: color var(--t-fast) var(--ease),
               border-color var(--t-fast) var(--ease);
 }
-a:hover {
+a:hover, a:focus-visible {
   color: var(--slate-deep);
   border-bottom-color: var(--slate-deep);
+  outline: none;
 }
 
 p { margin: 0 0 1.25em; }
 em { font-style: italic; }
 strong { font-weight: 600; color: var(--ink); }
-code, .mono {
-  font-family: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
-  font-size: 0.85em;
-  color: var(--ink-soft);
-}
 
 /* ── Headings ──────────────────────────────────────────────────────── */
 
-h1, h2, h3, h4, h5 {
+h1, h2, h3, h4 {
   font-family: "EB Garamond", "Iowan Old Style", Georgia, serif;
   color: var(--ink);
   margin-top: 0;
@@ -149,12 +130,12 @@ h1, h2, h3, h4, h5 {
   line-height: 1.15;
   letter-spacing: -0.005em;
 }
-h1 { font-size: 3rem;   font-weight: 600; margin-bottom: 0.65em; line-height: 1.05; text-transform: none; letter-spacing: -0.01em; }
-h2 { font-size: 2.1rem; font-weight: 600; margin: 0 0 0.65em;   text-transform: none; }
-h3 { font-size: 1.5rem; font-weight: 600; margin: 0 0 0.5em; }
+h1 { font-size: 3.4rem; font-weight: 600; margin-bottom: 0.5em; line-height: 1.02; letter-spacing: -0.015em; }
+h2 { font-size: 2rem; margin: 0 0 0.65em; }
+h3 { font-size: 1.45rem; margin: 0 0 0.5em; }
 h4 {
   font-family: "Cinzel", serif;
-  font-size: 0.74rem;
+  font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -162,19 +143,22 @@ h4 {
   margin: 0 0 1rem;
 }
 
-/* ── Top header — slim editorial bar ───────────────────────────────── */
+/* ── Page header (slim editorial bar) ─────────────────────────────── */
 
 .site-header {
   background: var(--parchment);
   border-bottom: 1px solid var(--rule-strong);
-  padding: 1.25rem 0;
+  padding: 1.5rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 .site-header-inner {
-  max-width: 1100px;
+  max-width: 1120px;
   margin: 0 auto;
   padding: 0 2rem;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr;
   align-items: center;
   gap: 2rem;
 }
@@ -182,28 +166,20 @@ h4 {
   font-family: "Cinzel", serif;
   font-size: 1rem;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--ink);
-  border-bottom: 0;
-}
-.site-title:hover { color: var(--ink); border-bottom: 0; }
-.site-title em {
-  font-family: "EB Garamond", serif;
-  font-style: italic;
-  color: var(--slate);
-  text-transform: none;
-  letter-spacing: 0;
-  font-weight: 400;
-  font-size: 1.05em;
-}
-.site-tagline {
-  font-family: "EB Garamond", serif;
-  font-style: italic;
-  color: var(--ink-soft);
-  font-size: 0.98rem;
-  text-align: center;
+  border-bottom: 0 !important;
   white-space: nowrap;
+}
+.site-title:hover { color: var(--slate); }
+.site-title .dot {
+  display: inline-block;
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--slate);
+  vertical-align: 0.32em;
+  margin: 0 0.5em;
 }
 .site-nav {
   list-style: none;
@@ -215,7 +191,7 @@ h4 {
 }
 .site-nav a {
   font-family: "EB Garamond", serif;
-  font-size: 0.98rem;
+  font-size: 1rem;
   color: var(--ink);
   border-bottom: 1px solid transparent;
   padding: 0.2rem 0;
@@ -225,23 +201,32 @@ h4 {
   border-bottom-color: var(--slate);
 }
 
-@media (max-width: 760px) {
-  .site-header-inner { grid-template-columns: auto auto; }
-  .site-tagline { display: none; }
+@media (max-width: 720px) {
+  .site-header-inner { grid-template-columns: auto auto; gap: 1rem; }
+  .site-nav { gap: 1.1rem; }
+  .site-nav a { font-size: 0.95rem; }
+}
+@media (max-width: 540px) {
+  .site-header-inner { padding: 0 1.25rem; }
+  .site-title { font-size: 0.85rem; letter-spacing: 0.16em; }
+  .site-nav { gap: 0.85rem; }
+  .site-nav a { font-size: 0.88rem; }
 }
 
 /* ── Layout containers ─────────────────────────────────────────────── */
 
-.wrap        { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+.wrap        { max-width: 1120px; margin: 0 auto; padding: 0 2rem; }
 .wrap-narrow { max-width: 680px;  margin: 0 auto; padding: 0 2rem; }
 
-.section { padding: 4.5rem 0; border-bottom: 1px solid var(--rule); }
-.section.alt { background: var(--parchment-warm); }
+.section { padding: 4.5rem 0; }
+.section + .section { border-top: 1px solid var(--rule); }
+.section.alt { background: var(--parchment-warm); border-top: 0 !important; }
+.section.alt + .section.alt { border-top: 1px solid var(--rule); }
 
-.section-head { margin-bottom: 2.5rem; }
+.section-head { margin-bottom: 2.5rem; max-width: 720px; }
 .section-head .eyebrow {
   font-family: "Cinzel", serif;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--slate);
@@ -251,12 +236,82 @@ h4 {
   font-size: 1.2rem;
   font-style: italic;
   color: var(--ink-soft);
-  max-width: 640px;
   line-height: 1.55;
   margin: 0;
 }
 
-/* ── Two-column reading layout ─────────────────────────────────────── */
+/* ── Page-level hero (top of each non-home page) ───────────────────── */
+
+.page-hero {
+  padding: 4.5rem 0 4rem;
+  border-bottom: 1px solid var(--rule-strong);
+}
+.page-hero .crumbs {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--ink-mute);
+  margin-bottom: 1.5rem;
+}
+.page-hero .crumbs a { color: var(--ink-mute); border-bottom: 0; }
+.page-hero .crumbs a:hover { color: var(--slate); border-bottom-color: var(--slate); }
+.page-hero .eyebrow {
+  font-family: "Cinzel", serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin: 0 0 1.25rem;
+}
+.page-hero h1 {
+  font-size: 3.8rem;
+  line-height: 1;
+  margin: 0 0 1.5rem;
+  letter-spacing: -0.015em;
+}
+.page-hero h1 em {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  color: var(--slate);
+  font-weight: 400;
+}
+.page-hero .lede {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 640px;
+  margin: 0;
+}
+@media (max-width: 720px) {
+  .page-hero h1 { font-size: 2.4rem; }
+  .page-hero { padding: 3rem 0 2.5rem; }
+}
+
+/* ── Pull quote — the Seer's warning ───────────────────────────────── */
+
+.warning-quote {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  line-height: 1.55;
+  color: var(--warn);
+  border-left: 2px solid var(--warn);
+  padding: 0.35em 0 0.35em 1.75rem;
+  margin: 2rem 0;
+  max-width: 620px;
+}
+.warning-quote .attrib {
+  display: block;
+  font-family: "Cinzel", serif;
+  font-style: normal;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--warn-deep);
+  margin-top: 1.25rem;
+}
+
+/* ── Two-column layout (reading + side notes) ──────────────────────── */
 
 .two-col {
   display: grid;
@@ -267,16 +322,15 @@ h4 {
   .two-col { grid-template-columns: 1fr; gap: 2.5rem; }
 }
 
-/* ── Aside cards (sidebar evidence tags) ──────────────────────────── */
+/* ── Aside cards ───────────────────────────────────────────────────── */
 
 .aside-card {
   border-top: 1px solid var(--rule-strong);
   padding: 1.5rem 0;
 }
-.aside-card + .aside-card { margin-top: 0; }
 .aside-card h4 {
   color: var(--slate);
-  margin-bottom: 1rem;
+  margin-bottom: 0.85rem;
 }
 .aside-card ul {
   list-style: none;
@@ -304,64 +358,116 @@ h4 {
   color: var(--ink);
   text-align: right;
 }
-.aside-card li a { color: var(--slate); }
+.aside-card li a { color: var(--slate); border-bottom: 0; }
+.aside-card li a:hover { border-bottom: 1px solid var(--slate); }
 
-/* ── Pull-quote: the Seer warning ──────────────────────────────────── */
+/* ── Book row (used on /books/) ──────────────────────────────────── */
 
-.warning-quote {
-  font-family: "EB Garamond", serif;
-  font-style: italic;
-  font-size: 1.4rem;
-  line-height: 1.55;
-  color: var(--warn);
-  border-left: 2px solid var(--warn);
-  padding: 0.35em 0 0.35em 1.5rem;
-  margin: 1.75rem 0;
-  max-width: 580px;
+.book-list { border-top: 1px solid var(--rule-strong); }
+.book-row {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr) auto;
+  gap: 2.5rem;
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--rule-strong);
+  align-items: start;
 }
-.warning-quote.large {
-  font-size: 1.7rem;
-  line-height: 1.5;
+.book-row .cover { grid-column: 1; }
+.book-row .cover img {
+  width: 160px; height: auto; display: block;
+  box-shadow:
+    0 1px 2px rgba(0,0,0,0.18),
+    0 8px 22px -6px rgba(0,0,0,0.30);
+  transition: transform var(--t-med) var(--ease);
 }
-.warning-quote .attrib {
-  display: block;
+.book-row:hover .cover img { transform: translateY(-3px); }
+.book-row .info { grid-column: 2; }
+.book-row .info .eyebrow {
   font-family: "Cinzel", serif;
-  font-style: normal;
-  font-size: 0.7rem;
+  font-size: 0.66rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--warn-deep);
-  margin-top: 1.25rem;
+  color: var(--slate);
+  margin: 0 0 0.5rem;
+}
+.book-row .info h3 {
+  font-size: 1.75rem;
+  margin: 0 0 0.5rem;
+}
+.book-row .info h3 a { color: var(--ink); border-bottom: 0; }
+.book-row .info h3 a:hover { color: var(--slate); }
+.book-row .info .who {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  color: var(--ink-mute);
+  font-size: 0.98rem;
+  margin: 0 0 1rem;
+}
+.book-row .info .blurb {
+  font-size: 1.02rem;
+  line-height: 1.65;
+  margin-bottom: 0.85rem;
+  max-width: 580px;
+}
+.book-row .info .warning {
+  font-style: italic;
+  color: var(--warn);
+  font-size: 1.02rem;
+  margin: 0;
+  max-width: 580px;
+}
+.book-row .pills {
+  grid-column: 3;
+  align-self: start;
+  white-space: nowrap;
+}
+
+.status-pill {
+  font-family: "Cinzel", serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.7rem;
+  font-weight: 600;
+  border: 1px solid currentColor;
+  background: var(--parchment);
+  display: inline-block;
+}
+.status-pill.published   { color: #5a3e10; border-color: #a87830; }
+.status-pill.ready       { color: #2a4a20; border-color: #4a6a30; }
+.status-pill.writing     { color: #5a4a2a; border-color: #8a6a30; }
+.status-pill.ondeck      { color: var(--slate); border-color: var(--slate); }
+.status-pill.future      { color: #4a2a5a; border-color: #6a4a7a; }
+
+@media (max-width: 720px) {
+  .book-row { grid-template-columns: 110px minmax(0, 1fr); gap: 1.5rem; }
+  .book-row .cover img { width: 110px; }
+  .book-row .pills { grid-column: 1 / -1; margin-top: 0.5rem; }
+  .book-row .info h3 { font-size: 1.4rem; }
 }
 
 /* ── Book hero (per-book page) ─────────────────────────────────────── */
 
 .book-hero {
   display: grid;
-  grid-template-columns: 360px minmax(0, 1fr);
+  grid-template-columns: 320px minmax(0, 1fr);
   gap: 4rem;
-  padding: 5rem 0 4rem;
+  padding: 5rem 2rem 4rem;
+  max-width: 1120px;
+  margin: 0 auto;
   align-items: start;
   border-bottom: 1px solid var(--rule-strong);
 }
-@media (max-width: 900px) {
-  .book-hero { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 0; }
-  .book-hero .cover { max-width: 280px; }
-}
-.book-hero .cover {
-  position: relative;
-}
 .book-hero .cover img {
-  width: 100%; height: auto;
-  display: block;
+  width: 100%; height: auto; display: block;
   box-shadow:
     0 1px 2px rgba(0,0,0,0.18),
-    0 16px 40px -12px rgba(0,0,0,0.35);
+    0 16px 40px -12px rgba(0,0,0,0.40);
 }
 .book-hero .crumbs {
   font-family: "EB Garamond", serif;
   font-style: italic;
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   color: var(--ink-mute);
   margin-bottom: 1.5rem;
 }
@@ -377,25 +483,18 @@ h4 {
 }
 .book-hero h1 {
   font-size: 3.6rem;
-  margin: 0 0 1.5rem;
   line-height: 1;
-  text-transform: none;
+  margin: 0 0 1.5rem;
   letter-spacing: -0.015em;
-}
-.book-hero h1 .punct {
-  color: var(--ink-mute);
-  font-weight: 400;
 }
 .book-hero .pitch {
   font-size: 1.15rem;
   line-height: 1.7;
-  color: var(--ink-soft);
-  margin-bottom: 2.25rem;
-  max-width: 600px;
-}
-.book-hero .pitch strong {
   color: var(--ink);
+  margin-bottom: 2rem;
+  max-width: 580px;
 }
+.book-hero .pitch strong { color: var(--ink); }
 .book-hero .facts {
   list-style: none;
   margin: 2.5rem 0 0;
@@ -406,6 +505,9 @@ h4 {
   gap: 1rem 2.5rem;
 }
 @media (max-width: 720px) {
+  .book-hero { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 1.5rem; }
+  .book-hero .cover { max-width: 240px; }
+  .book-hero h1 { font-size: 2.4rem; }
   .book-hero .facts { grid-template-columns: repeat(2, 1fr); }
 }
 .book-hero .facts li {
@@ -414,7 +516,7 @@ h4 {
 }
 .book-hero .facts .k {
   font-family: "Cinzel", serif;
-  font-size: 0.62rem;
+  font-size: 0.6rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--slate);
@@ -425,44 +527,38 @@ h4 {
   color: var(--ink);
 }
 
-/* ── Prose-section spacing inside book pages ──────────────────────── */
+/* ── Long-form prose spacing inside per-book / establishment pages ── */
 
-.book-prose h2 {
-  font-size: 1.85rem;
+.prose h2 {
+  font-size: 1.9rem;
   margin: 3rem 0 1rem;
   padding-top: 2rem;
   border-top: 1px solid var(--rule);
 }
-.book-prose h2:first-of-type {
-  margin-top: 0;
-  padding-top: 0;
-  border-top: 0;
-}
-.book-prose p {
+.prose h2:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+.prose p {
   font-size: 1.05rem;
   line-height: 1.75;
-  color: var(--ink);
   margin: 0 0 1.25rem;
   max-width: 640px;
 }
-.book-prose strong { color: var(--ink); font-weight: 600; }
-.book-prose blockquote {
+.prose blockquote {
   margin: 1.75rem 0;
   padding: 0.35em 0 0.35em 1.5rem;
   border-left: 2px solid var(--slate);
   font-style: italic;
-  font-size: 1.1rem;
+  font-size: 1.08rem;
   line-height: 1.65;
   color: var(--ink-soft);
   max-width: 600px;
 }
-.book-prose blockquote.warning {
+.prose blockquote.warning {
   border-left-color: var(--warn);
   color: var(--warn);
   font-size: 1.2rem;
 }
 
-/* ── Establishment hero (Lamplighter etc.) ─────────────────────────── */
+/* ── Establishment hero ────────────────────────────────────────────── */
 
 .estab-hero {
   background: var(--parchment);
@@ -488,19 +584,15 @@ h4 {
 }
 .estab-hero h1 {
   font-size: 4rem;
-  font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 0.95;
   margin: 0 0 1.5rem;
-  text-transform: none;
-  color: var(--ink);
 }
 .estab-hero h1 em {
   font-family: "EB Garamond", serif;
   font-style: italic;
   color: var(--slate);
   font-weight: 400;
-  letter-spacing: 0;
 }
 .estab-hero .epigraph {
   font-family: "EB Garamond", serif;
@@ -521,15 +613,19 @@ h4 {
   color: var(--warn-deep);
   margin-top: 1.25rem;
 }
+@media (max-width: 720px) {
+  .estab-hero h1 { font-size: 2.6rem; }
+  .estab-hero .epigraph { font-size: 1.2rem; }
+}
 
-/* ── Encounter list ─────────────────────────────────────────────────── */
+/* ── Encounter list ────────────────────────────────────────────────── */
 
 .encounter-list { margin: 2.5rem 0 0; }
 .encounter {
   display: grid;
   grid-template-columns: 140px minmax(0, 1fr);
-  gap: 2rem;
-  padding: 2.25rem 0;
+  gap: 2.5rem;
+  padding: 2.5rem 0;
   border-bottom: 1px solid var(--rule-strong);
 }
 .encounter:last-child { border-bottom: 0; }
@@ -539,28 +635,18 @@ h4 {
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--slate);
-  padding-top: 0.5rem;
+  padding-top: 0.4rem;
 }
 .encounter h3 {
-  font-family: "EB Garamond", serif;
   font-size: 1.6rem;
-  font-weight: 600;
-  letter-spacing: -0.005em;
-  text-transform: none;
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.4rem;
 }
-.encounter h3 a {
-  color: var(--ink);
-  border-bottom: 0;
-}
-.encounter h3 a:hover {
-  color: var(--slate);
-  border-bottom: 0;
-}
+.encounter h3 a { color: var(--ink); border-bottom: 0; }
+.encounter h3 a:hover { color: var(--slate); }
 .encounter .who {
   font-family: "EB Garamond", serif;
   font-style: italic;
-  font-size: 0.95rem;
+  font-size: 0.96rem;
   color: var(--ink-mute);
   margin: 0 0 1rem;
 }
@@ -582,18 +668,18 @@ h4 {
 }
 .encounter .left-behind strong {
   font-family: "Cinzel", serif;
-  font-size: 0.66rem;
+  font-size: 0.62rem;
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--slate);
   margin-right: 0.5em;
 }
-@media (max-width: 760px) {
+@media (max-width: 720px) {
   .encounter { grid-template-columns: 1fr; gap: 0.75rem; }
 }
 
-/* ── Reader's note (closing paragraph block) ──────────────────────── */
+/* ── Reader's note (closing block) ─────────────────────────────────── */
 
 .readers-note {
   background: var(--parchment-warm);
@@ -621,20 +707,20 @@ h4 {
 .site-footer {
   background: var(--parchment);
   border-top: 1px solid var(--rule-strong);
-  padding: 4rem 0 2rem;
+  padding: 3.5rem 0 2rem;
   font-size: 0.95rem;
 }
 .site-footer-inner {
-  max-width: 1100px;
+  max-width: 1120px;
   margin: 0 auto;
   padding: 0 2rem;
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr;
   gap: 3rem;
 }
 .site-footer h5 {
   font-family: "Cinzel", serif;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--slate);
@@ -647,14 +733,8 @@ h4 {
 }
 .site-footer ul { list-style: none; margin: 0; padding: 0; }
 .site-footer li { margin-bottom: 0.5rem; }
-.site-footer a {
-  color: var(--ink);
-  border-bottom: 0;
-}
-.site-footer a:hover {
-  color: var(--slate);
-  border-bottom: 1px solid var(--slate);
-}
+.site-footer a { color: var(--ink); border-bottom: 0; }
+.site-footer a:hover { color: var(--slate); border-bottom: 1px solid var(--slate); }
 .site-footer .imprint {
   font-style: italic;
   color: var(--ink-mute);
@@ -670,14 +750,12 @@ h4 {
   font-style: italic;
   font-size: 0.85rem;
   color: var(--ink-mute);
-  max-width: 1100px;
+  max-width: 1120px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 720px) {
   .site-footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
 }
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   .site-footer-inner { grid-template-columns: 1fr; }
-  .book-hero h1 { font-size: 2.4rem; }
-  .estab-hero h1 { font-size: 2.6rem; }
 }

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Seer Warns &mdash; The Map of Harmon</title>
-  <meta name="description" content="An interactive map of Harmon, the town at the center of the twenty-book Seer Warns literary series by B. Carter. Click a landmark to read the scenes set there.">
+  <meta name="description" content="An interactive map of Harmon, the town at the center of the ongoing Seer Warns literary series by B. Carter. Click a landmark to read the scenes set there.">
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="/lib/leaflet.css">
   <link rel="canonical" href="https://seerwarns.com/">
@@ -12,7 +12,7 @@
   <meta property="og:site_name" content="Seer Warns">
   <meta property="og:url" content="https://seerwarns.com/">
   <meta property="og:title" content="Seer Warns &mdash; The Map of Harmon">
-  <meta property="og:description" content="An interactive map of one small town. Twenty literary novels happen here.">
+  <meta property="og:description" content="An interactive map of one small town. An ongoing series of literary novels happens here.">
   <meta property="og:image" content="https://seerwarns.com/images/cover-the-good-father-front.jpg">
 
   <style>
@@ -107,10 +107,10 @@
       margin: 0 0.5em;
     }
 
-    /* Hamburger button — top-right */
+    /* Hamburger button — top-left */
     .menu-btn {
       position: fixed;
-      top: 18px; right: 22px;
+      top: 18px; left: 22px;
       z-index: 1100;
       width: 48px; height: 48px;
       background: transparent;
@@ -155,14 +155,58 @@
 
     @media (max-width: 600px) {
       .topbrand .brand { font-size: 1.2rem; letter-spacing: 0.26em; }
-      .menu-btn { top: 14px; right: 16px; width: 42px; height: 42px; }
+      .menu-btn { top: 14px; left: 16px; width: 42px; height: 42px; }
+    }
+
+    /* Books button — sits beside the hamburger on the left */
+    .books-btn {
+      position: fixed;
+      top: 18px; left: 80px;
+      z-index: 1100;
+      height: 48px;
+      padding: 0 18px;
+      background: transparent;
+      border: 1px solid rgba(241, 232, 211, 0.32);
+      border-radius: 2px;
+      cursor: pointer;
+      display: inline-flex; align-items: center; gap: 0.55em;
+      font-family: "Cinzel", serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(241, 232, 211, 0.95);
+      transition: background 200ms cubic-bezier(0.4, 0, 0.2, 1),
+                  border-color 200ms cubic-bezier(0.4, 0, 0.2, 1),
+                  color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+    .books-btn:hover {
+      background: rgba(241, 232, 211, 0.08);
+      border-color: rgba(241, 232, 211, 0.60);
+      color: #ffffff;
+    }
+    .books-btn.open {
+      background: rgba(241, 232, 211, 0.95);
+      border-color: rgba(241, 232, 211, 0.95);
+      color: #14100a;
+    }
+    @media (max-width: 600px) {
+      .books-btn {
+        top: 14px; left: 66px;
+        height: 42px;
+        padding: 0 13px;
+        font-size: 0.62rem;
+        letter-spacing: 0.18em;
+      }
     }
 
     /* ── The site menu (unfurls from the brand spine) ───────────────── */
 
     .seer-menu {
       position: fixed;
-      top: 78px; right: 22px;
+      top: 78px; left: 22px;
       transform: translateY(-8px);
       z-index: 1090;
       min-width: 280px;
@@ -681,6 +725,9 @@
     <span class="bars" aria-hidden="true"><span></span><span></span><span></span></span>
   </button>
 
+  <!-- ────── Books shortcut (opens the books slide-out) ──────────── -->
+  <button class="books-btn" id="books-btn" type="button" aria-label="Open the books">Books</button>
+
   <!-- The scrim sits behind the column / tray when one is open -->
   <div class="scrim" id="scrim"></div>
 
@@ -693,14 +740,14 @@
       <li><button class="menu-item" data-action="filter"><span>Filter the map</span><span class="arrow">&rarr;</span></button></li>
       <li><a class="menu-item" href="/about/"><span>About</span><span class="arrow">&rarr;</span></a></li>
     </ul>
-    <p class="footer-note">Twenty literary novels set in one small American town.<br>By B. Carter. Published by Institute for Seer Press.</p>
+    <p class="footer-note">An ongoing literary series set in one small American town.<br>By B. Carter. Published by Institute for Seer Press.</p>
   </nav>
 
   <!-- ────── The Books Column ──────────────────────────────────────── -->
   <aside class="books-column" id="books-column" aria-label="The books">
     <header>
       <div>
-        <p class="eyebrow">Twenty novels &middot; One town</p>
+        <p class="eyebrow">An ongoing series &middot; Set in Harmon</p>
         <h2>The books.</h2>
         <p>Read in any order. Every story happens on this map.</p>
       </div>
@@ -764,11 +811,11 @@
   <!-- ────── Splash overlay ────────────────────────────────────────── -->
   <div class="splash" id="splash">
     <div class="card">
-      <p class="eyebrow">A twenty-book literary series</p>
+      <p class="eyebrow">An ongoing literary series</p>
       <h2>Welcome to Harmon.</h2>
       <p class="quote">&ldquo;You were warned.&rdquo;</p>
-      <p>Twenty literary novels set in one small American town. Every story happens on this map. Click a landmark to read its scenes; the marked <strong>red points</strong> are the places where a stranger sat down across from someone and told them how their life falls apart.</p>
-      <p>Use the menu in the top-right corner to browse the books, the Seer, and more.</p>
+      <p>An ongoing series of literary novels set in one small American town. Every story happens on this map. Click a landmark to read its scenes; the marked <strong>red points</strong> are the places where a stranger sat down across from someone and told them how their life falls apart.</p>
+      <p>Use the menu in the top-left corner to browse the books, the Seer, and more.</p>
       <div class="actions">
         <button id="splash-dismiss" type="button">Enter Harmon &rarr;</button>
       </div>
@@ -804,24 +851,21 @@
       tileSize: 256,
     }).addTo(map);
 
-    // Default view: show the upper half of the painted map prominently
-    // (HARMON title visible, town center clearly readable, fills viewport).
+    // Default view: anchor the painted map's TOP edge to the viewport top,
+    // so the title cartouche / compass / lake are always visible on first load.
     // Recomputes on resize so the framing stays consistent.
     function setDefaultView() {
       const containerSize = map.getSize();
-      // Painted map dims (z=3 tile space)
       const mapPxW = MAP_W;
       const mapPxH = MAP_H;
-      // Aim: paint ~1.4× the viewport height worth of map content vertically,
-      // so the map fills width edge-to-edge and roughly the painted top half
-      // is on screen at default. Pick the larger of width-fit and a target height.
-      const scaleX = containerSize.x / mapPxW;
-      const scaleY = containerSize.y / (mapPxH * 0.62);  // show ~62% of map height
-      const scale = Math.max(scaleX, scaleY);
+      // Width-fit zoom: edge-to-edge horizontally.
+      const scale = containerSize.x / mapPxW;
       const zoom = MAX_ZOOM + Math.log2(scale);
-      // Center on upper-middle of painted area (50% horizontally, ~40% vertically)
+      // Center vertically so that the painted top sits at the viewport top.
+      // At this zoom, viewport height in painted-px = containerSize.y / scale.
+      const visiblePaintedH = containerSize.y / scale;
       const cx = mapPxW * 0.50;
-      const cy = mapPxH * 0.40;
+      const cy = visiblePaintedH / 2;            // top edge aligns with viewport top
       const center = map.unproject([cx, cy], MAX_ZOOM);
       map.setView(center, Math.min(zoom, MAX_ZOOM), { animate: false });
     }
@@ -930,6 +974,23 @@
         menu.classList.add('open');
         menuBtn.classList.add('open');
         menuBtn.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    // Standalone Books button (next to the hamburger)
+    document.getElementById('books-btn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      const wasOpen = booksCol.classList.contains('open');
+      menu.classList.remove('open');
+      menuBtn.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      filterTray.classList.remove('open');
+      if (wasOpen) {
+        booksCol.classList.remove('open');
+        scrim.classList.remove('show');
+      } else {
+        booksCol.classList.add('open');
+        scrim.classList.add('show');
       }
     });
 
