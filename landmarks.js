@@ -99,7 +99,7 @@ const LANDMARKS = [
     px: 2050, py: 1211,
     address: 'Main Street south side, east of the florist',
     blurb: 'The downtown dry cleaner. The apartment above it is on Crane Street — the unit Elena Voss downsizes to after wiring her son the money.',
-    books: ['the-keeper'],
+    books: ['the-good-mother'],
     seerScene: false,
   },
 
@@ -111,7 +111,7 @@ const LANDMARKS = [
     px: 2070, py: 1450,
     address: 'Courthouse Square, downtown',
     blurb: 'The Harmon County Courthouse with its dome. The civic centerpiece of Courthouse Square. Where the records are kept. Where the falsified ones were filed for nineteen years before anyone was willing to read them.',
-    books: ['the-honest-woman', 'the-good-brother'],
+    books: ['the-honest-woman', 'the-loyal-man'],
     seerScene: false,
   },
   {
@@ -131,7 +131,7 @@ const LANDMARKS = [
     px: 2238, py: 1931,
     address: 'Washington Street, near Courthouse Square',
     blurb: 'The architecture firm Anne Loring built with her partner over twenty years. The ampersand on the door is the marriage of two names. When Anne files the audit, the ampersand comes off the door. The sign reads <em>Loring Architecture</em> by spring.',
-    books: ['the-partner'],
+    books: ['the-good-architect'],
     seerScene: false,
   },
   {
@@ -161,7 +161,7 @@ const LANDMARKS = [
     px: 1263, py: 849,
     address: 'Fourth Street, North End',
     blurb: 'The Catholic parish church of the North End. The Torres family church for three generations — Ernesto’s funeral here, six weeks before Diana opens the drawer. The stained-glass window over the altar is the one Ernesto helped Torres Construction install in 1991.',
-    books: ['the-inheritance'],
+    books: ['the-good-daughter'],
     seerScene: false,
   },
   {
@@ -236,7 +236,7 @@ const LANDMARKS = [
     px: 1354, py: 980,
     address: 'North End, edge of the Flats',
     blurb: 'The construction company Ernesto Torres founded after he immigrated. He built much of the North End — block by block, brick by brick — and most of the houses his children grew up walking past. The yard is still in business under Diana’s brother. The framed first-dollar Ernesto ever earned is still on the office wall.',
-    books: ['the-inheritance'],
+    books: ['the-good-daughter'],
     seerScene: false,
   },
   {
@@ -278,7 +278,7 @@ const LANDMARKS = [
     px: 1316, py: 300,
     address: 'Route 11 N, under Lake Harmon',
     blurb: 'The Harmon Tunnel — the mid-twentieth-century public-works tunnel that carries Route 11 north under Lake Harmon to Bridgeport. The short way north when the long way takes five hours. The tile inside is the original tile. The light is the original light. Frank Morrow drives back through this tunnel after fifteen years.',
-    books: ['the-prodigal'],
+    books: ['the-distant-man'],
     seerScene: false,
   },
 
@@ -290,7 +290,7 @@ const LANDMARKS = [
     px: 1761, py: 632,
     address: 'The town’s oldest grid — First through Fourth Street',
     blurb: 'The oldest neighborhood in Harmon, by the river, on the numbered grid surveyors laid out at the turn of the century. Small hundred-year-old houses. St. Anne’s Catholic Church on Fourth Street. Riverside Park with its ball diamond. Where the Marsh family grew up, where the Torres family built its brick house, where the town remembers its early shape.',
-    books: ['the-good-father', 'the-inheritance'],
+    books: ['the-good-father', 'the-good-daughter'],
     seerScene: false,
   },
   {
@@ -330,7 +330,7 @@ const LANDMARKS = [
     px: 3828, py: 1614,
     address: 'East Side, on Maple Drive',
     blurb: 'A 1990s HOA development on the East Side. Identical Craftsman bungalows on quarter-acre lots, all the same trim colors, all the same front porches. Elena Voss lives in the one on Maple Drive — for thirty years, the same garden, the same dahlias, the same gray tabby in the window. Kevin Reilly’s four-bedroom colonial is two streets over.',
-    books: ['the-keeper', 'the-good-brother'],
+    books: ['the-good-mother', 'the-loyal-man'],
     seerScene: false,
   },
   {
@@ -364,7 +364,7 @@ const LANDMARKS = [
     px: 3861, py: 1423,
     address: 'Eastbound out of town',
     blurb: 'Route 9 east, the road to Hartwick — larger neighbor town, home of Hartwick College and the county recorder’s office. Forty-five minutes from Harmon. Where Claire Novak teaches the writing workshop at the college, and where the <em>Hartwick Gazette</em> covers what the <em>Harmon Sentinel</em> doesn’t.',
-    books: ['the-last-one'],
+    books: ['the-good-writer'],
     seerScene: false,
   },
   {
@@ -375,7 +375,7 @@ const LANDMARKS = [
     px: 2301, py: 2580,
     address: 'Southbound out of town',
     blurb: 'Route 11 south, the long-haul road to the state capital, then Granger (the big-money developer city), and on toward Fenmore (federal correctional facility, four hours). The road Maggie Caldwell takes to meet the Whitfield contract people. The road Diana Torres drives away from her father’s funeral.',
-    books: ['the-builder', 'the-inheritance'],
+    books: ['the-builder', 'the-good-daughter'],
     seerScene: false,
   },
 
@@ -398,7 +398,7 @@ const LANDMARKS = [
     px: 1774, py: 859,
     address: 'Riverside Avenue, North End — just south of Torres Construction',
     blurb: 'The brick house Ernesto Torres built in 1986, where his widow still lives. The locked drawer Diana finds during the estate cleanout contains forty years of cancelled checks. <em>Painted as one of these North End houses, on a residential street south of the construction yard the family built.</em>',
-    books: ['the-inheritance'],
+    books: ['the-good-daughter'],
     seerScene: false,
   },
 
@@ -452,7 +452,7 @@ const LANDMARKS = [
     px: 2247, py: 2173,
     address: 'Harmon Bypass, between Supercenter and HomePlus',
     blurb: 'The middle big-box store on the bypass. Cheaper than Supercenter, narrower than HomePlus. The kind of store Elena Voss starts driving to instead of Main Street the same year she starts wiring money to her son.',
-    books: ['the-keeper'],
+    books: ['the-good-mother'],
     seerScene: false,
   },
   {
@@ -472,7 +472,7 @@ const LANDMARKS = [
     px: 3920, py: 2110,
     address: 'East of town off Route 6',
     blurb: 'The town’s cemetery. Where Helen Marsh is buried after the funeral David nearly misses. Where Ernesto Torres is buried six weeks before Diana finds the drawer. Where Tyler Haskell isn’t — Tyler is in a flag-draped plot at a national cemetery in another state — but his name is on the stone here next to his parents’ plot, waiting.',
-    books: ['the-good-father', 'the-inheritance', 'the-quiet-man'],
+    books: ['the-good-father', 'the-good-daughter', 'the-quiet-man'],
     seerScene: false,
   },
 
@@ -495,7 +495,7 @@ const LANDMARKS = [
     px: 2080, py: 1300,   // approximate — downtown, near the assessor's office Dennis would board from
     address: 'Eastbound 7:14, downtown stop near the assessor’s office',
     blurb: 'Dennis Reilly boards the eastbound 7:14 on the days his car won’t start. A passenger in a sun-faded jacket boards two stops later, sits across the aisle, never reaches for a phone. The bus is half-empty. The brakes hiss. The voice begins.',
-    books: ['the-good-brother'],
+    books: ['the-loyal-man'],
     seerScene: true,
   },
   {
