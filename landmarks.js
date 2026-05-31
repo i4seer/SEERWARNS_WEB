@@ -26,8 +26,8 @@ const LANDMARKS = [
     category: 'seer',
     px: 1627, py: 1084,
     address: 'Main Street, downtown — third booth on the right',
-    blurb: 'The diner on Main Street where the Seer most often sits — but not the only place the Seer is found. Pouring the same coffee since 1977. The third booth on the right faces the front window; the vinyl is the color of dried blood, though no one who works here has ever called it that.',
-    books: ['the-good-father', 'the-quiet-man'],
+    blurb: 'The diner on Main Street, pouring the same coffee since 1977 — the single most important shared room in the series, and the Seer&rsquo;s most frequent booth. David Marsh hears the warning here over a turkey club; Boyd Haskell hears his across the partition. Ruth Calloway keeps her own window table here, claimed for fifteen years. Donna has worked the counter ~30 years and is the diner&rsquo;s institutional memory, carrying every regular the town turns on. The third booth on the right faces the front window; the vinyl is the color of dried blood, though no one who works here has ever called it that.',
+    books: ['the-good-father', 'the-quiet-man', 'the-honest-woman', 'the-loyal-daughter'],
     seerScene: true,
     slug: 'the-lamplighter',
   },
@@ -37,9 +37,10 @@ const LANDMARKS = [
     category: 'establishment',
     px: 1820, py: 1080,
     address: 'Main Street, between the Lamplighter and Haskell',
-    blurb: 'The coffee shop tucked between the Lamplighter and Haskell Hardware. The smell of beans reaches both buildings.',
-    books: ['the-good-father'],
+    blurb: 'The coffee shop tucked between the Lamplighter and Haskell Hardware, opened 2019 by Dana Pruitt — who had to install a water-filtration system to pass the county potability test, a buried clue in <em>The Honest Woman</em>. Sarah Marsh treats herself to a $4 coffee here in <em>The Good Father</em>. By the later books it is &ldquo;under new management,&rdquo; the town&rsquo;s decline made visible &mdash; and it is where the Seer finds Claire Novak in <em>The Good Writer</em>, the series&rsquo; final book.',
+    books: ['the-good-father', 'the-honest-woman', 'the-good-writer'],
     seerScene: false,
+    slug: 'roasters',
   },
   {
     id: 'haskell-hardware',
@@ -47,8 +48,8 @@ const LANDMARKS = [
     category: 'establishment',
     px: 2005, py: 1074,
     address: 'Main & Bridge, downtown — founded 1961',
-    blurb: 'Founded 1961 by Boyd Haskell’s father. The bell on the door has rung the same way every Tuesday for sixty-three years. The pencil mark on the doorframe is Tyler’s last height, untouched since 2013.',
-    books: ['the-quiet-man'],
+    blurb: 'Founded 1961 by Boyd Haskell&rsquo;s father; the pencil mark on the door frame is Tyler&rsquo;s last height. <em>The Quiet Man</em> is the story of the store&rsquo;s fate against the HomePlus chain &mdash; but everyone in Harmon buys nails here, so its counter is a crossroads. Dennis Reilly comes in for a true tape measure (<em>The Loyal Man</em>); Maggie Caldwell, whose firm is behind the store, for structural screws and the news the chain is undercutting her crews (<em>The Loyal Daughter</em>); Ruth Calloway for weatherstripping a season early. The store is open and Boyd-run in every book up to its own.',
+    books: ['the-quiet-man', 'the-loyal-man', 'the-loyal-daughter'],
     seerScene: false,
     slug: 'haskell-hardware',
   },
@@ -58,8 +59,8 @@ const LANDMARKS = [
     category: 'civic',
     px: 2194, py: 1070,
     address: 'Main & Griffin, downtown',
-    blurb: 'The town newspaper, on the downtown row between Haskell Hardware and First Federal. Gail Hendricks has edited it for thirty years; she is one of the people who stops calling Ruth Calloway in March. The paper covers everything — the foreclosure, the plant closure, the Bishop Hill bakery fire — in the same patient, archival voice.',
-    books: ['the-good-father', 'the-honest-woman'],
+    blurb: 'The town newspaper, on the downtown row. Gail Hendricks has edited it ~35 years; she is the woman Ruth Calloway slides the binders to in <em>The Honest Woman</em>, and the one who runs the cadmium exposé. The Seer leaves a folded copy on the Lamplighter table in <em>The Good Father</em>, the sports page out. Claire Novak reviewed the first Seer Warns book in its pages (<em>The Good Writer</em>). The paper covers it all &mdash; the foreclosure, the plant closure, the trial &mdash; in the same patient, archival voice.',
+    books: ['the-good-father', 'the-honest-woman', 'the-good-writer'],
     seerScene: false,
   },
   {
@@ -68,7 +69,7 @@ const LANDMARKS = [
     category: 'civic',
     px: 2381, py: 1078,
     address: 'Main Street, downtown',
-    blurb: 'Harmon’s main bank. The HELOC paperwork David Marsh forged Sarah’s signature on was processed through this branch. The bank started the foreclosure paperwork in October that no one in town saw until November.',
+    blurb: 'Harmon&rsquo;s bank, the downtown branch where the town&rsquo;s money is kept and lost. The HELOC David Marsh forged his wife&rsquo;s signature on cleared here, and the bank began the foreclosure in October that no one saw until November (<em>The Good Father</em>). It holds the mortgages and the cosigned loans that recur across the series &mdash; the kind of paper that turns an ordinary household into a warned one.',
     books: ['the-good-father'],
     seerScene: false,
   },
@@ -110,8 +111,8 @@ const LANDMARKS = [
     category: 'civic',
     px: 2070, py: 1450,
     address: 'Courthouse Square, downtown',
-    blurb: 'The Harmon County Courthouse with its dome. The civic centerpiece of Courthouse Square. Where the records are kept. Where the falsified ones were filed for nineteen years before anyone was willing to read them.',
-    books: ['the-honest-woman', 'the-loyal-man'],
+    blurb: 'The Harmon County Courthouse, the civic centerpiece of Courthouse Square &mdash; and the series&rsquo; recurring stage. The county clerk&rsquo;s falsified records were filed here for nineteen years (<em>The Honest Woman</em>); the assessor&rsquo;s office is where Dennis Reilly changes one date (<em>The Loyal Man</em>); the DA&rsquo;s office under Rachel Thornton prosecutes the embezzlement of <em>The Design Partner</em> and the homicide trial of <em>The Reluctant Witness</em>. The courthouse steps are staged again and again.',
+    books: ['the-honest-woman', 'the-loyal-man', 'the-design-partner', 'the-reluctant-witness'],
     seerScene: false,
   },
   {
@@ -182,8 +183,8 @@ const LANDMARKS = [
     category: 'civic',
     px: 3594, py: 647,
     address: 'Cass & Church Street, East Side',
-    blurb: 'The town’s hospital. Sarah Marsh works nights twice a week in the ER. Cat Brennan trauma-surgeries here. Luisa Dominguez doses the morphine drip in the ICU.',
-    books: ['the-good-father', 'the-tired-mother', 'the-merciful-nurse'],
+    blurb: 'The county&rsquo;s only hospital, on Cass &amp; Church &mdash; the shared workplace of four books. Sarah Marsh works ER nights (<em>The Good Father</em>, and a recurring face after). Cat Brennan is the ER attending whose son is the patient she keeps missing (<em>The Tired Mother</em>). Neil Mercer&rsquo;s hand trembles in its OR (<em>The Steady Hand</em>). Luisa Dominguez holds the line in the ICU (<em>The Merciful Nurse</em>). Dr. Patricia Alvarez does palliative care across all of them; Frank Morrow&rsquo;s mother dies on its stroke ward (<em>The Distant Man</em>).',
+    books: ['the-good-father', 'the-tired-mother', 'the-steady-hand', 'the-merciful-nurse', 'the-distant-man'],
     seerScene: false,
   },
   {
@@ -224,8 +225,8 @@ const LANDMARKS = [
     category: 'industrial',
     px: 761, py: 648,
     address: 'The Flats, along the Harmon River',
-    blurb: 'The pork plant. Six hundred jobs at its peak; two hundred on the night shift before it closed in December 2024. Twenty-five years of falsified water-quality reports. The cadmium reached the lake.',
-    books: ['the-honest-woman'],
+    blurb: 'The pork plant — the town&rsquo;s engine and its wound. Six hundred jobs at its peak, two hundred on the night shift, before it closed in December 2024. The exposé that closed it is <em>The Honest Woman</em>; the twenty-five years of falsified water reports and the cadmium in the lake are its plot. But the plant is the load-bearing fact under the whole series: the 2017 layoffs are why ordinary people are exposed enough to be vulnerable to a warned choice. Almost every protagonist worked here, or married someone who did, or lost a pension when it shut — its night-shift glow and low hum are sensory fixtures of nearly every book.',
+    books: ['the-honest-woman', 'the-good-father', 'the-loyal-daughter', 'the-tired-mother'],
     seerScene: false,
     slug: 'calloway-harmon-plant',
   },
@@ -257,8 +258,8 @@ const LANDMARKS = [
     category: 'waterfront',
     px: 2786, py: 366,
     address: 'The town’s northern boundary',
-    blurb: 'The town’s drinking water source. The town’s public beach. The lake the children swam in every summer for fifty years. The cadmium stayed concentrated in the nearshore shallows, worst in June.',
-    books: ['the-honest-woman', 'the-saved-woman'],
+    blurb: 'The town&rsquo;s drinking water, its public beach, its northern boundary &mdash; the lake the children swam in every summer for fifty years. The cadmium stayed concentrated in the nearshore shallows, worst in June (<em>The Honest Woman</em>). Nora Finch nearly drowned here at twenty-two and runs the marina on its shore (<em>The Saved Woman</em>). Route 11 dives under it through the lake tunnel toward Bridgeport (<em>The Distant Man</em>, <em>The Lawyer Daughter</em>). The Marsh family&rsquo;s &ldquo;best and cleanest hour&rdquo; was a beach day here &mdash; unknowably, already poisoned.',
+    books: ['the-honest-woman', 'the-saved-woman', 'the-good-father'],
     seerScene: false,
   },
   {
@@ -299,8 +300,8 @@ const LANDMARKS = [
     category: 'neighborhood',
     px: 2392, py: 944,
     address: 'Main Street, between Mill and Park',
-    blurb: 'The town’s commercial heart. The Lamplighter, Roasters, Haskell Hardware, Harmon Sentinel, First Federal — the row of shops that has been the row of shops since the Eisenhower administration. The Varsity Theater’s art-deco marquee still works. The Anchor Tap still pours. Downtown is where the town meets itself.',
-    books: ['the-good-father', 'the-honest-woman', 'the-quiet-man'],
+    blurb: 'The town&rsquo;s commercial heart. The Lamplighter, Roasters, Haskell Hardware, the Sentinel, First Federal, the barbershop, the florist, the dry cleaner, the Varsity Theater &mdash; the row that has been the row since the Eisenhower administration, now half-vacant as the big-box bypass draws the trade south. The florist (<em>The Distant Husband</em>) and the barbershop (<em>The Ambitious Son</em>) each hold a Seer scene; nearly every book passes through this street. Downtown is where the town meets itself.',
+    books: ['the-good-father', 'the-honest-woman', 'the-quiet-man', 'the-distant-husband', 'the-ambitious-son'],
     seerScene: false,
   },
   {
@@ -506,6 +507,427 @@ const LANDMARKS = [
     address: 'Eastbound Route 6, twenty minutes before town',
     blurb: 'Jack Callahan stops for coffee at the rest stop twenty minutes before town. He has not been on this road in twenty-five years. A stranger holding a styrofoam cup with both hands tells Jack what going home is going to cost. Jack drives the last twenty minutes anyway.',
     books: ['the-accused-man'],
+    seerScene: true,
+  },
+
+  // ──────────────────────────────────────────────────────────────────────
+  // ADDED: second markers giving each thin-coverage book its own anchor.
+  // Coordinates are GENERAL placements near each book's canon district —
+  // open the map with ?debug, click the exact painted spot, and drag/retune.
+  // ──────────────────────────────────────────────────────────────────────
+
+  {
+    // The Steady Hand — Neil Mercer's Seer scene, St. Clare's cafeteria coffee station.
+    id: 'st-clares-coffee-station',
+    name: 'St. Clare’s Coffee Station',
+    category: 'seer',
+    px: 3470, py: 760,   // approx — just SW of the St. Clare's marker; retune via ?debug
+    address: 'St. Clare’s cafeteria, 6 a.m.',
+    blurb: 'The basement cafeteria coffee station at St. Clare’s. In <em>The Steady Hand</em>, the Seer stands at the sugar caddy with his hands placed flat and waiting, and names the date, the patient, and the 1.3-second tremor at the fourth ventricle &mdash; then leaves a sealed surgical glove, Neil Mercer’s size, dated the day of the surgery.',
+    books: ['the-steady-hand'],
+    seerScene: true,
+  },
+  {
+    // The Reluctant Witness — Rachel Kim's Seer scene, Ferry Street parking lot.
+    id: 'ferry-street-lot',
+    name: 'Ferry Street Lot',
+    category: 'seer',
+    px: 2480, py: 1640,   // approx — near Courthouse Square, downtown; retune via ?debug
+    address: 'A parking lot off Ferry Street, downtown',
+    blurb: 'A downtown parking lot off Ferry Street. In <em>The Reluctant Witness</em>, a stranger finds Rachel Kim here and names the trial, the testimony, the day she gives it, and the way the town files her afterward &mdash; the cost the truth itself never warned her about.',
+    books: ['the-reluctant-witness'],
+    seerScene: true,
+  },
+  {
+    // The Merciful Nurse — Luisa Dominguez's Seer scene, the hospital chapel.
+    id: 'st-clares-chapel',
+    name: 'St. Clare’s Chapel',
+    category: 'seer',
+    px: 3700, py: 720,   // approx — just E of St. Clare's; retune via ?debug
+    address: 'The deconsecrated third-floor chapel, St. Clare’s',
+    blurb: 'The old third-floor chapel at St. Clare’s, deconsecrated in 1991 but still called the chapel. In <em>The Merciful Nurse</em>, a stranger sits with Luisa Dominguez here and names the milligram increment that is the difference between comfort and the act the criminal code has a name for &mdash; and the audit that will flag it.',
+    books: ['the-merciful-nurse'],
+    seerScene: true,
+  },
+  {
+    // The Silent Pastor — the pulpit / second Bishop Hill anchor for First Baptist.
+    id: 'first-baptist-pulpit',
+    name: 'First Baptist Pulpit',
+    category: 'seer',
+    px: 2520, py: 1860,   // approx — just S of the First Baptist marker; retune via ?debug
+    address: 'The pulpit, First Baptist Church, Bishop Hill',
+    blurb: 'The pulpit David Rourke has preached from for sixteen years &mdash; three of them without the faith he is still performing. In <em>The Silent Pastor</em>, the warning names the Sunday it stops being possible to keep preaching the thing he no longer believes. He climbs into the pulpit anyway.',
+    books: ['the-silent-pastor'],
+    seerScene: true,
+  },
+  {
+    // The Tired Mother — the ambulance-bay bench (the actual Seer venue for book 08).
+    id: 'st-clares-ambulance-bay',
+    name: 'St. Clare’s Ambulance Bay',
+    category: 'seer',
+    px: 3560, py: 540,   // approx — just N of St. Clare's; retune via ?debug
+    address: 'The bench outside the ambulance bay, ~11 p.m.',
+    blurb: 'The cold bench outside the St. Clare’s ambulance bay, where Cat Brennan steps out with a cigarette she doesn’t smoke. In <em>The Tired Mother</em>, the Seer sits beside her and names the patient she keeps missing &mdash; the one in her own house &mdash; and the fifteen minutes of luck that will and will not be a save.',
+    books: ['the-tired-mother'],
+    seerScene: true,
+  },
+  {
+    // The Distant Husband — a second downtown anchor (the support-group / motel thread).
+    id: 'crane-street',
+    name: 'Crane Street',
+    category: 'neighborhood',
+    px: 1180, py: 1520,   // approx — west side, between the highway exit and downtown; retune via ?debug
+    address: 'The low-rent street between the highway exit and downtown',
+    blurb: 'The poorer older street between the highway exit and downtown &mdash; laundromat, Rite Aid, apartments above storefronts; the &ldquo;other Harmon.&rdquo; Elena Voss downsizes to the apartment above the dry cleaner here in <em>The Tending Woman</em>; one of Kevin Reilly’s laundromats is on this block (<em>The Loyal Man</em>); and the caregiver world of <em>The Distant Husband</em> runs through its support-group basement.',
+    books: ['the-tending-woman', 'the-loyal-man', 'the-distant-husband'],
+    seerScene: false,
+  },
+  {
+    // The Loyal Daughter — Caldwell Construction (second anchor; behind Haskell).
+    id: 'caldwell-construction',
+    name: 'Caldwell Construction',
+    category: 'industrial',
+    px: 2090, py: 1180,   // approx — downtown, directly behind Haskell Hardware; retune via ?debug
+    address: 'Cinderblock office behind Haskell Hardware, downtown',
+    blurb: 'The cinderblock office Earl Caldwell built behind Haskell Hardware in 1983 &mdash; the firm that poured half the foundations in the county. In <em>The Loyal Daughter</em>, Maggie Caldwell runs it two bad winters from going under, and signs the Whitfield contract that becomes the trap, because letting her father’s firm die is a thing she would have to do.',
+    books: ['the-loyal-daughter'],
+    seerScene: false,
+  },
+  {
+    // The Ambitious Son — the County Road Commission garage (second anchor).
+    id: 'road-commission-garage',
+    name: 'Road Commission Garage',
+    category: 'industrial',
+    px: 1980, py: 2120,   // approx — Depot Street, south end near the bypass; retune via ?debug
+    address: 'Depot Street, south end',
+    blurb: 'The Harmon County Road Commission garage on Depot Street &mdash; plows, patch trucks, road salt. In <em>The Ambitious Son</em>, Marcus Cole works here, the man who keeps the roads passable, who measures the pothole at the edge of the old neighborhood every Saturday because it’s the one injustice he can hold in inches.',
+    books: ['the-ambitious-son'],
+    seerScene: false,
+  },
+  {
+    // The Good Writer — the Varsity Theater / a reading venue downtown (second anchor).
+    id: 'varsity-theater',
+    name: 'The Varsity Theater',
+    category: 'establishment',
+    px: 2230, py: 1210,   // approx — Main Street south side, east end of the downtown row; retune via ?debug
+    address: 'Main Street, downtown',
+    blurb: 'The old single-screen movie house with the art-deco marquee, a faded-downtown fixture. The kind of room a town gives over to a visiting author for an evening &mdash; in <em>The Good Writer</em>, Claire Novak reads here, and a stranger in the audience tells her about the next book: the one about Harmon, the one that is this book.',
+    books: ['the-good-writer'],
+    seerScene: false,
+  },
+
+  // ──────────────────────────────────────────────────────────────────────
+  // THE HARMON RIVER — the old industrial corridor; carried the cadmium.
+  // ──────────────────────────────────────────────────────────────────────
+  {
+    id: 'harmon-river',
+    name: 'The Harmon River',
+    category: 'waterfront',
+    px: 720, py: 1180,   // approx — runs down the west side past the Flats; retune via ?debug
+    address: 'The west side, past the Flats, into Lake Harmon',
+    blurb: 'The river that runs down the west side past the Flats and the Calloway&ndash;Harmon plant, emptying into Lake Harmon at the town&rsquo;s northwest corner under the Bridge Street bridge. The old industrial corridor &mdash; and, in <em>The Honest Woman</em>, the channel that carried the plant&rsquo;s cadmium down into the lake the town drinks from and swims in. Mill Creek feeds it from the flat country at the edge of town, past Boyd Haskell&rsquo;s road (<em>The Quiet Man</em>).',
+    books: ['the-honest-woman', 'the-quiet-man'],
+    seerScene: false,
+  },
+
+  // ──────────────────────────────────────────────────────────────────────
+  // PROTAGONIST HOMES — one per book (Marsh + Torres already above).
+  // General placements in each book's canon district; retune via ?debug.
+  // ──────────────────────────────────────────────────────────────────────
+  {
+    id: 'calloway-house',
+    name: 'Ruth Calloway’s House',
+    category: 'home',
+    px: 3300, py: 1860,
+    address: 'Elm Street, East Side',
+    blurb: 'Where Ruth Calloway lives alone with Chester the golden retriever &mdash; the fireproof safe in the bedroom closet, the padlocked side gate. The house she paid off in 2018, and nearly the last thing the town leaves her after she files the truth. (<em>The Honest Woman</em>)',
+    books: ['the-honest-woman'],
+    seerScene: false,
+  },
+  {
+    id: 'haskell-house',
+    name: 'Boyd & Jean Haskell’s House',
+    category: 'home',
+    px: 540, py: 1280,
+    address: 'Mill Creek Road, the town’s outskirts',
+    blurb: 'The Haskell house on Mill Creek Road &mdash; a modest older road of small houses where the flat country starts. Jean&rsquo;s perennial bed in the side yard finally came in the year she asks Boyd, for the last time, when he&rsquo;ll let the store go. (<em>The Quiet Man</em>)',
+    books: ['the-quiet-man'],
+    seerScene: false,
+  },
+  {
+    id: 'reilly-house',
+    name: 'Dennis & Pam Reilly’s House',
+    category: 'home',
+    px: 3360, py: 1760,
+    address: 'A Cape Cod on Elm Street, East Side',
+    blurb: 'Dennis and Pam Reilly&rsquo;s 1,100-square-foot Cape Cod &mdash; two bed, one bath, on a quarter acre. The mortgage was cosigned in 2004 by Dennis&rsquo;s brother Kevin, whose name is on every page of the life Dennis built. (<em>The Loyal Man</em>)',
+    books: ['the-loyal-man'],
+    seerScene: false,
+  },
+  {
+    id: 'brennan-house',
+    name: 'The Brennan House',
+    category: 'home',
+    px: 2760, py: 1380,
+    address: 'A colonial on Vine Street, Bishop Hill, East Side',
+    blurb: 'The two-story colonial Cat and her late husband Ray bought in 2012, ~12 minutes from St. Clare&rsquo;s &mdash; where their son Miles lives, and the house Cat keeps triaging as &ldquo;stable&rdquo; while the patient she keeps missing is inside it. (<em>The Tired Mother</em>)',
+    books: ['the-tired-mother'],
+    seerScene: false,
+  },
+  {
+    id: 'diana-torres-home',
+    name: 'Diana Torres’s House',
+    category: 'home',
+    px: 3520, py: 1180,
+    address: 'East Side, Harmon',
+    blurb: 'Diana Torres&rsquo;s own home &mdash; the corporate attorney who left the North End and succeeded, the executor and the planner, the one who holds the family together. The family home she returns to is her father&rsquo;s brick house on Riverside Avenue. (<em>The Lawyer Daughter</em>)',
+    books: ['the-lawyer-daughter'],
+    seerScene: false,
+  },
+  {
+    id: 'voss-house',
+    name: 'Elena Voss’s House',
+    category: 'home',
+    px: 3900, py: 1700,
+    address: 'A Craftsman bungalow on Maple Drive, Pinewood',
+    blurb: 'Elena Voss&rsquo;s 1,460-square-foot Craftsman bungalow &mdash; thirty years, the same garden of dahlias, the same gray tabby in the window. The house she sells out from under herself one perennial bed at a time to keep wiring her son the money. (<em>The Tending Woman</em>)',
+    books: ['the-tending-woman'],
+    seerScene: false,
+  },
+  {
+    id: 'caldwell-home',
+    name: 'Maggie & Earl Caldwell’s Place',
+    category: 'home',
+    px: 360, py: 2160,
+    address: 'A rural property out a county road, west of town',
+    blurb: 'Maggie Caldwell&rsquo;s rural property out a county road &mdash; her father Earl keeps a cottage and workshop on the land. The firm is two bad winters from going under, and the place is the proof a daughter could carry what a father made. (<em>The Loyal Daughter</em>)',
+    books: ['the-loyal-daughter'],
+    seerScene: false,
+  },
+  {
+    id: 'finch-cottage',
+    name: 'Nora Finch’s Cottage',
+    category: 'home',
+    px: 700, py: 250,
+    address: 'The east-bay shore of Lake Harmon',
+    blurb: 'Nora Finch&rsquo;s place on the lake she has lived beside her whole life &mdash; the water that nearly took her at twenty-two and that she now tends from the marina dock. She lives alone with a cat named Anchor. (<em>The Saved Woman</em>)',
+    books: ['the-saved-woman'],
+    seerScene: false,
+  },
+  {
+    id: 'callahan-house',
+    name: 'Rose Callahan’s House',
+    category: 'home',
+    px: 1520, py: 720,
+    address: 'The North End',
+    blurb: 'Jack Callahan&rsquo;s mother&rsquo;s house in the North End &mdash; the home he returns to after twenty-five years of exile, for the funeral of a woman the town loved as much as it convicted her son. (<em>The Accused Man</em>)',
+    books: ['the-accused-man'],
+    seerScene: false,
+  },
+  {
+    id: 'mercer-house',
+    name: 'The Mercer House',
+    category: 'home',
+    px: 2880, py: 1300,
+    address: 'Bishop Hill, East Side',
+    blurb: 'Neil and Claire Mercer&rsquo;s house &mdash; two physicians, two teenage sons, a standing Saturday that stops being standing. Where Claire keeps the quiet timeline of her husband&rsquo;s tremor: the wine glass, the fork, the two hands on the coffee. (<em>The Steady Hand</em>)',
+    books: ['the-steady-hand'],
+    seerScene: false,
+  },
+  {
+    id: 'cole-house',
+    name: 'Marcus Cole’s House',
+    category: 'home',
+    px: 1640, py: 560,
+    address: 'The north side, near the neighborhood he came up in',
+    blurb: 'Marcus Cole&rsquo;s house, near the old neighborhood his mother cleaned other people&rsquo;s houses to get him out of &mdash; and the pothole at its edge he measures every Saturday, the one injustice he can hold in inches. (<em>The Ambitious Son</em>)',
+    books: ['the-ambitious-son'],
+    seerScene: false,
+  },
+  {
+    id: 'loring-house',
+    name: 'Anne Loring’s House',
+    category: 'home',
+    px: 3560, py: 1380,
+    address: 'East Side, Harmon',
+    blurb: 'Anne Loring&rsquo;s home, the quiet foundation under a loud professional life &mdash; her husband the steady one, her daughter finishing architecture school and wanting into the firm whose ampersand is about to come off the door. (<em>The Design Partner</em>)',
+    books: ['the-design-partner'],
+    seerScene: false,
+  },
+  {
+    id: 'morrow-house',
+    name: 'The Morrow House',
+    category: 'home',
+    px: 1620, py: 800,
+    address: 'The North End',
+    blurb: 'The Morrow family house &mdash; where Frank&rsquo;s mother lived and the brother who stayed still does. Frank returns through the lake tunnel after fifteen years, for the death the warning timed to the first week of December. (<em>The Distant Man</em>)',
+    books: ['the-distant-man'],
+    seerScene: false,
+  },
+  {
+    id: 'rourke-parsonage',
+    name: 'The Parsonage',
+    category: 'home',
+    px: 2640, py: 1820,
+    address: 'Beside First Baptist, Bishop Hill',
+    blurb: 'David Rourke&rsquo;s parsonage beside the church &mdash; the house that comes with the pulpit, where a pastor performs a faith he lost three years ago for a congregation that does not know. (<em>The Silent Pastor</em>)',
+    books: ['the-silent-pastor'],
+    seerScene: false,
+  },
+  {
+    id: 'ota-house',
+    name: 'James & Mei Ota’s House',
+    category: 'home',
+    px: 3120, py: 1280,
+    address: 'East Side, Harmon',
+    blurb: 'The house James Ota keeps tidy around a marriage the disease is ending before its time &mdash; where his wife Mei forgets his name on the bad days and remembers it on the good ones, and the good ones grow rarer. (<em>The Distant Husband</em>)',
+    books: ['the-distant-husband'],
+    seerScene: false,
+  },
+  {
+    id: 'gibbs-house',
+    name: 'Warren Gibbs’s House',
+    category: 'home',
+    px: 3260, py: 1320,
+    address: 'East Side, near Harmon High',
+    blurb: 'Warren Gibbs&rsquo;s house, a short walk from the English classroom he has taught in for thirty years &mdash; the one student a decade who makes it worth it, and the decision about a student that he tells himself is mercy. (<em>The Watchful Teacher</em>)',
+    books: ['the-watchful-teacher'],
+    seerScene: false,
+  },
+  {
+    id: 'dominguez-house',
+    name: 'Luisa Dominguez’s House',
+    category: 'home',
+    px: 3000, py: 1180,
+    address: 'East Side, Harmon',
+    blurb: 'Luisa Dominguez&rsquo;s house, the place she goes home to from the ICU where the word a dying man is reduced to is <em>please</em> &mdash; and where she carries the night being a good nurse and following the orders stopped being the same thing. (<em>The Merciful Nurse</em>)',
+    books: ['the-merciful-nurse'],
+    seerScene: false,
+  },
+  {
+    id: 'kim-house',
+    name: 'Rachel Kim’s House',
+    category: 'home',
+    px: 3700, py: 1480,
+    address: 'East Side, Harmon',
+    blurb: 'Rachel Kim&rsquo;s house &mdash; a software engineer whose memory records everything, who saw the wreck at Fifth and Harmon exactly, and who learns what the town does to a woman who testifies against one of its own. (<em>The Reluctant Witness</em>)',
+    books: ['the-reluctant-witness'],
+    seerScene: false,
+  },
+  {
+    id: 'novak-house',
+    name: 'Claire Novak’s Rented House',
+    category: 'home',
+    px: 1300, py: 1360,
+    address: 'A rental near downtown, Harmon',
+    blurb: 'The house Claire Novak rents when she comes to Harmon to escape the fallout from the memoir that made her famous and cost her a sister &mdash; and finds, in the small lives around her, the raw material a writer cannot stop seeing. (<em>The Good Writer</em>)',
+    books: ['the-good-writer'],
+    seerScene: false,
+  },
+
+  // ──────────────────────────────────────────────────────────────────────
+  // SEER ENCOUNTERS — the remaining books' dedicated ⚠ pins, so all 20
+  // have one. (Lamplighter, license bureau, Route 22, Route 6 rest stop,
+  // marina, and the five St. Clare's / Bishop Hill pins already exist.)
+  // ──────────────────────────────────────────────────────────────────────
+  {
+    id: 'gas-pump-route9',
+    name: 'The Gas Pump (Route 9)',
+    category: 'seer',
+    px: 470, py: 1700,   // approx — West Edge, off the Route 9 turnoff; retune via ?debug
+    address: 'Pump three, a gas station on the West Edge',
+    blurb: 'A gas station off the Route 9 turnoff on the West Edge. In <em>The Loyal Daughter</em>, the Seer is at the next island, and without turning reads the Whitfield contract Maggie Caldwell has not yet signed &mdash; the fraud in the wires, the federal charge, the four-hour drive south to Fenmore.',
+    books: ['the-loyal-daughter'],
+    seerScene: true,
+  },
+  {
+    id: 'saturday-market',
+    name: 'The Saturday Market',
+    category: 'seer',
+    px: 1020, py: 1120,   // approx — the fairgrounds/market by the grain elevator; retune via ?debug
+    address: 'The fairgrounds market, the Flats',
+    blurb: 'The weekly market among the stalls by the grain elevator. In <em>The Tending Woman</em>, the Seer finds Elena Voss here in the early light and names the spring she loses the house to keep saying yes &mdash; and the apartment above the Crane Street dry cleaner where she ends up.',
+    books: ['the-tending-woman'],
+    seerScene: true,
+  },
+  {
+    id: 'torres-funeral-reception',
+    name: 'The Funeral Reception',
+    category: 'seer',
+    px: 1360, py: 760,   // approx — North End, near St. Anne's / the Torres house; retune via ?debug
+    address: 'The Torres house, North End — after the funeral',
+    blurb: 'The reception after Ernesto Torres&rsquo;s funeral, among the casseroles and the parish faces. In <em>The Lawyer Daughter</em>, a calm stranger names &mdash; before Diana has even opened the locked drawer &mdash; the shape of the choice waiting in it: whichever she makes, she loses the family she spent her life holding together.',
+    books: ['the-lawyer-daughter'],
+    seerScene: true,
+  },
+  {
+    id: 'courthouse-steps',
+    name: 'The Courthouse Steps',
+    category: 'seer',
+    px: 2070, py: 1560,   // approx — front of the courthouse, Courthouse Square; retune via ?debug
+    address: 'The steps of the Harmon County Courthouse',
+    blurb: 'The limestone courthouse steps, the series&rsquo; recurring civic stage. In <em>The Design Partner</em>, the documents in her hand, Anne Loring meets the stranger who names the bond: report her partner&rsquo;s theft and it is pulled, the projects halt, the thirty-five go home with paychecks that may not clear.',
+    books: ['the-design-partner'],
+    seerScene: true,
+  },
+  {
+    id: 'st-clares-corridor',
+    name: 'The ICU Corridor',
+    category: 'seer',
+    px: 3640, py: 600,   // approx — St. Clare's; retune/space out via ?debug
+    address: 'The corridor outside the ICU, St. Clare’s',
+    blurb: 'The corridor outside the St. Clare&rsquo;s ICU where Frank Morrow&rsquo;s mother is dying. In <em>The Distant Man</em>, the Seer names the first week of December &mdash; the discharge to Pine Ridge, and the conversation with the brother who stayed that Frank still will not have had.',
+    books: ['the-distant-man'],
+    seerScene: true,
+  },
+  {
+    id: 'roasters-reading',
+    name: 'Roasters (the reading)',
+    category: 'seer',
+    px: 1880, py: 1010,   // approx — at Roasters on Main; retune via ?debug
+    address: 'Roasters, Main Street',
+    blurb: 'Roasters &mdash; &ldquo;under new management&rdquo; by the late books. In <em>The Good Writer</em>, the Seer finds Claire Novak here and names the next book she&rsquo;ll write: the one about Harmon, about the people who trusted her, about the Seer &mdash; the book that is this book. The series folds in on itself.',
+    books: ['the-good-writer'],
+    seerScene: true,
+  },
+  {
+    id: 'barbershop-seer',
+    name: 'The Barbershop (the chair)',
+    category: 'seer',
+    px: 1683, py: 1260,   // approx — at the barbershop, Main St south side; retune via ?debug
+    address: 'The barber chair, Main Street',
+    blurb: 'The Main Street barbershop, where men hear the news before their wives do. In <em>The Ambitious Son</em>, the Seer is the woman in the waiting chair who names the reporter, the date, the exact careful sentence Marcus Cole will say &mdash; and the version of himself his mother was proud of that saying it will cost.',
+    books: ['the-ambitious-son'],
+    seerScene: true,
+  },
+  {
+    id: 'florist-seer',
+    name: 'The Florist (the counter)',
+    category: 'seer',
+    px: 1866, py: 1258,   // approx — at the florist, Main St south side; retune via ?debug
+    address: 'The florist’s counter, Main Street',
+    blurb: 'The Main Street florist. In <em>The Distant Husband</em>, Margaret &mdash; forty years behind the counter &mdash; is the Seer&rsquo;s vessel: she hands James Ota the warning with the flowers, names the coffee with Lauren that becomes dinner, the motel off Route 9, the March his wife dies, and where he will be when the call comes.',
+    books: ['the-distant-husband'],
+    seerScene: true,
+  },
+  {
+    id: 'harmon-high-seer',
+    name: 'The English Room (Harmon High)',
+    category: 'seer',
+    px: 3740, py: 840,   // approx — at Harmon High; retune via ?debug
+    address: 'A classroom at Harmon High School',
+    blurb: 'A classroom at Harmon High, one floor below David Marsh&rsquo;s old history room. In <em>The Watchful Teacher</em>, a woman at the back of the room names the college-application essay Warren Gibbs will help with &mdash; the line he has crossed a hundred times before without anyone noticing. This time someone notices.',
+    books: ['the-watchful-teacher'],
+    seerScene: true,
+  },
+  {
+    id: 'st-clares-icu-bed',
+    name: 'The ICU (Bed 3)',
+    category: 'seer',
+    px: 3520, py: 700,   // approx — St. Clare's; retune/space out via ?debug
+    address: 'The intensive care unit, St. Clare’s',
+    blurb: 'The St. Clare&rsquo;s ICU where Luisa Dominguez holds the line. In <em>The Merciful Nurse</em>, the warning names the morphine increment that is the difference between comfort and the act the criminal code has a name for &mdash; and the pharmacy audit that turns a mercy into a homicide. (See also the chapel pin, where the stranger sits with her.)',
+    books: ['the-merciful-nurse'],
     seerScene: true,
   },
 ];
