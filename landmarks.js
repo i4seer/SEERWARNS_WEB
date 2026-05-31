@@ -131,7 +131,7 @@ const LANDMARKS = [
     px: 2238, py: 1931,
     address: 'Washington Street, near Courthouse Square',
     blurb: 'The architecture firm Anne Loring built with her partner over twenty years. The ampersand on the door is the marriage of two names. When Anne files the audit, the ampersand comes off the door. The sign reads <em>Loring Architecture</em> by spring.',
-    books: ['the-good-architect'],
+    books: ['the-design-partner'],
     seerScene: false,
   },
   {
@@ -161,7 +161,7 @@ const LANDMARKS = [
     px: 1263, py: 849,
     address: 'Fourth Street, North End',
     blurb: 'The Catholic parish church of the North End. The Torres family church for three generations — Ernesto’s funeral here, six weeks before Diana opens the drawer. The stained-glass window over the altar is the one Ernesto helped Torres Construction install in 1991.',
-    books: ['the-good-daughter'],
+    books: ['the-lawyer-daughter'],
     seerScene: false,
   },
   {
@@ -183,7 +183,7 @@ const LANDMARKS = [
     px: 3594, py: 647,
     address: 'Cass & Church Street, East Side',
     blurb: 'The town’s hospital. Sarah Marsh works nights twice a week in the ER. Cat Brennan trauma-surgeries here. Luisa Dominguez doses the morphine drip in the ICU.',
-    books: ['the-good-father', 'the-good-doctor', 'the-good-nurse'],
+    books: ['the-good-father', 'the-tired-mother', 'the-merciful-nurse'],
     seerScene: false,
   },
   {
@@ -193,7 +193,7 @@ const LANDMARKS = [
     px: 3668, py: 787,
     address: 'East Side, beside the practice field',
     blurb: 'David Marsh teaches American history in Room 217; his window overlooks the practice field. Warren Gibbs teaches English on the floor below.',
-    books: ['the-good-father', 'the-teacher'],
+    books: ['the-good-father', 'the-watchful-teacher'],
     seerScene: false,
   },
   {
@@ -236,7 +236,7 @@ const LANDMARKS = [
     px: 1354, py: 980,
     address: 'North End, edge of the Flats',
     blurb: 'The construction company Ernesto Torres founded after he immigrated. He built much of the North End — block by block, brick by brick — and most of the houses his children grew up walking past. The yard is still in business under Diana’s brother. The framed first-dollar Ernesto ever earned is still on the office wall.',
-    books: ['the-good-daughter'],
+    books: ['the-lawyer-daughter'],
     seerScene: false,
   },
   {
@@ -290,7 +290,7 @@ const LANDMARKS = [
     px: 1761, py: 632,
     address: 'The town’s oldest grid — First through Fourth Street',
     blurb: 'The oldest neighborhood in Harmon, by the river, on the numbered grid surveyors laid out at the turn of the century. Small hundred-year-old houses. St. Anne’s Catholic Church on Fourth Street. Riverside Park with its ball diamond. Where the Marsh family grew up, where the Torres family built its brick house, where the town remembers its early shape.',
-    books: ['the-good-father', 'the-good-daughter'],
+    books: ['the-good-father', 'the-lawyer-daughter'],
     seerScene: false,
   },
   {
@@ -310,7 +310,7 @@ const LANDMARKS = [
     px: 3147, py: 849,
     address: 'East of Downtown',
     blurb: 'The newer half of Harmon. St. Clare’s Hospital. Harmon High. Harmon Elementary. The residential streets where Sarah Marsh’s sister rents a duplex; where Cat Brennan’s late husband built the colonial on Vine Street; where the Bishop Hill neighborhood begins. Greener, gridded later, less storied than the North End.',
-    books: ['the-good-father', 'the-good-doctor', 'the-teacher'],
+    books: ['the-good-father', 'the-tired-mother', 'the-watchful-teacher'],
     seerScene: false,
   },
   {
@@ -320,7 +320,7 @@ const LANDMARKS = [
     px: 2688, py: 1482,
     address: 'East Side, German-American neighborhood',
     blurb: 'The German-American neighborhood on the east-central edge of town. Vine Street, Walnut, Pine. Two-story colonials with wraparound porches. The Bishop Hill Community Hall, the Bishop Hill Bakery, the First Baptist Church. Where Cat Brennan’s house has been her house since her husband finished framing it in 2012.',
-    books: ['the-good-doctor', 'the-quiet-man'],
+    books: ['the-tired-mother', 'the-quiet-man'],
     seerScene: false,
   },
   {
@@ -375,7 +375,7 @@ const LANDMARKS = [
     px: 2301, py: 2580,
     address: 'Southbound out of town',
     blurb: 'Route 11 south, the long-haul road to the state capital, then Granger (the big-money developer city), and on toward Fenmore (federal correctional facility, four hours). The road Maggie Caldwell takes to meet the Whitfield contract people. The road Diana Torres drives away from her father’s funeral.',
-    books: ['the-builder', 'the-good-daughter'],
+    books: ['the-builder', 'the-lawyer-daughter'],
     seerScene: false,
   },
 
@@ -398,7 +398,7 @@ const LANDMARKS = [
     px: 1774, py: 859,
     address: 'Riverside Avenue, North End — just south of Torres Construction',
     blurb: 'The brick house Ernesto Torres built in 1986, where his widow still lives. The locked drawer Diana finds during the estate cleanout contains forty years of cancelled checks. <em>Painted as one of these North End houses, on a residential street south of the construction yard the family built.</em>',
-    books: ['the-good-daughter'],
+    books: ['the-lawyer-daughter'],
     seerScene: false,
   },
 
@@ -472,7 +472,7 @@ const LANDMARKS = [
     px: 3920, py: 2110,
     address: 'East of town off Route 6',
     blurb: 'The town’s cemetery. Where Helen Marsh is buried after the funeral David nearly misses. Where Ernesto Torres is buried six weeks before Diana finds the drawer. Where Tyler Haskell isn’t — Tyler is in a flag-draped plot at a national cemetery in another state — but his name is on the stone here next to his parents’ plot, waiting.',
-    books: ['the-good-father', 'the-good-daughter', 'the-quiet-man'],
+    books: ['the-good-father', 'the-lawyer-daughter', 'the-quiet-man'],
     seerScene: false,
   },
 
