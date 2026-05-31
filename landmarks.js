@@ -99,7 +99,7 @@ const LANDMARKS = [
     px: 2050, py: 1211,
     address: 'Main Street south side, east of the florist',
     blurb: 'The downtown dry cleaner. The apartment above it is on Crane Street — the unit Elena Voss downsizes to after wiring her son the money.',
-    books: ['the-good-mother'],
+    books: ['the-tending-woman'],
     seerScene: false,
   },
 
@@ -151,7 +151,7 @@ const LANDMARKS = [
     px: 2590, py: 1755,
     address: 'Bishop Hill',
     blurb: 'The Baptist church with the white steeple at the heart of Bishop Hill. David Rourke has pastored this congregation for sixteen years. The congregation does not know he has lost his faith. The faith has been gone three years. The steeple has been the same steeple longer than the faith was ever there.',
-    books: ['the-believer'],
+    books: ['the-silent-pastor'],
     seerScene: false,
   },
   {
@@ -330,7 +330,7 @@ const LANDMARKS = [
     px: 3828, py: 1614,
     address: 'East Side, on Maple Drive',
     blurb: 'A 1990s HOA development on the East Side. Identical Craftsman bungalows on quarter-acre lots, all the same trim colors, all the same front porches. Elena Voss lives in the one on Maple Drive — for thirty years, the same garden, the same dahlias, the same gray tabby in the window. Kevin Reilly’s four-bedroom colonial is two streets over.',
-    books: ['the-good-mother', 'the-loyal-man'],
+    books: ['the-tending-woman', 'the-loyal-man'],
     seerScene: false,
   },
   {
@@ -375,7 +375,7 @@ const LANDMARKS = [
     px: 2301, py: 2580,
     address: 'Southbound out of town',
     blurb: 'Route 11 south, the long-haul road to the state capital, then Granger (the big-money developer city), and on toward Fenmore (federal correctional facility, four hours). The road Maggie Caldwell takes to meet the Whitfield contract people. The road Diana Torres drives away from her father’s funeral.',
-    books: ['the-builder', 'the-lawyer-daughter'],
+    books: ['the-loyal-daughter', 'the-lawyer-daughter'],
     seerScene: false,
   },
 
@@ -452,7 +452,7 @@ const LANDMARKS = [
     px: 2247, py: 2173,
     address: 'Harmon Bypass, between Supercenter and HomePlus',
     blurb: 'The middle big-box store on the bypass. Cheaper than Supercenter, narrower than HomePlus. The kind of store Elena Voss starts driving to instead of Main Street the same year she starts wiring money to her son.',
-    books: ['the-good-mother'],
+    books: ['the-tending-woman'],
     seerScene: false,
   },
   {
