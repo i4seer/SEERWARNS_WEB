@@ -594,15 +594,15 @@ const LANDMARKS = [
     seerScene: false,
   },
   {
-    // The Ambitious Son, the County Road Commission garage (second anchor).
-    id: 'road-commission-garage',
-    name: 'Road Commission Garage',
-    category: 'industrial',
-    px: 1980, py: 2120,   // approx, Depot Street, south end near the bypass; retune via ?debug
-    address: 'Depot Street, south end',
-    blurb: 'The Harmon County Road Commission garage on Depot Street, plows, patch trucks, road salt. In <em>The Ambitious Son</em>, Marcus Cole works here, the man who keeps the roads passable, who measures the pothole at the edge of the old neighborhood every Saturday because it’s the one injustice he can hold in inches.',
+    // The Ambitious Son, Capitol Cutz barbershop on Cass Street (Seer scene).
+    id: 'capitol-cutz',
+    name: 'Capitol Cutz',
+    category: 'establishment',
+    px: 1980, py: 2120,   // approx, Cass Street; retune via ?debug
+    address: 'Cass Street',
+    blurb: 'The barbershop on Cass Street where Marcus Cole learned to read a room from Chair 1, and where the Seer waits on the bench by the window. In <em>The Ambitious Son</em>, a woman with still hands names the leak Marcus will approve from his idling car, and what winning by it will cost the self his mother was proud of. She leaves a three-month-old Essence squared to the edge of the bench.',
     books: ['the-ambitious-son'],
-    seerScene: false,
+    seerScene: true,
   },
   {
     // The Good Writer, the Varsity Theater / a reading venue downtown (second anchor).
@@ -611,7 +611,7 @@ const LANDMARKS = [
     category: 'establishment',
     px: 2230, py: 1210,   // approx, Main Street south side, east end of the downtown row; retune via ?debug
     address: 'Main Street, downtown',
-    blurb: 'The old single-screen movie house with the art-deco marquee, a faded-downtown fixture. The kind of room a town gives over to a visiting author for an evening, in <em>The Good Writer</em>, Claire Novak reads here, and a stranger in the audience tells her about the next book: the one about Harmon, the one that is this book.',
+    blurb: 'The old single-screen movie house with the art-deco marquee, a faded-downtown fixture. The kind of room a town gives over to a visiting author for an evening, in <em>The Good Writer</em>, Claire Novak, who has read all nineteen books on the shelf, reads here, a few doors down from the corner table at Roasters where the Seer will name her the twentieth.',
     books: ['the-good-writer'],
     seerScene: false,
   },
@@ -776,11 +776,11 @@ const LANDMARKS = [
   },
   {
     id: 'ota-house',
-    name: 'James & Mei Ota’s House',
+    name: 'James & Nina Ota’s Apartment',
     category: 'home',
     px: 3120, py: 1280,
-    address: 'East Side, Harmon',
-    blurb: 'The house James Ota keeps tidy around a marriage the disease is ending before its time, where his wife Mei forgets his name on the bad days and remembers it on the good ones, and the good ones grow rarer. (<em>The Distant Husband</em>)',
+    address: 'Grand Street, Caldwell',
+    blurb: 'The Grand Street apartment James Ota shares with his second wife Nina, an architect, where he draws her on Sunday mornings in a notebook she does not know about, because the pen is the intermediary and the intermediary is the distance he has been designing his whole life. <em>The Distant Husband</em> is set in the valley city of Caldwell; the wall is not a symptom, it is the man.',
     books: ['the-distant-husband'],
     seerScene: false,
   },
@@ -816,11 +816,11 @@ const LANDMARKS = [
   },
   {
     id: 'novak-house',
-    name: 'Claire Novak’s Rented House',
+    name: 'Claire Novak’s House',
     category: 'home',
     px: 1300, py: 1360,
-    address: 'A rental near downtown, Harmon',
-    blurb: 'The house Claire Novak rents when she comes to Harmon to escape the fallout from the memoir that made her famous and cost her a sister, and finds, in the small lives around her, the raw material a writer cannot stop seeing. (<em>The Good Writer</em>)',
+    address: 'Prospect Street, Harmon',
+    blurb: 'The Prospect Street house where Claire Novak, novelist and the series&rsquo; last protagonist, has lived since 2018, the nineteen Seer Warns books on the shelf. In <em>The Good Writer</em> she is three years into a novel about her sister Meg&rsquo;s addiction and recovery, and the warning she receives is the one she will, uniquely, answer by asking Meg first.',
     books: ['the-good-writer'],
     seerScene: false,
   },
@@ -886,7 +886,7 @@ const LANDMARKS = [
     category: 'seer',
     px: 1880, py: 1010,   // approx, at Roasters on Main; retune via ?debug
     address: 'Roasters, Main Street',
-    blurb: 'Roasters, &ldquo;under new management&rdquo; by the late books. In <em>The Good Writer</em>, the Seer finds Claire Novak here and names the next book she&rsquo;ll write: the one about Harmon, about the people who trusted her, about the Seer, the book that is this book. The series folds in on itself.',
+    blurb: 'Roasters on Main Street, where Claire Novak writes at the corner table on Mondays. In <em>The Good Writer</em>, the Seer sits down across from her and speaks her own craft register back to her, the beat, the midpoint, the warned choice, and predicts she will cut the keystone chapter because her sister asks. The Seer leaves the twentieth bookmark. The series folds in on itself.',
     books: ['the-good-writer'],
     seerScene: true,
   },
