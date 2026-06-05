@@ -448,6 +448,25 @@ a.status-pill.purchase {
 }
 a.status-pill.purchase:hover { background: #5a3608; border-color: #5a3608; }
 
+/* Purchase button on a book page's "Where to buy" section */
+a.buy-btn {
+  display: inline-block;
+  margin-top: 0.4rem;
+  padding: 0.85rem 1.8rem;
+  background: #7a4a12;
+  color: var(--parchment);
+  border: 1px solid #7a4a12;
+  border-radius: 3px;
+  font-family: "Cinzel", serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 180ms ease, border-color 180ms ease;
+}
+a.buy-btn:hover { background: #5a3608; border-color: #5a3608; color: #fff; }
+
 @media (max-width: 720px) {
   .book-row { grid-template-columns: 110px minmax(0, 1fr); gap: 1.5rem; }
   .book-row .cover img { width: 110px; }
