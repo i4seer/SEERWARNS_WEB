@@ -175,6 +175,7 @@
       font-weight: 600;
       letter-spacing: 0.22em;
       text-transform: uppercase;
+      text-decoration: none;
       color: rgba(241, 232, 211, 0.95);
       transition: background 200ms cubic-bezier(0.4, 0, 0.2, 1),
                   border-color 200ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -725,8 +726,8 @@
     <span class="bars" aria-hidden="true"><span></span><span></span><span></span></span>
   </button>
 
-  <!-- ────── Books shortcut (opens the books slide-out) ──────────── -->
-  <button class="books-btn" id="books-btn" type="button" aria-label="Open the books">Books</button>
+  <!-- ────── Books shortcut (goes to the books page) ──────────── -->
+  <a class="books-btn" id="books-btn" href="/books/" aria-label="Go to the books page">Books</a>
 
   <!-- The scrim sits behind the column / tray when one is open -->
   <div class="scrim" id="scrim"></div>
@@ -781,7 +782,7 @@
         </div>
       </a>
       <a class="book-card" href="/books/the-loyal-man/">
-        <img src="/images/cover-the-good-brother-front.jpg" alt="The Loyal Man cover">
+        <img src="/images/cover-the-loyal-man-front.jpg" alt="The Loyal Man cover">
         <div>
           <p class="status">In review</p>
           <h3>The Loyal Man</h3>
@@ -1003,22 +1004,7 @@
       }
     });
 
-    // Standalone Books button (next to the hamburger)
-    document.getElementById('books-btn').addEventListener('click', (e) => {
-      e.stopPropagation();
-      const wasOpen = booksCol.classList.contains('open');
-      menu.classList.remove('open');
-      menuBtn.classList.remove('open');
-      menuBtn.setAttribute('aria-expanded', 'false');
-      filterTray.classList.remove('open');
-      if (wasOpen) {
-        booksCol.classList.remove('open');
-        scrim.classList.remove('show');
-      } else {
-        booksCol.classList.add('open');
-        scrim.classList.add('show');
-      }
-    });
+    // Standalone Books button (next to the hamburger) navigates to /books/ via its href.
 
     // Menu actions
     document.querySelectorAll('.seer-menu .menu-item[data-action]').forEach(btn => {

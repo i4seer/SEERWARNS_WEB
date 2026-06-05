@@ -439,6 +439,15 @@ h4 {
 .status-pill.ondeck      { color: var(--slate); border-color: var(--slate); }
 .status-pill.future      { color: #4a2a5a; border-color: #6a4a7a; }
 
+a.status-pill.purchase {
+  color: var(--parchment);
+  background: #7a4a12;
+  border-color: #7a4a12;
+  text-decoration: none;
+  transition: background 180ms ease, border-color 180ms ease;
+}
+a.status-pill.purchase:hover { background: #5a3608; border-color: #5a3608; }
+
 @media (max-width: 720px) {
   .book-row { grid-template-columns: 110px minmax(0, 1fr); gap: 1.5rem; }
   .book-row .cover img { width: 110px; }
