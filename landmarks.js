@@ -47,8 +47,8 @@ const LANDMARKS = [
     name: 'Haskell Hardware',
     category: 'establishment',
     px: 2005, py: 1074,
-    address: 'Main & Bridge, downtown, founded 1961',
-    blurb: 'Founded 1961 by Boyd Haskell&rsquo;s father; the pencil mark on the door frame is Tyler&rsquo;s last height. <em>The Quiet Man</em> is the story of the store&rsquo;s fate against the HomePlus chain, but everyone in Harmon buys nails here, so its counter is a crossroads. Dennis Reilly comes in for a true tape measure (<em>The Loyal Man</em>); Maggie Caldwell, whose firm is behind the store, for structural screws and the news the chain is undercutting her crews (<em>The Loyal Daughter</em>); Ruth Calloway for weatherstripping a season early. The store is open and Boyd-run in every book up to its own.',
+    address: 'Main & Bridge, downtown; built 1962, the counter 1971',
+    blurb: 'Built by Boyd Haskell&rsquo;s grandfather Emmett in 1962, the oak counter added by his father Dale in 1971; the pencil marks on the door frame are his son Tyler&rsquo;s heights, age 5 to 17, and Tyler was killed in Afghanistan three months from coming home. <em>The Quiet Man</em> is the story of the store&rsquo;s fate against the HomePlus chain, but everyone in Harmon buys nails here, so its counter is a crossroads. Dennis Reilly comes in for a true tape measure (<em>The Loyal Man</em>); Maggie Caldwell, whose firm is behind the store, for structural screws and the news the chain is undercutting her crews (<em>The Loyal Daughter</em>); Ruth Calloway for weatherstripping a season early. The store is open and Boyd-run in every book up to its own.',
     books: ['the-quiet-man', 'the-loyal-man', 'the-loyal-daughter'],
     seerScene: false,
     slug: 'haskell-hardware',
@@ -358,6 +358,28 @@ const LANDMARKS = [
     seerScene: false,
   },
   {
+    // The Good Father, Helen Marsh's memory-care facility (the original wound).
+    id: 'lakeview-memory-care',
+    name: 'Lakeview Memory Care',
+    category: 'civic',
+    px: 180, py: 1300,   // out Route 9 west; retune via ?debug
+    address: 'Out Route 9, 22 minutes west of town',
+    blurb: 'The memory-care facility where Helen Marsh lives in Room 14B, in the faded green wingback by the window, humming &ldquo;You Are My Sunshine.&rdquo; In <em>The Good Father</em>, the November jump in her monthly rate, from $6,200 to $7,800, with insurance covering $3,400, is the gap that opens the whole book, the gap David Marsh tries to close with a betting model instead of moving her to the cheaper place. David drives Route 9 to sit with her every Sunday and hold the hands she still knows.',
+    books: ['the-good-father'],
+    seerScene: false,
+  },
+  {
+    // The Good Father, the cheaper facility David won't move Helen to.
+    id: 'pine-ridge-senior-care',
+    name: 'Pine Ridge Senior Care',
+    category: 'civic',
+    px: 120, py: 1238,   // farther out Route 9, north of Lakeview; retune via ?debug
+    address: 'Route 9 north of town, 30 minutes out',
+    blurb: 'The cheaper eldercare facility on Route 9, $3,200 a month and fully covered by insurance, the hallway that smells of urine, the woman in a wheelchair facing a wall. Moving Helen here would close the gap, and David Marsh cannot do it: his own grandmother was a Pine Ridge resident from 1989 to 1992, Room 8 down the west corridor, after her first stroke. The place he refuses is the place the warning is really about. (<em>The Good Father</em>)',
+    books: ['the-good-father'],
+    seerScene: false,
+  },
+  {
     id: 'route-9-hartwick',
     name: 'Route 9 → Hartwick',
     category: 'route',
@@ -494,8 +516,8 @@ const LANDMARKS = [
     name: 'Route 22 Bus Stop',
     category: 'seer',
     px: 2080, py: 1300,   // approximate, downtown, near the assessor's office Dennis would board from
-    address: 'Eastbound 7:14, downtown stop near the assessor’s office',
-    blurb: 'Dennis Reilly boards the eastbound 7:14 on the days his car won’t start. A passenger in a sun-faded jacket boards two stops later, sits across the aisle, never reaches for a phone. The bus is half-empty. The brakes hiss. The voice begins.',
+    address: 'Eastbound 6:48, downtown stop near the assessor’s office',
+    blurb: 'Dennis Reilly takes the eastbound 6:48 the morning his rebuilt alternator fails. A passenger in work boots and a sun-faded olive jacket boards two stops later, sits across the aisle, no bag, no phone, calloused hands still on his knees. At the red light at 4th and Congress the world goes half a beat still, and the voice begins, naming no date, only the shape: the small thing is going to be found. It leaves behind a Route 22 schedule with October 3rd circled in ink still wet. (<em>The Loyal Man</em>)',
     books: ['the-loyal-man'],
     seerScene: true,
   },
