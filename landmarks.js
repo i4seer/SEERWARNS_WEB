@@ -111,8 +111,8 @@ const LANDMARKS = [
     category: 'civic',
     px: 2070, py: 1450,
     address: 'Courthouse Square, downtown',
-    blurb: 'The Harmon County Courthouse, the civic centerpiece of Courthouse Square, and the series&rsquo; recurring stage. The county clerk&rsquo;s falsified records were filed here for nineteen years (<em>The Honest Woman</em>); the assessor&rsquo;s office is where Dennis Reilly changes one date (<em>The Loyal Man</em>); the DA&rsquo;s office under Rachel Thornton prosecutes the embezzlement of <em>The Design Partner</em> and the homicide trial of <em>The Reluctant Witness</em>. The courthouse steps are staged again and again.',
-    books: ['the-honest-woman', 'the-loyal-man', 'the-design-partner', 'the-reluctant-witness'],
+    blurb: 'The Harmon County Courthouse, the civic centerpiece of Courthouse Square, and the series&rsquo; recurring stage. The county clerk&rsquo;s falsified records were filed here for nineteen years (<em>The Honest Woman</em>); the assessor&rsquo;s office is where Dennis Reilly changes one date (<em>The Loyal Man</em>); the DA prosecutes the embezzlement of <em>The Design Partner</em>, the mercy-killing trial that convicts Luisa Dominguez (<em>The Merciful Nurse</em>), and the homicide trial of <em>The Reluctant Witness</em>, where Rachel Kim meets the Seer on the courthouse bench. The steps are staged again and again.',
+    books: ['the-honest-woman', 'the-loyal-man', 'the-design-partner', 'the-merciful-nurse', 'the-reluctant-witness'],
     seerScene: false,
   },
   {
@@ -183,8 +183,8 @@ const LANDMARKS = [
     category: 'civic',
     px: 3594, py: 647,
     address: 'Cass & Church Street, East Side',
-    blurb: 'The county&rsquo;s only hospital, on Cass &amp; Church, the shared workplace of four books. Sarah Marsh works ER nights (<em>The Good Father</em>, and a recurring face after). Cat Brennan is the ER attending whose son is the patient she keeps missing (<em>The Tired Mother</em>). Neil Mercer&rsquo;s hand trembles in its OR (<em>The Steady Hand</em>). Luisa Dominguez holds the line in the ICU (<em>The Merciful Nurse</em>). Dr. Patricia Alvarez does palliative care across all of them; Frank Morrow&rsquo;s mother dies on its stroke ward (<em>The Distant Man</em>).',
-    books: ['the-good-father', 'the-tired-mother', 'the-steady-hand', 'the-merciful-nurse', 'the-distant-man'],
+    blurb: 'The county&rsquo;s only hospital, on Cass &amp; Church, the single most shared workplace in the series. Sarah Marsh works ER nights (<em>The Good Father</em>, and a recurring face after). Cat Brennan is the ER attending whose son is the patient she keeps missing (<em>The Tired Mother</em>). Neil Mercer&rsquo;s hand trembles in its OR (<em>The Steady Hand</em>). Luisa Dominguez holds the line in its ICU (<em>The Merciful Nurse</em>). Rose Callahan dies here with Cat Brennan as night nurse (<em>The Accused Man</em>); Eleanor Morrow&rsquo;s stroke is worked up on its floor (<em>The Distant Man</em>); and Dr. Patricia Alvarez does palliative care across all of them.',
+    books: ['the-good-father', 'the-tired-mother', 'the-steady-hand', 'the-merciful-nurse', 'the-accused-man', 'the-distant-man'],
     seerScene: false,
   },
   {
@@ -353,8 +353,8 @@ const LANDMARKS = [
     glyph: '←',
     px: 292, py: 1406,
     address: 'Westbound out of town',
-    blurb: 'Route 9 west, the rural road to Marl, small neighbor town, rural eldercare beyond. The road to Lakeview Memory Care (22 minutes) and Pine Ridge Senior Care (30 minutes). The road David Marsh drives every Sunday to sit with Helen.',
-    books: ['the-good-father'],
+    blurb: 'Route 9 west, the rural road to Marl, small neighbor town, rural eldercare beyond. The road to Lakeview Memory Care (24 minutes) and Pine Ridge Senior Care (32 minutes), the two facilities the series keeps driving out to. David Marsh drives it every Sunday to sit with Helen (<em>The Good Father</em>); Cat Brennan drives it to place her mother (<em>The Tired Mother</em>); Frank Morrow drives nine hours to its far end in <em>The Distant Man</em>, the &ldquo;road that runs out of town to the west&rdquo; the Seer names.',
+    books: ['the-good-father', 'the-tired-mother', 'the-distant-man'],
     seerScene: false,
   },
   {
@@ -364,8 +364,8 @@ const LANDMARKS = [
     category: 'civic',
     px: 180, py: 1300,   // out Route 9 west; retune via ?debug
     address: 'Out Route 9, 22 minutes west of town',
-    blurb: 'The memory-care facility where Helen Marsh lives in Room 14B, in the faded green wingback by the window, humming &ldquo;You Are My Sunshine.&rdquo; In <em>The Good Father</em>, the November jump in her monthly rate, from $6,200 to $7,800, with insurance covering $3,400, is the gap that opens the whole book, the gap David Marsh tries to close with a betting model instead of moving her to the cheaper place. David drives Route 9 to sit with her every Sunday and hold the hands she still knows.',
-    books: ['the-good-father'],
+    blurb: 'The memory-care facility 24 minutes out Route 9 west, the first name on every Harmon family&rsquo;s placement folder. Helen Marsh lives here in Room 14B, in the faded green wingback by the window, humming &ldquo;You Are My Sunshine&rdquo;; the November jump in her monthly rate, from $6,200 to $7,800 against $3,400 of insurance, is the gap that opens <em>The Good Father</em>. It is also where Cat Brennan finally places her mother Gloria in <em>The Tired Mother</em>, the room with the window and the ceramic teapot where the promise to keep her home dies, and one of the eldercare facilities the later books keep returning to.',
+    books: ['the-good-father', 'the-tired-mother', 'the-lawyer-daughter'],
     seerScene: false,
   },
   {
@@ -375,8 +375,8 @@ const LANDMARKS = [
     category: 'civic',
     px: 120, py: 1238,   // farther out Route 9, north of Lakeview; retune via ?debug
     address: 'Route 9 north of town, 30 minutes out',
-    blurb: 'The cheaper eldercare facility on Route 9, $3,200 a month and fully covered by insurance, the hallway that smells of urine, the woman in a wheelchair facing a wall. Moving Helen here would close the gap, and David Marsh cannot do it: his own grandmother was a Pine Ridge resident from 1989 to 1992, Room 8 down the west corridor, after her first stroke. The place he refuses is the place the warning is really about. (<em>The Good Father</em>)',
-    books: ['the-good-father'],
+    blurb: 'The skilled-nursing facility out Route 9 west, operating since 1971, the second name on the placement folder and the eldercare hub of the later books. In <em>The Good Father</em> it is the cheaper place David Marsh cannot move Helen to (his own grandmother was a resident, Room 8, after her first stroke). It is where Eleanor Morrow transfers and dies in <em>The Distant Man</em>; where Margaret Loring rehabs after her fall in <em>The Design Partner</em>; where Ray Finch lives in memory care in <em>The Saved Woman</em>; and whose Tuesday-Thursday resident reading program runs through the Reilly family in <em>The Watchful Teacher</em>.',
+    books: ['the-good-father', 'the-distant-man', 'the-design-partner', 'the-saved-woman', 'the-watchful-teacher'],
     seerScene: false,
   },
   {
@@ -831,8 +831,8 @@ const LANDMARKS = [
     name: 'Rachel Kim’s House',
     category: 'home',
     px: 3700, py: 1480,
-    address: 'East Side, Harmon',
-    blurb: 'Rachel Kim&rsquo;s house, a software engineer whose memory records everything, who saw the wreck at Fifth and Harmon exactly, and who learns what the town does to a woman who testifies against one of its own. (<em>The Reluctant Witness</em>)',
+    address: 'Elm Street, Caldwell',
+    blurb: 'The Caldwell home Rachel Kim, a software engineer who thinks in stack traces, shares with her husband David and daughters Mia and Sophie, the functioning system she designed. In <em>The Reluctant Witness</em> she witnesses a murder behind a River Street restaurant and testifies; the family becomes the Collinses and relocates to Bridgeport under new names, and the house, like everything else, is left behind.',
     books: ['the-reluctant-witness'],
     seerScene: false,
   },
