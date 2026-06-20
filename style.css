@@ -748,7 +748,7 @@ a.buy-btn:hover { background: #5a3608; border-color: #5a3608; color: #fff; }
   margin: 0 auto;
   padding: 0 2rem;
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 3rem;
 }
 .site-footer h5 {
