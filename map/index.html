@@ -55,6 +55,54 @@
     /* Force every Leaflet inner container to match the backdrop so no
        cream / default white can ever bleed through */
     .leaflet-container { background: #1e2a38 !important; }
+
+    /* ── Standard site header, floated transparently over the dark map ── */
+    .site-header.map-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1080;
+      background: transparent;
+      border-bottom: 0;
+      padding: 1.15rem 0;
+      /* scrim so light nav text stays legible over any map area */
+      background: linear-gradient(to bottom,
+        rgba(20, 30, 44, 0.82) 0%,
+        rgba(20, 30, 44, 0.55) 55%,
+        rgba(20, 30, 44, 0) 100%);
+    }
+    .map-header .site-title { color: rgba(241, 232, 211, 0.96); }
+    .map-header .site-title:hover { color: #ffffff; }
+    .map-header .site-title .dot { background: rgba(241, 232, 211, 0.7); }
+    .map-header .site-nav a { color: rgba(241, 232, 211, 0.82); border-bottom-color: transparent; }
+    .map-header .site-nav a:hover,
+    .map-header .site-nav a.active {
+      color: #ffffff;
+      border-bottom-color: rgba(241, 232, 211, 0.9);
+    }
+
+    /* Map-only Filter control, bottom-left, dark-friendly */
+    .map-filter-btn {
+      position: fixed;
+      left: 22px; bottom: 26px;
+      z-index: 1090;
+      display: inline-flex; align-items: center; gap: 0.5em;
+      padding: 0.6rem 1rem;
+      background: rgba(20, 30, 44, 0.72);
+      border: 1px solid rgba(241, 232, 211, 0.32);
+      border-radius: 3px;
+      color: rgba(241, 232, 211, 0.92);
+      font-family: "Cinzel", serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+    }
+    .map-filter-btn:hover {
+      background: rgba(20, 30, 44, 0.92);
+      border-color: rgba(241, 232, 211, 0.6);
+      color: #ffffff;
+    }
     /* Soft vignette at the screen edges so the painted area feels
        like a page held up to the eye, not a bare rectangle. */
     #map-vignette {
@@ -64,236 +112,6 @@
       box-shadow:
         inset 0 0 120px rgba(0,0,0,0.30),
         inset 0 0 24px rgba(0,0,0,0.15);
-    }
-
-    /* ── Top brand bar with hamburger menu trigger ────────────────── */
-
-    .topbrand {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 72px;
-      z-index: 1080;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #1e2a38;
-      pointer-events: none;
-    }
-    @media (max-width: 600px) {
-      .topbrand { height: 56px; }
-    }
-    .topbrand .brand {
-      font-family: "Cinzel", serif;
-      font-size: 2rem;
-      font-weight: 600;
-      letter-spacing: 0.34em;
-      text-transform: uppercase;
-      color: rgba(241, 232, 211, 0.96);
-      text-decoration: none;
-      pointer-events: auto;
-      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.60))
-              drop-shadow(0 0 24px rgba(0,0,0,0.35));
-      white-space: nowrap;
-      transition: letter-spacing 240ms cubic-bezier(0.4, 0, 0.2, 1),
-                  color 240ms cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .topbrand .brand:hover { color: #ffffff; letter-spacing: 0.38em; }
-    .topbrand .brand .dot {
-      display: inline-block;
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: rgba(241, 232, 211, 0.65);
-      vertical-align: 0.32em;
-      margin: 0 0.5em;
-    }
-
-    /* Hamburger button, top-left */
-    .menu-btn {
-      position: fixed;
-      top: 18px; left: 22px;
-      z-index: 1100;
-      width: 48px; height: 48px;
-      background: transparent;
-      border: 1px solid rgba(241, 232, 211, 0.32);
-      border-radius: 2px;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: background 200ms cubic-bezier(0.4, 0, 0.2, 1),
-                  border-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-    }
-    .menu-btn:hover {
-      background: rgba(241, 232, 211, 0.08);
-      border-color: rgba(241, 232, 211, 0.60);
-    }
-    .menu-btn.open {
-      background: rgba(241, 232, 211, 0.95);
-      border-color: rgba(241, 232, 211, 0.95);
-    }
-    .menu-btn .bars {
-      width: 22px; height: 16px;
-      position: relative;
-    }
-    .menu-btn .bars span {
-      position: absolute;
-      left: 0; right: 0;
-      height: 1.5px;
-      background: rgba(241, 232, 211, 0.95);
-      transition: transform 240ms cubic-bezier(0.4, 0, 0.2, 1),
-                  opacity 200ms cubic-bezier(0.4, 0, 0.2, 1),
-                  top 240ms cubic-bezier(0.4, 0, 0.2, 1),
-                  background 240ms cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .menu-btn .bars span:nth-child(1) { top: 0; }
-    .menu-btn .bars span:nth-child(2) { top: 7px; }
-    .menu-btn .bars span:nth-child(3) { top: 14px; }
-    .menu-btn.open .bars span { background: #14100a; }
-    .menu-btn.open .bars span:nth-child(1) { top: 7px; transform: rotate(45deg); }
-    .menu-btn.open .bars span:nth-child(2) { opacity: 0; }
-    .menu-btn.open .bars span:nth-child(3) { top: 7px; transform: rotate(-45deg); }
-
-    @media (max-width: 600px) {
-      .topbrand .brand { font-size: 1.2rem; letter-spacing: 0.26em; }
-      .menu-btn { top: 14px; left: 16px; width: 42px; height: 42px; }
-    }
-
-    /* Books button, sits beside the hamburger on the left */
-    .books-btn {
-      position: fixed;
-      top: 18px; left: 80px;
-      z-index: 1100;
-      height: 48px;
-      padding: 0 18px;
-      background: transparent;
-      border: 1px solid rgba(241, 232, 211, 0.32);
-      border-radius: 2px;
-      cursor: pointer;
-      display: inline-flex; align-items: center; gap: 0.55em;
-      font-family: "Cinzel", serif;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: rgba(241, 232, 211, 0.95);
-      transition: background 200ms cubic-bezier(0.4, 0, 0.2, 1),
-                  border-color 200ms cubic-bezier(0.4, 0, 0.2, 1),
-                  color 200ms cubic-bezier(0.4, 0, 0.2, 1);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-    }
-    .books-btn:hover {
-      background: rgba(241, 232, 211, 0.08);
-      border-color: rgba(241, 232, 211, 0.60);
-      color: #ffffff;
-    }
-    .books-btn.open {
-      background: rgba(241, 232, 211, 0.95);
-      border-color: rgba(241, 232, 211, 0.95);
-      color: #14100a;
-    }
-    @media (max-width: 600px) {
-      .books-btn {
-        top: 14px; left: 66px;
-        height: 42px;
-        padding: 0 13px;
-        font-size: 0.62rem;
-        letter-spacing: 0.18em;
-      }
-    }
-
-    /* ── The site menu (unfurls from the brand spine) ───────────────── */
-
-    .seer-menu {
-      position: fixed;
-      top: 78px; left: 22px;
-      transform: translateY(-8px);
-      z-index: 1090;
-      min-width: 280px;
-      padding: 22px 26px 20px;
-      background: #fbf6e8;
-      border: 1px solid rgba(24, 48, 74, 0.28);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.5) inset,
-        0 24px 60px -12px rgba(0,0,0,0.55),
-        0 6px 16px -4px rgba(0,0,0,0.30);
-      opacity: 0;
-      pointer-events: none;
-      transition:
-        transform 280ms cubic-bezier(0.4, 0, 0.2, 1),
-        opacity 220ms cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .seer-menu.open {
-      transform: translateY(0);
-      opacity: 1;
-      pointer-events: auto;
-    }
-    .seer-menu .eyebrow {
-      font-family: "Cinzel", serif;
-      font-size: 0.62rem;
-      letter-spacing: 0.26em;
-      text-transform: uppercase;
-      color: var(--slate);
-      margin: 0 0 12px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid rgba(24, 48, 74, 0.18);
-    }
-    .seer-menu ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    .seer-menu li { display: block; }
-    .seer-menu .menu-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 1rem;
-      padding: 9px 0;
-      color: var(--ink);
-      text-decoration: none;
-      border: none;
-      background: transparent;
-      width: 100%;
-      text-align: left;
-      cursor: pointer;
-      font-family: "EB Garamond", serif;
-      font-size: 1.05rem;
-      transition: color 160ms var(--ease, cubic-bezier(0.4, 0, 0.2, 1));
-    }
-    .seer-menu .menu-item:hover { color: var(--slate); }
-    .seer-menu .menu-item .arrow {
-      font-family: "EB Garamond", serif;
-      color: var(--ink-mute);
-      font-size: 0.95rem;
-      transition: color 160ms var(--ease, cubic-bezier(0.4, 0, 0.2, 1)),
-                  transform 160ms var(--ease, cubic-bezier(0.4, 0, 0.2, 1));
-    }
-    .seer-menu .menu-item:hover .arrow {
-      color: var(--slate);
-      transform: translateX(2px);
-    }
-    .seer-menu .menu-item + .menu-item {
-      border-top: 1px solid rgba(24, 48, 74, 0.10);
-    }
-    .seer-menu .footer-note {
-      margin: 14px 0 0;
-      padding-top: 12px;
-      border-top: 1px solid rgba(24, 48, 74, 0.18);
-      font-family: "EB Garamond", serif;
-      font-style: italic;
-      font-size: 0.86rem;
-      color: var(--ink-mute);
-      line-height: 1.4;
-    }
-
-    @media (max-width: 600px) {
-      .seer-menu {
-        bottom: 24px; left: 128px;
-        min-width: 240px;
-        padding: 18px 22px 16px;
-      }
     }
 
     /* ── Books column (slides in from the left) ──────────────────────── */
@@ -716,36 +534,29 @@
   <div id="map" tabindex="0"></div>
   <div id="map-vignette"></div>
 
-  <!-- ────── Top brand ────────────────────────────────────────────── -->
-  <div class="topbrand">
-    <a href="/" class="brand">Seer<span class="dot"></span>Warns</a>
-  </div>
+  <!-- ────── Standard site header (transparent, floats over the map) ── -->
+  <header class="site-header map-header">
+    <div class="site-header-inner">
+      <a href="/" class="site-title">Seer<span class="dot"></span>Warns</a>
+      <ul class="site-nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/books/">Books</a></li>
+        <li><a href="/map/" class="active">Map</a></li>
+        <li><a href="/people/">People</a></li>
+        <li><a href="/establishments/">Places</a></li>
+        <li><a href="/the-seer/">The Seer</a></li>
+        <li><a href="/about/">About</a></li>
+      </ul>
+    </div>
+  </header>
 
-  <!-- ────── Hamburger menu trigger ──────────────────────────────── -->
-  <button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false">
-    <span class="bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  <!-- ────── Filter control (map-only, no other entry point) ──────── -->
+  <button class="map-filter-btn" id="filter-open" type="button" aria-label="Filter the map">
+    <span aria-hidden="true">&#9776;</span> Filter
   </button>
-
-  <!-- ────── Books shortcut (goes to the books page) ──────────── -->
-  <a class="books-btn" id="books-btn" href="/books/" aria-label="Go to the books page">Books</a>
 
   <!-- The scrim sits behind the column / tray when one is open -->
   <div class="scrim" id="scrim"></div>
-
-  <!-- ────── The Seer's Menu ────────────────────────────────────────── -->
-  <nav class="seer-menu" id="seer-menu" aria-label="Site navigation">
-    <p class="eyebrow">A note in the margin</p>
-    <ul>
-      <li><a class="menu-item" href="/"><span>Home</span><span class="arrow">&rarr;</span></a></li>
-      <li><button class="menu-item" data-action="books"><span>Books</span><span class="arrow">&rarr;</span></button></li>
-      <li><a class="menu-item" href="/people/"><span>People</span><span class="arrow">&rarr;</span></a></li>
-      <li><a class="menu-item" href="/establishments/"><span>Places</span><span class="arrow">&rarr;</span></a></li>
-      <li><a class="menu-item" href="/the-seer/"><span>The Seer</span><span class="arrow">&rarr;</span></a></li>
-      <li><button class="menu-item" data-action="filter"><span>Filter the map</span><span class="arrow">&rarr;</span></button></li>
-      <li><a class="menu-item" href="/about/"><span>About</span><span class="arrow">&rarr;</span></a></li>
-    </ul>
-    <p class="footer-note">An ongoing literary series set in one small American town.<br>By B. Carter. Published by Institute for Seer Press.</p>
-  </nav>
 
   <!-- ────── The Books Column ──────────────────────────────────────── -->
   <aside class="books-column" id="books-column" aria-label="The books">
@@ -973,58 +784,23 @@
     }
 
     /* ── Spine button + Menu choreography ─────────────────────────── */
-    const menuBtn    = document.getElementById('menu-btn');
-    const menu        = document.getElementById('seer-menu');
+    const filterOpen  = document.getElementById('filter-open');
     const booksCol    = document.getElementById('books-column');
     const filterTray  = document.getElementById('filter-tray');
     const scrim       = document.getElementById('scrim');
 
     function closeAll() {
-      menu.classList.remove('open');
-      menuBtn.classList.remove('open');
-      menuBtn.setAttribute('aria-expanded', 'false');
       booksCol.classList.remove('open');
       filterTray.classList.remove('open');
       scrim.classList.remove('show');
     }
 
-    menuBtn.addEventListener('click', (e) => {
+    // Filter control opens the map-filter tray
+    filterOpen.addEventListener('click', (e) => {
       e.stopPropagation();
-      const wasOpen = menu.classList.contains('open');
       booksCol.classList.remove('open');
-      filterTray.classList.remove('open');
       scrim.classList.remove('show');
-      if (wasOpen) {
-        menu.classList.remove('open');
-        menuBtn.classList.remove('open');
-        menuBtn.setAttribute('aria-expanded', 'false');
-      } else {
-        menu.classList.add('open');
-        menuBtn.classList.add('open');
-        menuBtn.setAttribute('aria-expanded', 'true');
-      }
-    });
-
-    // Standalone Books button (next to the hamburger) navigates to /books/ via its href.
-
-    // Menu actions
-    document.querySelectorAll('.seer-menu .menu-item[data-action]').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const action = btn.dataset.action;
-        if (action === 'books') {
-          menu.classList.remove('open');
-          menuBtn.classList.remove('open');
-          menuBtn.setAttribute('aria-expanded', 'false');
-          booksCol.classList.add('open');
-          scrim.classList.add('show');
-        } else if (action === 'filter') {
-          menu.classList.remove('open');
-          menuBtn.classList.remove('open');
-          menuBtn.setAttribute('aria-expanded', 'false');
-          filterTray.classList.add('open');
-        }
-      });
+      filterTray.classList.toggle('open');
     });
 
     // Close on scrim
@@ -1037,15 +813,6 @@
     // Escape closes everything
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeAll();
-    });
-
-    // Clicking on the map closes the menu (but not columns)
-    map.on('click', () => {
-      if (menu.classList.contains('open')) {
-        menu.classList.remove('open');
-        menuBtn.classList.remove('open');
-        menuBtn.setAttribute('aria-expanded', 'false');
-      }
     });
 
     /* ── Splash ───────────────────────────────────────────────────────── */
