@@ -682,7 +682,7 @@ const LANDMARKS = [
     category: 'home',
     px: 3508, py: 1682,
     address: 'A Cape Cod on Elm Street, East Side',
-    blurb: 'Dennis and Pam Reilly&rsquo;s 1,100-square-foot Cape Cod, two bed, one bath, on a quarter acre. The mortgage was cosigned in 2004 by Dennis&rsquo;s brother Kevin, whose name is on every page of the life Dennis built. (<em>The Loyal Man</em>)',
+    blurb: 'Dennis and Pam Reilly&rsquo;s 1,100-square-foot Cape Cod, two bed, one bath, on a quarter acre. Dennis&rsquo;s brother Kevin holds a private note against it, and his name is on every page of the life Dennis built. (<em>The Loyal Man</em>)',
     books: ['the-loyal-man'],
     seerScene: false,
   },
