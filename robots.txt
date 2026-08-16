@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://seerwarns.com/sitemap.xml

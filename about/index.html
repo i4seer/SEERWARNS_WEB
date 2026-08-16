@@ -12,28 +12,34 @@
   <meta property="og:description" content="An ongoing literary series set in one small American town. About the series, the author, and the imprint.">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
   <header class="site-header">
-    <div class="site-header-inner">
-      <a href="/" class="site-title">Seer<span class="dot"></span>Warns</a>
-            <ul class="site-nav">
-        <li><a href="/">Home</a></li>
-        <li><a href="/books/">Books</a></li>
-        <li><a href="/map/">Map</a></li>
-        <li><a href="/people/">People</a></li>
-        <li><a href="/establishments/">Places</a></li>
-        <li><a href="/the-seer/">The Seer</a></li>
-        <li><a href="/about/" class="active">About</a></li>
-      </ul>
-    </div>
-  </header>
+  <div class="site-header-inner">
+    <a href="/" class="site-title" aria-label="Seer Warns home">Seer<span class="dot"></span>Warns</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-label="Open navigation">Menu</button>
+    <ul class="site-nav" aria-label="Main navigation"><li><a href="/">Home</a></li><li><a href="/books/">Books</a></li><li><a href="/harmon/">Harmon</a></li><li><a href="/map/">Map</a></li><li><a href="/people/">People</a></li><li><a href="/establishments/">Places</a></li><li><a href="/the-seer/">The Seer</a></li><li><a href="/about/" class="active">About</a></li></ul>
+  </div>
+</header>
 
-  <section class="page-hero">
+  <section id="main" class="page-hero">
     <div class="wrap-narrow">
       <p class="crumbs"><a href="/">Home</a> &middot; About</p>
       <p class="eyebrow">The series, the author, the imprint</p>
       <h1>About <em>Seer Warns</em>.</h1>
       <p class="lede">An ongoing series of literary psychological dramas set in one fictional American town. Each book stands alone. The cast accumulates. The town stays where it is. The Seer keeps arriving.</p>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap about-art">
+      <img src="/images/about-scene.webp" alt="Illustrated Lamplighter diner booth overlooking downtown Harmon" loading="lazy">
+      <div>
+        <p class="eyebrow">A shared world</p>
+        <h2>The town is the through-line.</h2>
+        <p class="lede">The same diner, courthouse, hospital, hardware store, lake, neighborhoods, and roads keep returning. What changes is the person sitting in the booth—and the thing they cannot bring themselves to stop doing.</p>
+        <div class="cta-row"><a class="btn btn-primary" href="/harmon/">Explore Harmon ›</a><a class="btn btn-ghost" style="color:var(--slate);border-color:rgba(54,94,109,.35);background:transparent" href="/map/">Open the map ›</a></div>
+      </div>
     </div>
   </section>
 
@@ -59,7 +65,7 @@
           <h2>The imprint.</h2>
           <p>Seer Warns is published by <strong>Seer Press</strong>, an imprint of <a href="https://www.i4seer.com/">i4Seer LLC</a>. The press exists for the series and a small number of adjacent projects. It is not currently open to unsolicited manuscripts.</p>
 
-          <p>The press also publishes <a href="https://seerfrights.com/" target="_blank" rel="noopener"><strong>Seer Frights</strong></a>, a middle-grade horror series for readers ages 8&ndash;12 that runs the same engine, the stranger, the still hands, the warned choice, in a key a younger reader can carry.</p>
+          <p>The broader Seer catalog also includes <a href="https://seerfrights.com/" target="_blank" rel="noopener"><strong>Seer Frights</strong></a>, middle-grade horror for readers ages 8&ndash;12, and <a href="https://seerworlds.com/" target="_blank" rel="noopener"><strong>Seer Worlds</strong></a>, a fantasy-adventure series about a small traveler moving between worlds with different rules.</p>
 
           <p>Books are typeset in EB Garamond, set with display matter in Cinzel, and printed in trade paperback through a short-run press in the American Midwest. ebook editions are produced in EPUB3 and distributed through the standard channels. The covers are designed in-house, and the cover art is by a single illustrator the press has commissioned for the duration of the series.</p>
 
@@ -116,39 +122,34 @@
   </section>
 
   <footer class="site-footer">
-    <div class="site-footer-inner">
-      <div>
-        <h5>Seer Warns</h5>
-        <p>An ongoing literary series set in Harmon. By B. Carter.</p>
-        <p class="imprint">Published by Seer Press, an imprint of <a href="https://www.i4seer.com/">i4Seer LLC</a>.</p>
-      </div>
-      <div>
-        <h5>Pages</h5>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/books/">All books</a></li>
-          <li><a href="/map/">The map</a></li>
-          <li><a href="/the-seer/">The Seer</a></li>
-          <li><a href="/about/">About</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>Contact</h5>
-        <ul>
-          <li><a href="mailto:press@i4seer.com">press@i4seer.com</a></li>
-          <li><a href="mailto:authors@i4seer.com">authors@i4seer.com</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>More</h5>
-        <ul>
-          <li><a href="https://www.i4seer.com/" target="_blank" rel="noopener">i4Seer</a></li>
-          <li><a href="https://seerfrights.com/books/" target="_blank" rel="noopener">Seer Frights</a></li>
-        </ul>
-      </div>
+  <div class="site-footer-inner">
+    <div>
+      <h5>Seer Warns</h5>
+      <p>Twenty standalone novels. One small town. Every choice has a cost.</p>
+      <p class="imprint">Stories by B. Carter · Published by Institute for Seer LLC.</p>
     </div>
-    <div class="site-footer-meta">&copy; 2026 Institute for Seer LLC &middot; Seer Warns&trade; is a trademark of Institute for Seer LLC</div>
-  </footer>
+    <div>
+      <h5>Explore</h5>
+      <ul>
+        <li><a href="/books/">Books</a></li><li><a href="/harmon/">Harmon</a></li><li><a href="/map/">Map</a></li><li><a href="/people/">People</a></li><li><a href="/establishments/">Places</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>About</h5>
+      <ul>
+        <li><a href="/the-seer/">The Seer</a></li><li><a href="/the-warning/">The Warning</a></li><li><a href="/about/">About the series</a></li><li><a href="/press/">Press</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>More Seer</h5>
+      <ul>
+        <li><a href="https://seerworlds.com/" target="_blank" rel="noopener">Seer Worlds</a></li><li><a href="https://seerfrights.com/" target="_blank" rel="noopener">Seer Frights</a></li><li><a href="https://www.i4seer.com/" target="_blank" rel="noopener">Institute for Seer</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="site-footer-meta">&copy; 2026 Institute for Seer LLC · Seer Warns&trade; is a trademark of Institute for Seer LLC</div>
+</footer>
 
+<script src="/site.js"></script>
 </body>
 </html>
