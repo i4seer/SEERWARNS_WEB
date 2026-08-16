@@ -94,3 +94,58 @@ a.buy-btn{display:inline-flex;margin-top:.4rem;padding:.75rem 1.05rem;border-rad
 @media(max-width:840px){.site-header{height:64px}.menu-btn{display:block}.site-nav{display:none;position:absolute;top:62px;right:18px;flex-direction:column;align-items:stretch;background:rgba(7,24,31,.98);padding:13px 18px;border-radius:14px;box-shadow:0 18px 38px rgba(0,0,0,.28)}.site-nav.open{display:flex}.site-nav a{font-size:.66rem}.home-hero{min-height:680px;height:720px}.home-hero:before{background-position:55% center}.home-hero:after{background:linear-gradient(90deg,rgba(5,16,22,.84),rgba(5,16,22,.52) 70%,rgba(5,16,22,.22))}.home-strip-grid{grid-template-columns:1fr 1fr}.home-strip article:nth-child(2){border-right:0}.home-strip article{border-bottom:1px solid rgba(75,60,42,.18)}.cover-showcase{grid-template-columns:repeat(2,1fr)}.rules-grid,.series-grid,.map-feature,.about-art{grid-template-columns:1fr}.two-col{grid-template-columns:1fr}.two-col aside,aside{position:static}.book-hero{grid-template-columns:250px 1fr;gap:35px}.book-hero .facts{grid-template-columns:repeat(2,1fr)}.site-footer-inner{grid-template-columns:1fr 1fr}.cards-5{grid-template-columns:1fr 1fr}.doors{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){body{font-size:17px}.wrap,.wrap-narrow{width:calc(100% - 30px)}.site-header-inner{padding:0 16px}.site-title{font-size:.82rem;letter-spacing:.14em}.home-hero{height:670px;min-height:670px}.home-hero:before{background-position:63% center}.home-hero:after{background:linear-gradient(90deg,rgba(5,16,22,.90),rgba(5,16,22,.68) 76%,rgba(5,16,22,.36))}.hero-copy h1{font-size:3.65rem}.hero-copy .lede{font-size:1rem}.hero-note{display:none}.home-strip-grid{grid-template-columns:1fr}.home-strip article{border-right:0}.cover-showcase{grid-template-columns:repeat(2,1fr);gap:15px}.section,.paper-section,.dark-section{padding:58px 0}.page-hero,.estab-hero{padding:105px 0 50px;min-height:310px}.book-row{grid-template-columns:92px minmax(0,1fr);gap:18px;padding:18px}.book-row .cover img{width:92px}.book-row .info h3{font-size:1.35rem}.book-row .info .blurb{font-size:.94rem}.book-row .pills{grid-column:1/-1}.book-hero{grid-template-columns:1fr;padding:100px 20px 54px}.book-hero .cover{width:min(230px,72%);margin:auto}.book-hero .facts{grid-template-columns:1fr 1fr}.encounter{grid-template-columns:1fr;gap:10px}.site-footer-inner{grid-template-columns:1fr}.cards-5,.doors{grid-template-columns:1fr}.series-card{min-height:300px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+
+
+/* Click-anywhere book cards — Seer Worlds interaction model */
+.book-row{
+ position:relative;
+ cursor:pointer;
+ overflow:hidden;
+ transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease,background .18s ease
+}
+.book-row:hover{
+ transform:translateY(-3px);
+ border-color:rgba(108,42,34,.28);
+ background:rgba(255,255,255,.92);
+ box-shadow:0 18px 42px rgba(10,34,42,.11)
+}
+.book-row .book-card-link{
+ position:absolute;
+ inset:0;
+ z-index:2;
+ border-radius:inherit
+}
+.book-row .book-card-link:focus-visible{
+ outline:3px solid var(--burg);
+ outline-offset:-4px
+}
+.book-row .cover,
+.book-row .info{
+ position:relative;
+ z-index:1
+}
+.book-row .info h3{
+ color:var(--ink);
+ transition:color .18s ease
+}
+.book-row:hover .info h3{
+ color:var(--burg)
+}
+.book-row .pills{
+ position:relative;
+ z-index:3;
+ pointer-events:auto
+}
+.book-row .pills .status-pill{
+ position:relative;
+ z-index:4
+}
+.book-row .pills .status-pill.purchase{
+ cursor:pointer;
+ box-shadow:0 7px 18px rgba(108,42,34,.16);
+ transition:transform .16s ease,background .16s ease,box-shadow .16s ease
+}
+.book-row .pills .status-pill.purchase:hover{
+ transform:translateY(-2px);
+ box-shadow:0 10px 22px rgba(108,42,34,.24)
+}
