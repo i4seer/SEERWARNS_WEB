@@ -96,6 +96,11 @@ a.buy-btn{display:inline-flex;margin-top:.4rem;padding:.75rem 1.05rem;border-rad
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 
 
+/* Rows with no cover art yet (later, unillustrated books) */
+.book-row.no-cover{grid-template-columns:minmax(0,1fr) auto}
+.book-row.no-cover .pills{grid-column:auto}
+@media(max-width:1080px){.book-row.no-cover{grid-template-columns:minmax(0,1fr)}.book-row.no-cover .pills{grid-column:1}}
+
 /* Click-anywhere book cards — Seer Worlds interaction model */
 .book-row{
  position:relative;
