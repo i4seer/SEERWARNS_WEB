@@ -28,3 +28,16 @@ This build modernizes the existing Seer Warns site using the same broad design l
 - Added a visual editorial block to About and a map-focused feature to Harmon.
 - Added `robots.txt` and `sitemap.xml`.
 - Preserved the interactive Leaflet map and its local libraries.
+
+## October 22, 2026 refresh
+
+- Synced all twenty front covers with the current SEERWARNS artwork; refreshed both the full-size JPGs and optimized WebP versions, with versioned references.
+- Verified the six published books individually on Amazon in Kindle and paperback. Edition URLs and source paths are recorded in publication-sources.json. The Frights series URL supplied alongside Warns was excluded. Books 7–20 remain forthcoming.
+- Added News, linked throughout the site, and updated the home page, book catalog, About publication status, and sitemap.
+- Replaced the author biography with B. Carter’s supplied signed note.
+- Rebuilt all twenty book pages with a title banner, cover/content columns, edition buttons, exact current cover copy, compact facts, and previous/next navigation. Existing cast, places, and story material remains in expandable story notes.
+- Kept the Warns palette, typography, hero artwork, town pages, and interactive map.
+
+### Latest cover refresh
+
+All twenty website covers now use the front panels of the October 22 print-ready wraps. Extracted using each book’s print metadata, excluding the spine and bleed. Regenerated full-size JPG and optimized WebP assets, refreshed every cover URL version, and updated image dimensions to preserve the artwork’s proportions. Source paths and crop coordinates are recorded in publication-sources.json.

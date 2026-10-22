@@ -154,3 +154,59 @@ a.buy-btn{display:inline-flex;margin-top:.4rem;padding:.75rem 1.05rem;border-rad
  transform:translateY(-2px);
  box-shadow:0 10px 22px rgba(108,42,34,.24)
 }
+
+
+/* Current covers, publication updates, and Seer Worlds-style book pages. */
+.warns-book-hero{padding:70px 0 56px;min-height:0}
+.page-hero.warns-book-hero>.wrap-narrow>*:not(.crumbs){max-width:1000px}
+.warns-book-hero h1{font-size:clamp(3rem,5.4vw,5rem)}
+.warns-book-layout{display:grid;grid-template-columns:330px minmax(0,1fr);gap:64px;align-items:start}
+.warns-book-media{position:sticky;top:100px}
+.warns-book-cover{width:100%;height:auto;border-radius:5px;box-shadow:0 22px 45px rgba(9,21,28,.23);border:1px solid rgba(23,43,51,.14)}
+.warns-cover-caption{text-align:center;font:700 .62rem/1.4 "Cinzel",serif;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin:20px 0 0}
+.warns-book-content{min-width:0}
+.warns-book-title{font-size:clamp(2.3rem,3.5vw,3.4rem);margin:0 0 16px;line-height:1.08}
+.warns-book-tagline{font-size:1.45rem;line-height:1.45;font-style:italic;color:var(--burg);max-width:660px;margin-bottom:24px}
+.warns-book-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:0 0 34px}
+.warns-btn-outline{color:var(--slate-deep);border-color:rgba(23,54,65,.35);background:transparent}
+.warns-btn-outline:hover{color:var(--burg);border-color:var(--burg);background:#fffaf1}
+.warns-text-link{font-size:.94rem;text-decoration:underline;text-underline-offset:4px;padding:8px 0}
+.warns-release-note{font-size:1rem;color:var(--muted);width:100%;max-width:560px}
+.warns-book-story{background:rgba(255,255,255,.55);border:1px solid var(--line);border-top:3px solid var(--burg);border-radius:0 0 12px 12px;padding:30px 32px}
+.warns-book-story h3{font-size:1.5rem;margin:0 0 9px}
+.warns-story-setting{color:var(--muted);font-size:.6rem;margin-bottom:24px}
+.warns-story-hook{border-left:2px solid var(--gold);padding-left:19px;margin-bottom:28px}
+.warns-story-hook p{font-size:.93rem;line-height:1.6;letter-spacing:.025em;margin:0;color:var(--slate-deep)}
+.warns-story-copy p{font-size:1.07rem;line-height:1.72}
+.warns-story-copy p:last-child{margin-bottom:0}
+.warns-story-closing{font-size:1.18rem;font-style:italic;color:var(--burg);border-top:1px solid var(--line);padding-top:22px;margin:24px 0 0;line-height:1.5}
+.warns-book-facts{display:grid;grid-template-columns:1fr 1fr;gap:18px 28px;padding:26px 0;margin:12px 0 0;border-bottom:1px solid var(--line)}
+.warns-book-facts dt{font:700 .6rem/1.4 "Cinzel",serif;letter-spacing:.12em;text-transform:uppercase;color:var(--burg);margin-bottom:5px}
+.warns-book-facts dd{margin:0;font-size:1rem}
+.warns-book-nav{display:flex;justify-content:space-between;gap:24px;padding-top:25px;font-size:.96rem}
+.warns-book-nav a{max-width:48%}.warns-book-nav a:last-child{text-align:right}
+.warns-story-notes{border-top:1px solid var(--line);background:var(--paper2)}
+.warns-story-notes>summary{width:min(1220px,calc(100% - 44px));margin:auto;padding:27px 0;cursor:pointer;color:var(--ink)}
+.warns-story-notes>summary span{font-size:1.5rem}.warns-story-notes>summary small{display:block;color:var(--muted);margin:3px 0 0 22px;font-size:.91rem}
+.warns-story-notes[open]>summary{border-bottom:1px solid var(--line)}
+.warns-story-notes .section{padding-top:45px}.warns-story-notes .prose h2{font-size:1.8rem}
+.author-note{margin:48px 0;padding:32px 34px 25px;border-left:3px solid var(--burg);background:linear-gradient(110deg,#f1e7d6,rgba(255,255,255,.6));border-radius:0 14px 14px 0}
+.prose .author-note h2{margin:0 0 26px;padding:0;border:0;font-size:2.4rem}
+.prose .author-note p:not(.eyebrow){font-size:1.17rem;line-height:1.7}
+.prose .author-note .author-signature{font-size:1.75rem;font-style:italic;color:var(--burg);margin:25px 0 0}
+.publication-note{display:flex;justify-content:space-between;align-items:center;gap:32px;border:1px solid var(--line);border-left:3px solid var(--burg);border-radius:0 16px 16px 0;padding:28px 32px;background:rgba(255,255,255,.6);margin:0 0 35px}
+.publication-note h2{font-size:2rem;margin:0 0 10px}.publication-note p:last-child{margin:0;max-width:760px}.publication-note .btn{flex-shrink:0}
+.warns-publication-band{padding:40px 0;border-bottom:1px solid var(--line);background:var(--paper2)}
+.warns-publication-band>.wrap{display:flex;align-items:center;justify-content:space-between;gap:35px}
+.warns-publication-band h2{font-size:2.1rem;margin:0 0 10px}.warns-publication-band p:last-child{margin:0;max-width:760px}.warns-publication-band .btn{flex-shrink:0}
+.warns-news-intro{max-width:760px;margin-bottom:40px}.warns-news-intro h2{font-size:clamp(2.6rem,5vw,4rem);margin-bottom:22px}
+.warns-release-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:48px}
+.warns-release-card{display:grid;grid-template-columns:120px minmax(0,1fr);gap:24px;padding:25px;border:1px solid var(--line);background:rgba(255,255,255,.62);border-radius:14px;align-items:start}
+.warns-release-cover img{height:auto;border-radius:3px;box-shadow:0 8px 20px rgba(9,21,28,.18)}
+.warns-release-card h3{font-size:1.7rem;line-height:1.15;margin-bottom:12px}.warns-release-card h3 a{color:var(--ink)}.warns-release-card h3 a:hover{color:var(--burg)}
+.warns-release-card p:not(.eyebrow){font-size:1rem;line-height:1.5}
+.warns-release-links{display:flex;gap:18px;flex-wrap:wrap;font-size:.95rem}.warns-release-links a{text-decoration:underline;text-underline-offset:4px}
+.book-row .pills{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+@media(max-width:1080px){.warns-book-layout{grid-template-columns:280px minmax(0,1fr);gap:40px}.warns-release-card{grid-template-columns:95px minmax(0,1fr);gap:18px;padding:22px}.book-row .pills{flex-direction:row;flex-wrap:wrap}}
+@media(max-width:840px){.warns-book-layout{grid-template-columns:240px minmax(0,1fr);gap:30px}.warns-book-story{padding:25px}.warns-release-grid{grid-template-columns:1fr}.publication-note,.warns-publication-band>.wrap{align-items:flex-start;flex-direction:column;gap:22px}}
+@media(max-width:680px){.warns-book-hero{padding:48px 0 36px}.warns-book-layout{grid-template-columns:1fr;gap:38px}.warns-book-media{position:static;width:min(280px,82%);margin:auto}.warns-book-section{padding-top:38px}.warns-book-title{font-size:2.55rem}.warns-book-tagline{font-size:1.3rem}.warns-book-story{padding:24px 22px}.warns-story-hook{padding-left:14px}.warns-story-hook p{font-size:.86rem}.warns-book-actions .btn{padding:.85rem 1rem}.warns-book-nav{font-size:.9rem;gap:16px}.warns-story-notes>summary{width:calc(100% - 30px)}.author-note{padding:28px 23px 23px}.publication-note{padding:26px 23px}.warns-release-card{grid-template-columns:85px minmax(0,1fr);gap:18px;padding:20px}.warns-release-card h3{font-size:1.5rem}.warns-book-facts{gap:18px 16px}}

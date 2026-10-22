@@ -1,0 +1,408 @@
+{
+  "verified_on": "2026-10-22",
+  "series_url": "https://www.amazon.com/dp/B0H37BK29L?binding=paperback",
+  "notes": "Amazon series lists six published titles. Individual Kindle pages show Buy now with 1-Click; all six paperback pages show In Stock. The supplied B0GRRNLVLQ link belongs to Seer Frights and was not used for Warns. Artwork: front panels extracted from the updated print-ready PNG wraps, using each book’s print metadata to exclude spine and bleed. Reader copy: images-print/cover-copy.txt. Later books remain forthcoming.",
+  "books": [
+    {
+      "number": 1,
+      "slug": "the-good-father",
+      "title": "The Good Father",
+      "cover": "/images/web/cover-the-good-father-front.webp",
+      "source_art": "book01/images-print/cover-print-ready-no-barcode.png",
+      "source_copy": "book01/images-print/cover-copy.txt",
+      "kindle": "https://www.amazon.com/dp/B0GT67P253",
+      "paperback": "https://www.amazon.com/dp/B0GTYZC2Q1",
+      "source_crop_px": [
+        1663,
+        38,
+        3181,
+        2381
+      ],
+      "web_cover_size": [
+        700,
+        1080
+      ]
+    },
+    {
+      "number": 2,
+      "slug": "the-honest-woman",
+      "title": "The Honest Woman",
+      "cover": "/images/web/cover-the-honest-woman-front.webp",
+      "source_art": "book02/images-print/cover-print-ready-no-barcode.png",
+      "source_copy": "book02/images-print/cover-copy.txt",
+      "kindle": "https://www.amazon.com/dp/B0GXMMDKYL",
+      "paperback": "https://www.amazon.com/dp/B0GXPKK1YL",
+      "source_crop_px": [
+        1669,
+        38,
+        3187,
+        2381
+      ],
+      "web_cover_size": [
+        700,
+        1080
+      ]
+    },
+    {
+      "number": 3,
+      "slug": "the-quiet-man",
+      "title": "The Quiet Man",
+      "cover": "/images/web/cover-the-quiet-man-front.webp",
+      "source_art": "book03/images-print/cover-print-ready-no-barcode.png",
+      "source_copy": "book03/images-print/cover-copy.txt",
+      "kindle": "https://www.amazon.com/dp/B0GX38LGBG",
+      "paperback": "https://www.amazon.com/dp/B0GY3YB1ZB",
+      "source_crop_px": [
+        1670,
+        38,
+        3188,
+        2381
+      ],
+      "web_cover_size": [
+        700,
+        1080
+      ]
+    },
+    {
+      "number": 4,
+      "slug": "the-loyal-man",
+      "title": "The Loyal Man",
+      "cover": "/images/web/cover-the-loyal-man-front.webp",
+      "source_art": "book04/images-print/cover-print-ready-no-barcode.png",
+      "source_copy": "book04/images-print/cover-copy.txt",
+      "kindle": "https://www.amazon.com/dp/B0HBNGM2D9",
+      "paperback": "https://www.amazon.com/dp/B0HBNGX772",
+      "source_crop_px": [
+        1680,
+        38,
+        3198,
+        2381
+      ],
+      "web_cover_size": [
+        700,
+        1080
+      ]
+    },
+    {
+      "number": 5,
+      "slug": "the-tired-mother",
+      "title": "The Tired Mother",
+      "cover": "/images/web/cover-the-tired-mother-front.webp",
+      "source_art": "book05/images-print/cover-print-ready-no-barcode.png",
+      "source_copy": "book05/images-print/cover-copy.txt",
+      "kindle": "https://www.amazon.com/dp/B0HKQ1KVST",
+      "paperback": "https://www.amazon.com/dp/B0HKPYGT9Z",
+      "source_crop_px": [
+        1667,
+        38,
+        3185,
+        2381
+      ],
+      "web_cover_size": [
+        700,
+        1080
+      ]
+    },
+    {
+      "number": 6,
+      "slug": "the-lawyer-daughter",
+      "title": "The Lawyer Daughter",
+      "cover": "/images/web/cover-the-lawyer-daughter-front.webp",
+      "source_art": "book06/images-print/cover-print-ready-no-barcode.png",
+      "source_copy": "book06/images-print/cover-copy.txt",
+      "kindle": "https://www.amazon.com/dp/B0HKWV9QF7",
+      "paperback": "https://www.amazon.com/dp/B0HKZRCCYP",
+      "source_crop_px": [
+        1683,
+        38,
+        3201,
+        2381
+      ],
+      "web_cover_size": [
+        700,
+        1080
+      ]
+    },
+    {
+      "number": 7,
+      "slug": "the-tending-woman",
+      "title": "The Tending Woman",
+      "cover": "/images/web/cover-the-tending-woman-front.webp",
+      "source_art": "book07/images-print/cover-print-ready-no-barcode.png",
+      "source_copy": "book07/images-print/cover-copy.txt",
+      "kindle": null,
+      "paperback": null,
+      "source_crop_px": [
+        1686,
+        38,
+        3204,
+        2381
+      ],
+      "web_cover_size": [
+        700,
+        1080
+      ]
+    },
+    {
+      "number": 8,
+      "slug": "the-loyal-daughter",
+      "title": "The Loyal Daughter",
+      "cover": "/images/web/cover-the-loyal-daughter-front.webp",
+      "source_art": "book08/images-print/cover-print-ready-no-barcode.png",
+      "source_copy": "book08/images-print/cover-copy.txt",
+      "kindle": null,
+      "paperback": null,
+      "source_crop_px": [
+        1662,
+        38,
+        3180,
+        2381
+      ],
+      "web_cover_size": [
+        700,
+        1080
+      ]
+    },
+    {
+      "number": 9,
+      "slug": "the-saved-woman",
+      "title": "The Saved Woman",
+      "cover": "/images/web/cover-the-saved-woman-front.webp",
+      "source_art": "book09/images-print/cover-print-ready-no-barcode.png",
+      "source_copy": "book09/images-print/cover-copy.txt",
+      "kindle": null,
+      "paperback": null,
+      "source_crop_px": [
+        1684,
+        38,
+        3202,
+        2381
+      ],
+      "web_cover_size": [
+        700,
+        1080
+      ]
+    },
+    {
+      "number": 10,
+      "slug": "the-accused-man",
+      "title": "The Accused Man",
+      "cover": "/images/web/cover-the-accused-man-front.webp",
+      "source_art": "book10/images-print/cover-print-ready-no-barcode.png",
+      "source_copy": "book10/images-print/cover-copy.txt",
+      "kindle": null,
+      "paperback": null,
+      "source_crop_px": [
+        1674,
+        38,
+        3192,
+        2381
+      ],
+      "web_cover_size": [
+        700,
+        1080
+      ]
+    },
+    {
+      "number": 11,
+      "slug": "the-steady-hand",
+      "title": "The Steady Hand",
+      "cover": "/images/web/cover-the-steady-hand-front.webp",
+      "source_art": "book11/images-print/cover-print-ready-no-barcode.png",
+      "source_copy": "book11/images-print/cover-copy.txt",
+      "kindle": null,
+      "paperback": null,
+      "source_crop_px": [
+        1688,
+        38,
+        3206,
+        2381
+      ],
+      "web_cover_size": [
+        700,
+        1080
+      ]
+    },
+    {
+      "number": 12,
+      "slug": "the-ambitious-son",
+      "title": "The Ambitious Son",
+      "cover": "/images/web/cover-the-ambitious-son-front.webp",
+      "source_art": "book12/images-print/cover-print-ready-no-barcode.png",
+      "source_copy": "book12/images-print/cover-copy.txt",
+      "kindle": null,
+      "paperback": null,
+      "source_crop_px": [
+        1691,
+        38,
+        3209,
+        2381
+      ],
+      "web_cover_size": [
+        700,
+        1080
+      ]
+    },
+    {
+      "number": 13,
+      "slug": "the-design-partner",
+      "title": "The Design Partner",
+      "cover": "/images/web/cover-the-design-partner-front.webp",
+      "source_art": "book13/images-print/cover-print-ready-no-barcode.png",
+      "source_copy": "book13/images-print/cover-copy.txt",
+      "kindle": null,
+      "paperback": null,
+      "source_crop_px": [
+        1693,
+        38,
+        3211,
+        2381
+      ],
+      "web_cover_size": [
+        700,
+        1080
+      ]
+    },
+    {
+      "number": 14,
+      "slug": "the-distant-man",
+      "title": "The Distant Man",
+      "cover": "/images/web/cover-the-distant-man-front.webp",
+      "source_art": "book14/images-print/cover-print-ready-no-barcode.png",
+      "source_copy": "book14/images-print/cover-copy.txt",
+      "kindle": null,
+      "paperback": null,
+      "source_crop_px": [
+        1681,
+        38,
+        3199,
+        2381
+      ],
+      "web_cover_size": [
+        700,
+        1080
+      ]
+    },
+    {
+      "number": 15,
+      "slug": "the-silent-pastor",
+      "title": "The Silent Pastor",
+      "cover": "/images/web/cover-the-silent-pastor-front.webp",
+      "source_art": "book15/images-print/cover-print-ready-no-barcode.png",
+      "source_copy": "book15/images-print/cover-copy.txt",
+      "kindle": null,
+      "paperback": null,
+      "source_crop_px": [
+        1687,
+        38,
+        3205,
+        2381
+      ],
+      "web_cover_size": [
+        700,
+        1080
+      ]
+    },
+    {
+      "number": 16,
+      "slug": "the-distant-husband",
+      "title": "The Distant Husband",
+      "cover": "/images/web/cover-the-distant-husband-front.webp",
+      "source_art": "book16/images-print/cover-print-ready-no-barcode.png",
+      "source_copy": "book16/images-print/cover-copy.txt",
+      "kindle": null,
+      "paperback": null,
+      "source_crop_px": [
+        1671,
+        38,
+        3189,
+        2381
+      ],
+      "web_cover_size": [
+        700,
+        1080
+      ]
+    },
+    {
+      "number": 17,
+      "slug": "the-watchful-teacher",
+      "title": "The Watchful Teacher",
+      "cover": "/images/web/cover-the-watchful-teacher-front.webp",
+      "source_art": "book17/images-print/cover-print-ready-no-barcode.png",
+      "source_copy": "book17/images-print/cover-copy.txt",
+      "kindle": null,
+      "paperback": null,
+      "source_crop_px": [
+        1679,
+        38,
+        3197,
+        2381
+      ],
+      "web_cover_size": [
+        700,
+        1080
+      ]
+    },
+    {
+      "number": 18,
+      "slug": "the-merciful-nurse",
+      "title": "The Merciful Nurse",
+      "cover": "/images/web/cover-the-merciful-nurse-front.webp",
+      "source_art": "book18/images-print/cover-print-ready-no-barcode.png",
+      "source_copy": "book18/images-print/cover-copy.txt",
+      "kindle": null,
+      "paperback": null,
+      "source_crop_px": [
+        1692,
+        38,
+        3210,
+        2381
+      ],
+      "web_cover_size": [
+        700,
+        1080
+      ]
+    },
+    {
+      "number": 19,
+      "slug": "the-reluctant-witness",
+      "title": "The Reluctant Witness",
+      "cover": "/images/web/cover-the-reluctant-witness-front.webp",
+      "source_art": "book19/images-print/cover-print-ready-no-barcode.png",
+      "source_copy": "book19/images-print/cover-copy.txt",
+      "kindle": null,
+      "paperback": null,
+      "source_crop_px": [
+        1693,
+        38,
+        3211,
+        2381
+      ],
+      "web_cover_size": [
+        700,
+        1080
+      ]
+    },
+    {
+      "number": 20,
+      "slug": "the-good-writer",
+      "title": "The Good Writer",
+      "cover": "/images/web/cover-the-good-writer-front.webp",
+      "source_art": "book20/images-print/cover-print-ready-no-barcode.png",
+      "source_copy": "book20/images-print/cover-copy.txt",
+      "kindle": null,
+      "paperback": null,
+      "source_crop_px": [
+        1662,
+        38,
+        3180,
+        2381
+      ],
+      "web_cover_size": [
+        700,
+        1080
+      ]
+    }
+  ],
+  "artwork_refreshed_on": "2026-10-22"
+}
