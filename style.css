@@ -210,3 +210,43 @@ a.buy-btn{display:inline-flex;margin-top:.4rem;padding:.75rem 1.05rem;border-rad
 @media(max-width:1080px){.warns-book-layout{grid-template-columns:280px minmax(0,1fr);gap:40px}.warns-release-card{grid-template-columns:95px minmax(0,1fr);gap:18px;padding:22px}.book-row .pills{flex-direction:row;flex-wrap:wrap}}
 @media(max-width:840px){.warns-book-layout{grid-template-columns:240px minmax(0,1fr);gap:30px}.warns-book-story{padding:25px}.warns-release-grid{grid-template-columns:1fr}.publication-note,.warns-publication-band>.wrap{align-items:flex-start;flex-direction:column;gap:22px}}
 @media(max-width:680px){.warns-book-hero{padding:48px 0 36px}.warns-book-layout{grid-template-columns:1fr;gap:38px}.warns-book-media{position:static;width:min(280px,82%);margin:auto}.warns-book-section{padding-top:38px}.warns-book-title{font-size:2.55rem}.warns-book-tagline{font-size:1.3rem}.warns-book-story{padding:24px 22px}.warns-story-hook{padding-left:14px}.warns-story-hook p{font-size:.86rem}.warns-book-actions .btn{padding:.85rem 1rem}.warns-book-nav{font-size:.9rem;gap:16px}.warns-story-notes>summary{width:calc(100% - 30px)}.author-note{padding:28px 23px 23px}.publication-note{padding:26px 23px}.warns-release-card{grid-template-columns:85px minmax(0,1fr);gap:18px;padding:20px}.warns-release-card h3{font-size:1.5rem}.warns-book-facts{gap:18px 16px}}
+
+
+/* FORCE FIX: Seer Warns book cover proportions */
+.cover-showcase {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  align-items: start !important;
+  gap: 24px;
+}
+
+.cover-showcase .cover-tile {
+  display: block;
+  min-width: 0;
+  height: auto !important;
+  align-self: start;
+}
+
+.cover-showcase .cover-tile img {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 5 / 8;
+  object-fit: contain !important;
+  object-position: center top;
+  max-height: none !important;
+}
+
+/* Tablet and mobile */
+@media (max-width: 840px) {
+  .cover-showcase {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .cover-showcase {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 15px;
+  }
+}
