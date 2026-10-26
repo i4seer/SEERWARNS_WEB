@@ -41,3 +41,7 @@ This build modernizes the existing Seer Warns site using the same broad design l
 ### Latest cover refresh
 
 All twenty website covers now use the front panels of the October 22 print-ready wraps. Extracted using each book’s print metadata, excluding the spine and bleed. Regenerated full-size JPG and optimized WebP assets, refreshed every cover URL version, and updated image dimensions to preserve the artwork’s proportions. Source paths and crop coordinates are recorded in publication-sources.json.
+
+## October 26, 2026 artwork-only refresh
+
+All 20 covers now use the current source cover-front.png exports, with full-size JPG and optimized WebP files. The home hero uses Book 1’s current clean kitchen illustration. Other editorial imagery, author, logo and map exports use the current source assets. Palette, type, layout, scripts and interactive map geometry are preserved. The stylesheet differs only in image cache versions; its normalized theme signature is recorded in data/warns-artwork.json. Run python scripts/sync_warns_artwork.py --source C:/SEERWARNS (Pillow, beautifulsoup4) to repeat. Purchase links and publication states are retained.

@@ -1,0 +1,244 @@
+{
+  "source": "C:\\SEERWARNS",
+  "books": [
+    {
+      "number": 1,
+      "cover": "/images/web/cover-the-good-father-front.webp",
+      "size": [
+        1280,
+        2048
+      ],
+      "source_cover": "book01/images-print/cover-front.png",
+      "source_cover_sha256": "49fff0801a048ac68b5128fc747b3f829a72cbd3bb40abcb3c6e8eb2ba4dde1b"
+    },
+    {
+      "number": 2,
+      "cover": "/images/web/cover-the-honest-woman-front.webp",
+      "size": [
+        1280,
+        2048
+      ],
+      "source_cover": "book02/images-print/cover-front.png",
+      "source_cover_sha256": "9033fdcd86b71bbb78a6c39e407ead91382695facee00ddbece3e5a27a13c99b"
+    },
+    {
+      "number": 3,
+      "cover": "/images/web/cover-the-quiet-man-front.webp",
+      "size": [
+        1280,
+        2048
+      ],
+      "source_cover": "book03/images-print/cover-front.png",
+      "source_cover_sha256": "6ad1fb14a445c98a857a084c4e5a9af6dab57570f97921da456f5f3bff4cf7eb"
+    },
+    {
+      "number": 4,
+      "cover": "/images/web/cover-the-loyal-man-front.webp",
+      "size": [
+        1280,
+        2048
+      ],
+      "source_cover": "book04/images-print/cover-front.png",
+      "source_cover_sha256": "be315cd0ca48a936fcfd8b0cd868dd1615a286507e2969cde8aa69ae95c6bdd9"
+    },
+    {
+      "number": 5,
+      "cover": "/images/web/cover-the-tired-mother-front.webp",
+      "size": [
+        1280,
+        2048
+      ],
+      "source_cover": "book05/images-print/cover-front.png",
+      "source_cover_sha256": "7c7f6fc3982ccf9ef771127a522c48e08d7654031c4e2ad2f877b9e2712cea0d"
+    },
+    {
+      "number": 6,
+      "cover": "/images/web/cover-the-lawyer-daughter-front.webp",
+      "size": [
+        1280,
+        2048
+      ],
+      "source_cover": "book06/images-print/cover-front.png",
+      "source_cover_sha256": "562b8b447fa6c9dd3a9e2e084fbd4524bc4be59a50734c7ef45feba16a3e648e"
+    },
+    {
+      "number": 7,
+      "cover": "/images/web/cover-the-tending-woman-front.webp",
+      "size": [
+        1280,
+        2048
+      ],
+      "source_cover": "book07/images-print/cover-front.png",
+      "source_cover_sha256": "4a44e170f6ab847a096ca462cbca34bcb5ee0fc93946f703b70e6bf6a26e9d17"
+    },
+    {
+      "number": 8,
+      "cover": "/images/web/cover-the-loyal-daughter-front.webp",
+      "size": [
+        1280,
+        2048
+      ],
+      "source_cover": "book08/images-print/cover-front.png",
+      "source_cover_sha256": "10046bcc4547cf094dd7bcfe9bdf40f7756fa578a8d01d3c0c7cc2ff7c43425f"
+    },
+    {
+      "number": 9,
+      "cover": "/images/web/cover-the-saved-woman-front.webp",
+      "size": [
+        1280,
+        2048
+      ],
+      "source_cover": "book09/images-print/cover-front.png",
+      "source_cover_sha256": "e8ea1b7dc0472f6c660c7dd01ab13be333486f8c95cc01eead403738c62be9ca"
+    },
+    {
+      "number": 10,
+      "cover": "/images/web/cover-the-accused-man-front.webp",
+      "size": [
+        1280,
+        2048
+      ],
+      "source_cover": "book10/images-print/cover-front.png",
+      "source_cover_sha256": "bb034de5f26f761b56da79216974f152c3b72a995e806918c0e17bea8a818ab6"
+    },
+    {
+      "number": 11,
+      "cover": "/images/web/cover-the-steady-hand-front.webp",
+      "size": [
+        1280,
+        2048
+      ],
+      "source_cover": "book11/images-print/cover-front.png",
+      "source_cover_sha256": "5c0e5a3677c2aa111b1aebbbf055bcec73712603d45e34758b739e8931b4c616"
+    },
+    {
+      "number": 12,
+      "cover": "/images/web/cover-the-ambitious-son-front.webp",
+      "size": [
+        1280,
+        2048
+      ],
+      "source_cover": "book12/images-print/cover-front.png",
+      "source_cover_sha256": "1434566883125b8e69c216f089454b8c8c8bd6b4b1b167b432ab959001535cc8"
+    },
+    {
+      "number": 13,
+      "cover": "/images/web/cover-the-design-partner-front.webp",
+      "size": [
+        1280,
+        2048
+      ],
+      "source_cover": "book13/images-print/cover-front.png",
+      "source_cover_sha256": "350e72d3ee8b2e32a3a1c90543fc022316810dda62c2150c89df3e51164055b9"
+    },
+    {
+      "number": 14,
+      "cover": "/images/web/cover-the-distant-man-front.webp",
+      "size": [
+        1280,
+        2048
+      ],
+      "source_cover": "book14/images-print/cover-front.png",
+      "source_cover_sha256": "475bd55bbc1cdcfd4cc340a28a4e5031b7bf8154787e8a75b9b4ad438db0941b"
+    },
+    {
+      "number": 15,
+      "cover": "/images/web/cover-the-silent-pastor-front.webp",
+      "size": [
+        1280,
+        2048
+      ],
+      "source_cover": "book15/images-print/cover-front.png",
+      "source_cover_sha256": "ce1482381340edada7216a240b78cb8e3b40418718a6b7f4f46da1415a5f8477"
+    },
+    {
+      "number": 16,
+      "cover": "/images/web/cover-the-distant-husband-front.webp",
+      "size": [
+        1280,
+        2048
+      ],
+      "source_cover": "book16/images-print/cover-front.png",
+      "source_cover_sha256": "86531a58943da2a2b5c282106b20a9e93f8f4d1f5c69f978dab2813a3ebb585e"
+    },
+    {
+      "number": 17,
+      "cover": "/images/web/cover-the-watchful-teacher-front.webp",
+      "size": [
+        1280,
+        2048
+      ],
+      "source_cover": "book17/images-print/cover-front.png",
+      "source_cover_sha256": "3a0e1eeee0aa17ca2ac825ba9876b59258fb39a5757b12e235814652f798707a"
+    },
+    {
+      "number": 18,
+      "cover": "/images/web/cover-the-merciful-nurse-front.webp",
+      "size": [
+        1280,
+        2048
+      ],
+      "source_cover": "book18/images-print/cover-front.png",
+      "source_cover_sha256": "9cbf43f01820e822e3166c52715381cf0316e5d119712a419683bff13eb990bd"
+    },
+    {
+      "number": 19,
+      "cover": "/images/web/cover-the-reluctant-witness-front.webp",
+      "size": [
+        1280,
+        2048
+      ],
+      "source_cover": "book19/images-print/cover-front.png",
+      "source_cover_sha256": "0588fd9c41dca83e2e628b84c1c29abf468e70a5395ec3780099c67f26921ddb"
+    },
+    {
+      "number": 20,
+      "cover": "/images/web/cover-the-good-writer-front.webp",
+      "size": [
+        1280,
+        2048
+      ],
+      "source_cover": "book20/images-print/cover-front.png",
+      "source_cover_sha256": "fb0b5f68c71224a03f6facc425149f109295d7127365497a4a7f9c6baff2b2f4"
+    }
+  ],
+  "images": [
+    {
+      "asset": "/images/hero-home.webp",
+      "source": "book01/images-print/background-art-master.png",
+      "source_sha256": "49b204afe73d1e6e9a92ec1e163cad5a723fedb3288d787a5bcc3be7ab9f3b96",
+      "size": [
+        1755,
+        896
+      ]
+    },
+    {
+      "asset": "/images/hero-sub.webp",
+      "source": "assets/author.png",
+      "source_sha256": "bedafee1a604e579182d26e7d5001b3cef82a12baa56271cab10463966cd8fef",
+      "size": [
+        1920,
+        720
+      ]
+    },
+    {
+      "asset": "/images/about-scene.webp",
+      "source": "assets/author.png",
+      "source_sha256": "bedafee1a604e579182d26e7d5001b3cef82a12baa56271cab10463966cd8fef",
+      "size": [
+        1600,
+        1000
+      ]
+    },
+    {
+      "asset": "/images/harmon-map.webp",
+      "source": "assets/map.jpg",
+      "source_sha256": "11b3235517c547db0c46ee9896923ac1d93d8753df575128c1ba1dfcfa9466e1",
+      "size": [
+        1800,
+        1200
+      ]
+    }
+  ],
+  "theme_signature": "9a0d7b6ae80ad204b1fc51250a7b57a7d1a65189b95a4adc145e175d2edf5c0c"
+}

@@ -1,21 +1,21 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Map of Harmon &mdash; Seer Warns</title>
-  <meta name="description" content="An interactive map of Harmon, the town at the center of the ongoing Seer Warns literary series by B. Carter. Click a landmark to read the scenes set there.">
-  <link rel="stylesheet" href="/style.css?v=9a0d7b6ae80a">
-  <link rel="stylesheet" href="/lib/leaflet.css">
-  <link rel="canonical" href="https://seerwarns.com/map/">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Seer Warns">
-  <meta property="og:url" content="https://seerwarns.com/map/">
-  <meta property="og:title" content="The Map of Harmon &mdash; Seer Warns">
-  <meta property="og:description" content="An interactive map of one small town. An ongoing series of literary novels happens here.">
-  <meta property="og:image" content="https://seerwarns.com/images/cover-the-good-father-front.jpg?v=c4c377fbdbef">
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Map of Harmon — Seer Warns</title>
+<meta content="An interactive map of Harmon, the town at the center of the ongoing Seer Warns literary series by B. Carter. Click a landmark to read the scenes set there." name="description"/>
+<link href="/style.css?v=9dc83de1f517" rel="stylesheet"/>
+<link href="/lib/leaflet.css" rel="stylesheet"/>
+<link href="https://seerwarns.com/map/" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="Seer Warns" property="og:site_name"/>
+<meta content="https://seerwarns.com/map/" property="og:url"/>
+<meta content="The Map of Harmon — Seer Warns" property="og:title"/>
+<meta content="An interactive map of one small town. An ongoing series of literary novels happens here." property="og:description"/>
+<meta content="https://seerwarns.com/images/cover-the-good-father-front.jpg?v=2767e39811ed" property="og:image"/>
+<style>
     /* =====================================================================
        Seer Warns, full-bleed map view.
 
@@ -528,136 +528,128 @@
     }
     .scrim.show { opacity: 1; pointer-events: auto; }
   </style>
-<link rel="stylesheet" data-seer-collections href="/assets/seer-collections/collections.css?v=4da63ce919a2"></head>
+<link rel="stylesheet" data-seer-collections href="/assets/seer-collections/collections.css?v=44b12e209f25"></head>
 <body class="map-page">
 <a class="skip" href="#map">Skip to map</a>
-
-  <div id="map" tabindex="0"></div>
-  <div id="map-vignette"></div>
-
-  <!-- ────── Standard site header (transparent, floats over the map) ── -->
-  <header class="site-header map-header">
-  <div class="site-header-inner">
-    <a href="/" class="site-title" aria-label="Seer Warns home">Seer<span class="dot"></span>Warns</a>
-    <button class="menu-btn" type="button" aria-expanded="false" aria-label="Open navigation">Menu</button>
-    <ul class="site-nav" aria-label="Main navigation"><li><a href="/">Home</a></li><li><a href="/books/">Books</a></li><li><a href="/harmon/">Harmon</a></li><li><a href="/map/" class="active">Map</a></li><li><a href="/people/">People</a></li><li><a href="/establishments/">Places</a></li><li><a href="/the-seer/">The Seer</a></li><li><a href="/news/">News</a></li><li><a href="/about/">About</a></li></ul>
-  </div>
+<div id="map" tabindex="0"></div>
+<div id="map-vignette"></div>
+<!-- ────── Standard site header (transparent, floats over the map) ── -->
+<header class="site-header map-header">
+<div class="site-header-inner">
+<a aria-label="Seer Warns home" class="site-title" href="/">Seer<span class="dot"></span>Warns</a>
+<button aria-expanded="false" aria-label="Open navigation" class="menu-btn" type="button">Menu</button>
+<ul aria-label="Main navigation" class="site-nav"><li><a href="/">Home</a></li><li><a href="/books/">Books</a></li><li><a href="/harmon/">Harmon</a></li><li><a class="active" href="/map/">Map</a></li><li><a href="/people/">People</a></li><li><a href="/establishments/">Places</a></li><li><a href="/the-seer/">The Seer</a></li><li><a href="/news/">News</a></li><li><a href="/about/">About</a></li></ul>
+</div>
 </header>
-
-  <!-- ────── Filter control (map-only, no other entry point) ──────── -->
-  <button class="map-filter-btn" id="filter-open" type="button" aria-label="Filter the map">
-    <span aria-hidden="true">&#9776;</span> Filter
+<!-- ────── Filter control (map-only, no other entry point) ──────── -->
+<button aria-label="Filter the map" class="map-filter-btn" id="filter-open" type="button">
+<span aria-hidden="true">☰</span> Filter
   </button>
-
-  <!-- The scrim sits behind the column / tray when one is open -->
-  <div class="scrim" id="scrim"></div>
-
-  <!-- ────── The Books Column ──────────────────────────────────────── -->
-  <aside class="books-column" id="books-column" aria-label="The books">
-    <header>
-      <div>
-        <p class="eyebrow">An ongoing series &middot; Set in Harmon</p>
-        <h2>The books.</h2>
-        <p>Read in any order. Every story happens on this map.</p>
-      </div>
-      <button class="close" id="books-close" aria-label="Close">&times;</button>
-    </header>
-    <div class="scroll">
-      <a class="book-card" href="/books/the-good-father/">
-        <img src="/images/web/cover-the-good-father-front.webp?v=967cad145811" alt="The Good Father cover" width="700" height="1080">
-        <div>
-          <p class="status">Released</p>
-          <h3>The Good Father</h3>
-          <p class="who">David Marsh &middot; history teacher</p>
-        </div>
-      </a>
-      <a class="book-card" href="/books/the-honest-woman/">
-        <img src="/images/web/cover-the-honest-woman-front.webp?v=adf1eab6e144" alt="The Honest Woman cover" width="700" height="1080">
-        <div>
-          <p class="status">Released</p>
-          <h3>The Honest Woman</h3>
-          <p class="who">Ruth Calloway &middot; town clerk</p>
-        </div>
-      </a>
-      <a class="book-card" href="/books/the-quiet-man/">
-        <img src="/images/web/cover-the-quiet-man-front.webp?v=7fcb75032032" alt="The Quiet Man cover" width="700" height="1080">
-        <div>
-          <p class="status">Released</p>
-          <h3>The Quiet Man</h3>
-          <p class="who">Boyd Haskell &middot; hardware-store owner</p>
-        </div>
-      </a>
-      <a class="book-card" href="/books/the-loyal-man/">
-        <img src="/images/web/cover-the-loyal-man-front.webp?v=cf6c32ca668f" alt="The Loyal Man cover" width="700" height="1080">
-        <div>
-          <p class="status">Released</p>
-          <h3>The Loyal Man</h3>
-          <p class="who">Dennis Reilly &middot; county assessor</p>
-        </div>
-      </a>
-      <a class="book-card" href="/books/the-tired-mother/">
-        <img src="/images/web/cover-the-tired-mother-front.webp?v=32ae134d3175" alt="The Tired Mother cover" width="700" height="1080">
-        <div>
-          <p class="status">In review</p>
-          <h3>The Tired Mother</h3>
-          <p class="who">Cat Brennan &middot; ER physician</p>
-        </div>
-      </a>
-      <a class="book-card" href="/books/the-lawyer-daughter/">
-        <img src="/images/web/cover-the-lawyer-daughter-front.webp?v=841230483573" alt="The Lawyer Daughter cover" width="700" height="1080">
-        <div>
-          <p class="status">In writing</p>
-          <h3>The Lawyer Daughter</h3>
-          <p class="who">Diana Torres &middot; attorney</p>
-        </div>
-      </a>
-      <a class="book-card" href="/books/the-tending-woman/">
-        <img src="/images/web/cover-the-tending-woman-front.webp?v=a121491f2817" alt="The Tending Woman cover" width="700" height="1080">
-        <div>
-          <p class="status">In review</p>
-          <h3>The Tending Woman</h3>
-          <p class="who">Elena Voss &middot; retired librarian</p>
-        </div>
-      </a>
-      <a class="book-card" href="/books/">
-        <img src="/images/harmon-map.webp" alt="All twenty books">
-        <div>
-          <p class="status">The full series</p>
-          <h3>All twenty books</h3>
-          <p class="who">See the complete list &amp; reading order &rarr;</p>
-        </div>
-      </a>
-    </div>
-  </aside>
-
-  <!-- ────── Filter Tray ───────────────────────────────────────────── -->
-  <div class="filter-tray" id="filter-tray" aria-label="Map category filter">
-    <header>
-      <span class="eyebrow">Show on the map</span>
-      <button class="close" id="filter-close" aria-label="Close">&times;</button>
-    </header>
-    <div class="chips" id="filter-chips">
-      <!-- filled by JS -->
-    </div>
-  </div>
-
-  <!-- ────── Splash overlay ────────────────────────────────────────── -->
-  <div class="splash" id="splash">
-    <div class="card">
-      <p class="eyebrow">An ongoing literary series</p>
-      <h2>Welcome to Harmon.</h2>
-      <p class="quote">&ldquo;You were warned.&rdquo;</p>
-      <p>An ongoing series of literary novels set in one small American town. Every story happens on this map. Click a landmark to read its scenes; the marked <strong>red points</strong> are the places where a stranger sat down across from someone and told them how their life falls apart.</p>
-      <p>Use the menu in the top-left corner to browse the books, the Seer, and more.</p>
-      <div class="actions">
-        <button id="splash-dismiss" type="button">Enter Harmon &rarr;</button>
-      </div>
-    </div>
-  </div>
-
-  <script src="/lib/leaflet.js"></script>
-  <script src="/landmarks.js"></script>
-  <script>
+<!-- The scrim sits behind the column / tray when one is open -->
+<div class="scrim" id="scrim"></div>
+<!-- ────── The Books Column ──────────────────────────────────────── -->
+<aside aria-label="The books" class="books-column" id="books-column">
+<header>
+<div>
+<p class="eyebrow">An ongoing series · Set in Harmon</p>
+<h2>The books.</h2>
+<p>Read in any order. Every story happens on this map.</p>
+</div>
+<button aria-label="Close" class="close" id="books-close">×</button>
+</header>
+<div class="scroll">
+<a class="book-card" href="/books/the-good-father/">
+<img alt="The Good Father cover" height="2048" src="/images/web/cover-the-good-father-front.webp?v=c28d0b825b5b" width="1280"/>
+<div>
+<p class="status">Released</p>
+<h3>The Good Father</h3>
+<p class="who">David Marsh · history teacher</p>
+</div>
+</a>
+<a class="book-card" href="/books/the-honest-woman/">
+<img alt="The Honest Woman cover" height="2048" src="/images/web/cover-the-honest-woman-front.webp?v=2fbdc02a1389" width="1280"/>
+<div>
+<p class="status">Released</p>
+<h3>The Honest Woman</h3>
+<p class="who">Ruth Calloway · town clerk</p>
+</div>
+</a>
+<a class="book-card" href="/books/the-quiet-man/">
+<img alt="The Quiet Man cover" height="2048" src="/images/web/cover-the-quiet-man-front.webp?v=699f394ba330" width="1280"/>
+<div>
+<p class="status">Released</p>
+<h3>The Quiet Man</h3>
+<p class="who">Boyd Haskell · hardware-store owner</p>
+</div>
+</a>
+<a class="book-card" href="/books/the-loyal-man/">
+<img alt="The Loyal Man cover" height="2048" src="/images/web/cover-the-loyal-man-front.webp?v=3a614af8bc28" width="1280"/>
+<div>
+<p class="status">Released</p>
+<h3>The Loyal Man</h3>
+<p class="who">Dennis Reilly · county assessor</p>
+</div>
+</a>
+<a class="book-card" href="/books/the-tired-mother/">
+<img alt="The Tired Mother cover" height="2048" src="/images/web/cover-the-tired-mother-front.webp?v=03debce3d9ec" width="1280"/>
+<div>
+<p class="status">In review</p>
+<h3>The Tired Mother</h3>
+<p class="who">Cat Brennan · ER physician</p>
+</div>
+</a>
+<a class="book-card" href="/books/the-lawyer-daughter/">
+<img alt="The Lawyer Daughter cover" height="2048" src="/images/web/cover-the-lawyer-daughter-front.webp?v=090a2b8d2b32" width="1280"/>
+<div>
+<p class="status">In writing</p>
+<h3>The Lawyer Daughter</h3>
+<p class="who">Diana Torres · attorney</p>
+</div>
+</a>
+<a class="book-card" href="/books/the-tending-woman/">
+<img alt="The Tending Woman cover" height="2048" src="/images/web/cover-the-tending-woman-front.webp?v=a00f7062b97c" width="1280"/>
+<div>
+<p class="status">In review</p>
+<h3>The Tending Woman</h3>
+<p class="who">Elena Voss · retired librarian</p>
+</div>
+</a>
+<a class="book-card" href="/books/">
+<img alt="All twenty books" height="1200" src="/images/harmon-map.webp?v=1efb618b6146" width="1800"/>
+<div>
+<p class="status">The full series</p>
+<h3>All twenty books</h3>
+<p class="who">See the complete list &amp; reading order →</p>
+</div>
+</a>
+</div>
+</aside>
+<!-- ────── Filter Tray ───────────────────────────────────────────── -->
+<div aria-label="Map category filter" class="filter-tray" id="filter-tray">
+<header>
+<span class="eyebrow">Show on the map</span>
+<button aria-label="Close" class="close" id="filter-close">×</button>
+</header>
+<div class="chips" id="filter-chips">
+<!-- filled by JS -->
+</div>
+</div>
+<!-- ────── Splash overlay ────────────────────────────────────────── -->
+<div class="splash" id="splash">
+<div class="card">
+<p class="eyebrow">An ongoing literary series</p>
+<h2>Welcome to Harmon.</h2>
+<p class="quote">“You were warned.”</p>
+<p>An ongoing series of literary novels set in one small American town. Every story happens on this map. Click a landmark to read its scenes; the marked <strong>red points</strong> are the places where a stranger sat down across from someone and told them how their life falls apart.</p>
+<p>Use the menu in the top-left corner to browse the books, the Seer, and more.</p>
+<div class="actions">
+<button id="splash-dismiss" type="button">Enter Harmon →</button>
+</div>
+</div>
+</div>
+<script src="/lib/leaflet.js"></script>
+<script src="/landmarks.js"></script>
+<script>
     /* ── Leaflet setup ────────────────────────────────────────────────── */
     const map = L.map('map', {
       crs: L.CRS.Simple,
@@ -848,7 +840,6 @@
     window.addEventListener('hashchange', openFromHash);
     setTimeout(openFromHash, 200);
   </script>
-
 <script src="/site.js"></script>
 </body>
 </html>
