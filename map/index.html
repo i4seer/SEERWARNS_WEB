@@ -6,7 +6,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>The Map of Harmon — Seer Warns</title>
 <meta content="An interactive map of Harmon, the town at the center of the ongoing Seer Warns literary series by B. Carter. Click a landmark to read the scenes set there." name="description"/>
-<link href="/style.css?v=9dc83de1f517" rel="stylesheet"/>
+<link href="/style.css?v=390409a02e57" rel="stylesheet"/>
 <link href="/lib/leaflet.css" rel="stylesheet"/>
 <link href="https://warns.i4seer.com/map/" rel="canonical"/>
 <meta content="website" property="og:type"/>
@@ -41,44 +41,17 @@
     }
     * { box-sizing: border-box; }
 
-    /* ── The map fills the screen below the brand bar ─────────────── */
+    /* The map starts below both navigation rows at every screen width. */
     #map {
       position: fixed;
-      top: 72px;        /* leave room for the SEER WARNS brand at top */
+      top: calc(var(--seer-family-height) + var(--warns-header-height));
       left: 0; right: 0; bottom: 0;
       background: #1e2a38;
       outline: none;
     }
-    @media (max-width: 600px) {
-      #map { top: 64px; }
-    }
     /* Force every Leaflet inner container to match the backdrop so no
        cream / default white can ever bleed through */
     .leaflet-container { background: #1e2a38 !important; }
-
-    /* ── Standard site header, floated transparently over the dark map ── */
-    .site-header.map-header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1080;
-      background: transparent;
-      border-bottom: 0;
-      padding: 1.15rem 0;
-      /* scrim so light nav text stays legible over any map area */
-      background: linear-gradient(to bottom,
-        rgba(20, 30, 44, 0.82) 0%,
-        rgba(20, 30, 44, 0.55) 55%,
-        rgba(20, 30, 44, 0) 100%);
-    }
-    .map-header .site-title { color: rgba(241, 232, 211, 0.96); }
-    .map-header .site-title:hover { color: #ffffff; }
-    .map-header .site-title .dot { background: rgba(241, 232, 211, 0.7); }
-    .map-header .site-nav a { color: rgba(241, 232, 211, 0.82); border-bottom-color: transparent; }
-    .map-header .site-nav a:hover,
-    .map-header .site-nav a.active {
-      color: #ffffff;
-      border-bottom-color: rgba(241, 232, 211, 0.9);
-    }
 
     /* Map-only Filter control, bottom-left, dark-friendly */
     .map-filter-btn {
@@ -106,7 +79,7 @@
     /* Soft vignette at the screen edges so the painted area feels
        like a page held up to the eye, not a bare rectangle. */
     #map-vignette {
-      position: fixed; inset: 0;
+      position: fixed; inset: calc(var(--seer-family-height) + var(--warns-header-height)) 0 0;
       pointer-events: none;
       z-index: 400;
       box-shadow:
@@ -534,12 +507,20 @@
 <div id="map" tabindex="0"></div>
 <div id="map-vignette"></div>
 <!-- ────── Standard site header (transparent, floats over the map) ── -->
-<!-- seer-family:start --><nav class="sp-family-nav" aria-label="Seer Press websites"><div class="sp-family-inner"><a class="sp-family-home" href="https://i4seer.com/">i4Seer Home</a><div class="sp-family-links"><a href="https://worlds.i4seer.com/">Worlds</a><a href="https://journey.i4seer.com/">Journey</a><a href="https://frights.i4seer.com/">Frights</a><a href="https://warns.i4seer.com/" aria-current="true">Warns</a><a href="https://fairies.i4seer.com/">Fairies</a><a href="https://stories.i4seer.com/">Stories</a></div><details class="sp-family-mobile"><summary>Collections</summary><div class="sp-family-menu"><a href="https://worlds.i4seer.com/">Worlds</a><a href="https://journey.i4seer.com/">Journey</a><a href="https://frights.i4seer.com/">Frights</a><a href="https://warns.i4seer.com/" aria-current="true">Warns</a><a href="https://fairies.i4seer.com/">Fairies</a><a href="https://stories.i4seer.com/">Stories</a></div></details></div></nav><!-- seer-family:end --><header class="site-header map-header">
-<div class="site-header-inner">
-<a aria-label="Seer Warns home" class="site-title" href="/">Seer<span class="dot"></span>Warns</a>
-<button aria-expanded="false" aria-label="Open navigation" class="menu-btn" type="button">Menu</button>
-<ul aria-label="Main navigation" class="site-nav"><li><a href="/">Home</a></li><li><a href="/books/">Books</a></li><li><a href="/harmon/">Harmon</a></li><li><a class="active" href="/map/">Map</a></li><li><a href="/people/">People</a></li><li><a href="/establishments/">Places</a></li><li><a href="/the-seer/">The Seer</a></li><li><a href="/news/">News</a></li><li><a href="/about/">About</a></li></ul>
-</div>
+<!-- seer-family:start --><nav class="sp-family-nav" aria-label="Seer Press websites"><div class="sp-family-inner"><a class="sp-family-home" href="https://i4seer.com/">i4Seer Home</a><div class="sp-family-links"><a href="https://worlds.i4seer.com/">Worlds</a><a href="https://journey.i4seer.com/">Journey</a><a href="https://frights.i4seer.com/">Frights</a><a href="https://warns.i4seer.com/" aria-current="true">Warns</a><a href="https://fairies.i4seer.com/">Fairies</a><a href="https://stories.i4seer.com/">Stories</a></div><details class="sp-family-mobile"><summary>Collections</summary><div class="sp-family-menu"><a href="https://worlds.i4seer.com/">Worlds</a><a href="https://journey.i4seer.com/">Journey</a><a href="https://frights.i4seer.com/">Frights</a><a href="https://warns.i4seer.com/" aria-current="true">Warns</a><a href="https://fairies.i4seer.com/">Fairies</a><a href="https://stories.i4seer.com/">Stories</a></div></details></div></nav><!-- seer-family:end --><header class="site-header">
+<a aria-label="Seer Warns home" class="brand" href="/"><span>Seer</span><strong>Warns</strong></a>
+<button aria-controls="main-nav" aria-expanded="false" aria-label="Open navigation" class="menu-btn" type="button">Menu</button>
+<nav aria-label="Main navigation" class="main-nav" id="main-nav">
+<a href="/">Home</a>
+<a href="/books/">Books</a>
+<a href="/harmon/">Harmon</a>
+<a aria-current="page" class="active" href="/map/">Map</a>
+<a href="/people/">People</a>
+<a href="/establishments/">Places</a>
+<a href="/the-seer/">The Seer</a>
+<a href="/news/">News</a>
+<a href="/about/">About</a>
+</nav>
 </header>
 <!-- ────── Filter control (map-only, no other entry point) ──────── -->
 <button aria-label="Filter the map" class="map-filter-btn" id="filter-open" type="button">
@@ -840,6 +821,6 @@
     window.addEventListener('hashchange', openFromHash);
     setTimeout(openFromHash, 200);
   </script>
-<script src="/site.js"></script>
+<script src="/site.js?v=53c6f71406dd"></script>
 </body>
 </html>
