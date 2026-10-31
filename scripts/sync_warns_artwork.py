@@ -57,7 +57,7 @@ def sync(source,pages_only=False):
                 if path.startswith(('/images/','/style.css')) and (ROOT/path.lstrip('/')).is_file():el[attr]=version(path)
         for el in s.select('meta[property="og:image"],meta[name="twitter:image"]'):
             url=el.get('content','');path='/'+url.split('/',3)[-1].split('?')[0] if url.startswith('http') else url.split('?')[0]
-            if path.startswith('/images/') and (ROOT/path.lstrip('/')).is_file():el['content']='https://seerwarns.com'+version(path)
+            if path.startswith('/images/') and (ROOT/path.lstrip('/')).is_file():el['content']='https://warns.i4seer.com'+version(path)
         p.write_text(str(s),encoding='utf-8',newline='\n')
     print('Updated Warns artwork and cache versions; theme signature unchanged.')
 if __name__=='__main__':
