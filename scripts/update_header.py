@@ -9,7 +9,6 @@ HEADER = re.compile(r'<header\b[^>]*class=[\"\'][^\"\']*\bsite-header\b[^\"\']*[
 NAV_ITEMS = (
     ('/', 'Home'),
     ('/books/', 'Books'),
-    ('/harmon/', 'Harmon'),
     ('/people-and-places/', 'People & Places'),
     ('/the-seer/', 'The Seer'),
     ('/news/', 'News'),
@@ -19,10 +18,8 @@ NAV_ITEMS = (
 
 def navigation_for(path, root):
     route = '/' + path.relative_to(root).as_posix().removesuffix('index.html')
-    if route.startswith(('/people/', '/establishments/')):
+    if route.startswith(('/people/', '/establishments/', '/harmon/', '/map/')):
         current = '/people-and-places/'
-    elif route.startswith('/map/'):
-        current = '/harmon/'
     elif route.startswith('/the-warning/'):
         current = '/the-seer/'
     else:

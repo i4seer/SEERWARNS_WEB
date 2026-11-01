@@ -325,3 +325,8 @@ a.buy-btn{display:inline-flex;margin-top:.4rem;padding:.75rem 1.05rem;border-rad
 .directory-section-head h2{margin-bottom:20px}
 .directory-section .prose h3{font-size:2rem;margin:2.8rem 0 1rem;padding-top:2rem;border-top:1px solid var(--line)}
 .directory-section .prose h3:first-child{border:0;padding-top:0;margin-top:0}
+
+/* Town overview within People & Places. */
+.directory-map-feature{margin-bottom:48px}
+.directory-map-feature .map-art img{height:auto}
+.directory-map-feature .map-copy h3{font-size:clamp(2rem,3.5vw,2.8rem);margin-bottom:20px}
