@@ -1,11 +1,35 @@
 """Apply the common Warns header to local pages; never deploy or validate."""
 from pathlib import Path
 import hashlib
+import html
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
 HEADER = re.compile(r'<header\b[^>]*class=[\"\'][^\"\']*\bsite-header\b[^\"\']*[\"\'][^>]*>.*?</header>', re.S)
-NAV = re.compile(r'<(?:ul|nav)\b[^>]*class=[\"\'][^\"\']*\b(?:site-nav|main-nav)\b[^\"\']*[\"\'][^>]*>(.*?)</(?:ul|nav)>', re.S)
+NAV_ITEMS = (
+    ('/', 'Home'),
+    ('/books/', 'Books'),
+    ('/harmon/', 'Harmon'),
+    ('/people-and-places/', 'People & Places'),
+    ('/the-seer/', 'The Seer'),
+    ('/news/', 'News'),
+    ('/about/', 'About'),
+)
+
+
+def navigation_for(path, root):
+    route = '/' + path.relative_to(root).as_posix().removesuffix('index.html')
+    if route.startswith(('/people/', '/establishments/')):
+        current = '/people-and-places/'
+    elif route.startswith('/map/'):
+        current = '/harmon/'
+    elif route.startswith('/the-warning/'):
+        current = '/the-seer/'
+    else:
+        current = next((href for href, _ in NAV_ITEMS
+                        if route == href or (href != '/' and route.startswith(href))), None)
+    return ['<a' + (' aria-current="page" class="active"' if href == current else '') +
+            f' href="{href}">{html.escape(label)}</a>' for href, label in NAV_ITEMS]
 
 
 def update_header(root=ROOT):
@@ -20,13 +44,7 @@ def update_header(root=ROOT):
         header = HEADER.search(original)
         if not header:
             continue
-        nav = NAV.search(header[0])
-        if not nav:
-            raise ValueError(f'Missing navigation in {path}')
-        links = re.findall(r'<a\b[^>]*>.*?</a>', nav[1], re.S)
-        for index, link in enumerate(links):
-            if re.search(r'class=[\"\'][^\"\']*\bactive\b', link) and 'aria-current=' not in link:
-                links[index] = link.replace('<a ', '<a aria-current="page" ', 1)
+        links = navigation_for(path, root)
         replacement = ('<header class="site-header">\n'
                        '<a aria-label="Seer Warns home" class="brand" href="/"><span>Seer</span><strong>Warns</strong></a>\n'
                        '<button aria-controls="main-nav" aria-expanded="false" aria-label="Open navigation" class="menu-btn" type="button">Menu</button>\n'
